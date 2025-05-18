@@ -19,13 +19,13 @@ LifeHub is an all-in-one personal lifestyle assistant designed to simplify and e
 
 ## Data source:
 
-type : Single-user input
-Descrition : Data is created and used by a single user, stored locally or synced via Firebase
-Example : User's daily habits, journal entries, tasks, budget, water intake
+**type** : Single-user input
+**Descrition** : Data is created and used by a single user, stored locally or synced via Firebase
+**Example** : User's daily habits, journal entries, tasks, budget, water intake
 
-type : 3rd-party API 
-Description : Data comes from external APIs (e.g., NewsAPI, OpenWeather, Spoonacular)
-Example : Weather forecast, news headlines, recipe suggestions
+**type** : 3rd-party API 
+**Description** : Data comes from external APIs (e.g., NewsAPI, OpenWeather, Spoonacular)
+**Example** : Weather forecast, news headlines, recipe suggestions
 
 **Data Source Difficulty**: Medium
 
@@ -46,7 +46,7 @@ Users can create and manage a list of personal goals
 Users can earn badges for completing streaks (habit/task related)   
 Users can backup and sync their data via Firebase Authentication
 
-Setting Features
+**Setting Features**
 - Users can delete all user data in the app settings
 - Users can toggle languages in the settings (English, Hindi, Gujarati) 
 - Users can enable dark/light mode from app settings
