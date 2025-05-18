@@ -9,7 +9,7 @@ LifeHub is an all-in-one personal lifestyle assistant designed to simplify and e
 1. Keyul patel ( 1263445)
 2. smit patel (1280935)
 3. Jenish Shah (1269507)
-4.
+4. krina patel (1297274)
 
 ## Project Tech Stack
 - Frontend: IOS ( Swift)
