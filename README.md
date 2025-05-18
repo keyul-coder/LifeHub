@@ -7,7 +7,7 @@ LifeHub is an all-in-one personal lifestyle assistant designed to simplify and e
   Section 1 Group ID: 1
 ## Group Members :
 1. Keyul patel ( 1263445)
-2.
+2. smit patel (1280935)
 3.
 4.
 
