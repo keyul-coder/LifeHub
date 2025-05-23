@@ -29,7 +29,7 @@ LifeHub is an all-in-one personal lifestyle assistant designed to simplify and e
 
 **Data Source Difficulty**: Medium
 
-## feature list
+## Feature list
 
 - Users can track and visualize daily water intake goals  
 - Users can create and manage to-do tasks with priorities and reminders   
