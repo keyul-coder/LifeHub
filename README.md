@@ -31,23 +31,24 @@ LifeHub is an all-in-one personal lifestyle assistant designed to simplify and e
 
 ## feature list
 
-Users can track and visualize daily water intake goals  
-Users can create and manage to-do tasks with priorities and reminders   
-Users can save motivational quotes as favorites  
-Users can write and view daily journal entries with emotion tags  
-Users can see a calendar view of completed habits and tasks  
-Users can filter expenses by categories like food, travel, shopping  
-Users can see their productivity statistics in a weekly graph  
-Users can search for healthy recipes based on dietary preference  
-Users can receive push notifications for reminders and tips  
-Users can set budget limits and get alerts when nearing the limit  
-Users can view news headlines tailored to health and lifestyle  
-Users can create and manage a list of personal goals  
-Users can earn badges for completing streaks (habit/task related)   
-Users can backup and sync their data via Firebase Authentication
+- Users can track and visualize daily water intake goals  
+- Users can create and manage to-do tasks with priorities and reminders   
+- Users can save motivational quotes as favorites  
+- Users can write and view daily journal entries with emotion tags  
+- Users can see a calendar view of completed habits and tasks  
+- Users can filter expenses by categories like food, travel, and shopping  
+- Users can see their productivity statistics in a weekly graph  
+- Users can search for healthy recipes based on dietary preference  
+- Users can receive push notifications for reminders and tips  
+- Users can set budget limits and get alerts when nearing the limit  
+- Users can view news headlines tailored to health and lifestyle  
+- Users can create and manage a list of personal goals  
+- Users can earn badges for completing streaks (habit/task related)   
+- Users can backup and sync their data via Firebase Authentication
 
 **Setting Features**
 - Users can delete all user data in the app settings
 - Users can toggle languages in the settings (English, Hindi, Gujarati) 
 - Users can enable dark/light mode from app settings
 - Users can change the app’s color theme in the app settings
+- Users can see a daily dashboard showing tasks and reminders for today
