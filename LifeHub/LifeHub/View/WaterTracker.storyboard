@@ -1,0 +1,283 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="23504" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_9" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23506"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Water Tracking View Controller-->
+        <scene sceneID="s0d-6b-0kx">
+            <objects>
+                <viewController storyboardIdentifier="WaterTrackingViewController" id="Y6W-OH-hqX" customClass="WaterTrackingViewController" customModule="LifeHub" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
+                        <rect key="frame" x="0.0" y="0.0" width="440" height="956"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="24" translatesAutoresizingMaskIntoConstraints="NO" id="main-stack-view">
+                                <rect key="frame" x="24" y="86" width="392" height="812"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="💧 Daily Water Tracker" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VBI-A1-JXy">
+                                        <rect key="frame" x="0.0" y="0.0" width="392" height="33.666666666666664"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="28"/>
+                                        <color key="textColor" systemColor="systemBlueColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gxZ-Ut-RaL">
+                                        <rect key="frame" x="0.0" y="57.666666666666657" width="392" height="180"/>
+                                        <subviews>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="drop.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="C1y-pp-7ea">
+                                                <rect key="frame" x="186" y="20.666666666666664" width="20" height="18.666666666666664"/>
+                                                <color key="tintColor" systemColor="systemBlueColor"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="20" id="icon-height"/>
+                                                    <constraint firstAttribute="width" constant="20" id="icon-width"/>
+                                                </constraints>
+                                            </imageView>
+                                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.20000000298023224" translatesAutoresizingMaskIntoConstraints="NO" id="uAp-6Y-WzQ">
+                                                <rect key="frame" x="24" y="86" width="344" height="8"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="8" id="progress-height"/>
+                                                </constraints>
+                                            </progressView>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="500 / 2500 ML" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3u0-6Y-FNB">
+                                                <rect key="frame" x="24" y="114.00000000000004" width="344" height="28.666666666666671"/>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
+                                                <color key="textColor" systemColor="systemBlueColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="20% of daily goal" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="goal-label">
+                                                <rect key="frame" x="24" y="146.66666666666666" width="344" height="23.333333333333343"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <color key="textColor" systemColor="secondaryLabelColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <color key="backgroundColor" systemColor="secondarySystemBackgroundColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="180" id="container-height"/>
+                                            <constraint firstAttribute="bottom" secondItem="goal-label" secondAttribute="bottom" constant="10" id="goal-bottom"/>
+                                            <constraint firstItem="goal-label" firstAttribute="leading" secondItem="gxZ-Ut-RaL" secondAttribute="leading" constant="24" id="goal-leading"/>
+                                            <constraint firstItem="goal-label" firstAttribute="top" secondItem="3u0-6Y-FNB" secondAttribute="bottom" constant="4" id="goal-top"/>
+                                            <constraint firstAttribute="trailing" secondItem="goal-label" secondAttribute="trailing" constant="24" id="goal-trailing"/>
+                                            <constraint firstItem="C1y-pp-7ea" firstAttribute="centerX" secondItem="gxZ-Ut-RaL" secondAttribute="centerX" id="icon-centerX"/>
+                                            <constraint firstItem="C1y-pp-7ea" firstAttribute="top" secondItem="gxZ-Ut-RaL" secondAttribute="top" constant="20" id="icon-top"/>
+                                            <constraint firstItem="3u0-6Y-FNB" firstAttribute="leading" secondItem="gxZ-Ut-RaL" secondAttribute="leading" constant="24" id="level-leading"/>
+                                            <constraint firstItem="3u0-6Y-FNB" firstAttribute="top" secondItem="uAp-6Y-WzQ" secondAttribute="bottom" constant="20" id="level-top"/>
+                                            <constraint firstAttribute="trailing" secondItem="3u0-6Y-FNB" secondAttribute="trailing" constant="24" id="level-trailing"/>
+                                            <constraint firstItem="uAp-6Y-WzQ" firstAttribute="centerY" secondItem="gxZ-Ut-RaL" secondAttribute="centerY" id="progress-centerY"/>
+                                            <constraint firstItem="uAp-6Y-WzQ" firstAttribute="leading" secondItem="gxZ-Ut-RaL" secondAttribute="leading" constant="24" id="progress-leading"/>
+                                            <constraint firstAttribute="trailing" secondItem="uAp-6Y-WzQ" secondAttribute="trailing" constant="24" id="progress-trailing"/>
+                                        </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="0"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </view>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BCS-eS-ZnC">
+                                        <rect key="frame" x="0.0" y="261.66666666666669" width="392" height="44"/>
+                                        <color key="backgroundColor" systemColor="systemGray5Color"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="44" id="goal-button-height"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal" title="🎯 Set Daily Goal">
+                                            <color key="titleColor" systemColor="labelColor"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="0"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="setGoalButtonTapped:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="tno-DQ-6Uj"/>
+                                        </connections>
+                                    </button>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="buttons-stack">
+                                        <rect key="frame" x="0.0" y="329.66666666666669" width="392" height="50"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DZZ-ER-pb8">
+                                                <rect key="frame" x="0.0" y="0.0" width="120" height="50"/>
+                                                <color key="backgroundColor" systemColor="systemBlueColor"/>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
+                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                <state key="normal" title="250ml">
+                                                    <color key="titleColor" systemColor="systemBackgroundColor"/>
+                                                </state>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                        <integer key="value" value="0"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="waterAmountButtonTapped:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="ofS-ca-dHk"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ddp-66-4uO">
+                                                <rect key="frame" x="136" y="0.0" width="120" height="50"/>
+                                                <color key="backgroundColor" systemColor="systemBlueColor"/>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
+                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                <state key="normal" title="500ml">
+                                                    <color key="titleColor" systemColor="systemBackgroundColor"/>
+                                                </state>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                        <integer key="value" value="0"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="waterAmountButtonTapped:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="xcb-Jf-ggt"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GxV-36-Ldb">
+                                                <rect key="frame" x="272" y="0.0" width="120" height="50"/>
+                                                <color key="backgroundColor" systemColor="systemBlueColor"/>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
+                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                <state key="normal" title="750ml">
+                                                    <color key="titleColor" systemColor="systemBackgroundColor"/>
+                                                </state>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                        <integer key="value" value="0"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="waterAmountButtonTapped:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="CgC-Pu-t29"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="buttons-height"/>
+                                        </constraints>
+                                    </stackView>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="reminder-container">
+                                        <rect key="frame" x="0.0" y="403.66666666666669" width="392" height="80"/>
+                                        <subviews>
+                                            <stackView opaque="NO" contentMode="scaleToFill" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="PZj-fe-aZ5">
+                                                <rect key="frame" x="20" y="24.666666666666686" width="352" height="31"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="🔔 Remind me to drink water" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oC4-P4-Q3t">
+                                                        <rect key="frame" x="0.0" y="0.0" width="287" height="31"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Pb7-tp-Wj1">
+                                                        <rect key="frame" x="303" y="0.0" width="51" height="31"/>
+                                                        <connections>
+                                                            <action selector="reminderSwitchChanged:" destination="Y6W-OH-hqX" eventType="valueChanged" id="56o-BD-k92"/>
+                                                        </connections>
+                                                    </switch>
+                                                </subviews>
+                                            </stackView>
+                                        </subviews>
+                                        <color key="backgroundColor" systemColor="secondarySystemBackgroundColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="80" id="reminder-container-height"/>
+                                            <constraint firstItem="PZj-fe-aZ5" firstAttribute="centerY" secondItem="reminder-container" secondAttribute="centerY" id="reminder-stack-centerY"/>
+                                            <constraint firstItem="PZj-fe-aZ5" firstAttribute="leading" secondItem="reminder-container" secondAttribute="leading" constant="20" id="reminder-stack-leading"/>
+                                            <constraint firstAttribute="trailing" secondItem="PZj-fe-aZ5" secondAttribute="trailing" constant="20" id="reminder-stack-trailing"/>
+                                        </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="0"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </view>
+                                    <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" style="wheels" translatesAutoresizingMaskIntoConstraints="NO" id="ZW1-Vd-Bwu">
+                                        <rect key="frame" x="0.0" y="507.66666666666663" width="392" height="162"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="162" id="datepicker-height"/>
+                                        </constraints>
+                                    </datePicker>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="spacer-view">
+                                        <rect key="frame" x="0.0" y="693.66666666666663" width="392" height="39.333333333333371"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" priority="250" id="spacer-height"/>
+                                        </constraints>
+                                    </view>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Cq0-3V-ZHq">
+                                        <rect key="frame" x="0.0" y="757" width="392" height="55"/>
+                                        <color key="backgroundColor" systemColor="systemBlueColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="55" id="save-button-height"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal" title="💾 Save Water Intake">
+                                            <color key="titleColor" systemColor="systemBackgroundColor"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="0"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="saveButtonTapped:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="rxb-Xx-XcN"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="main-stack-view" secondAttribute="bottom" constant="24" id="main-bottom"/>
+                            <constraint firstItem="main-stack-view" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="24" id="main-leading"/>
+                            <constraint firstItem="main-stack-view" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="24" id="main-top"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="main-stack-view" secondAttribute="trailing" constant="24" id="main-trailing"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="datePicker" destination="ZW1-Vd-Bwu" id="Yuk-Zi-29d"/>
+                        <outlet property="firstButton" destination="DZZ-ER-pb8" id="KZq-D9-7LB"/>
+                        <outlet property="goalLabel" destination="goal-label" id="gqU-Ou-6uc"/>
+                        <outlet property="progressContainerView" destination="gxZ-Ut-RaL" id="I3N-iE-xoU"/>
+                        <outlet property="reminderLabel" destination="oC4-P4-Q3t" id="biC-Kc-Mid"/>
+                        <outlet property="reminderStackView" destination="PZj-fe-aZ5" id="2Cj-iP-Ipl"/>
+                        <outlet property="reminderSwitch" destination="Pb7-tp-Wj1" id="2K6-pU-0HP"/>
+                        <outlet property="saveButton" destination="Cq0-3V-ZHq" id="znq-Co-4pf"/>
+                        <outlet property="secondButton" destination="ddp-66-4uO" id="gcE-i3-9ah"/>
+                        <outlet property="setGoalButton" destination="BCS-eS-ZnC" id="4sQ-sa-8UW"/>
+                        <outlet property="straksImageView" destination="C1y-pp-7ea" id="819-Q0-Bkn"/>
+                        <outlet property="thirdButton" destination="GxV-36-Ldb" id="P1h-To-M6k"/>
+                        <outlet property="titleLabel" destination="VBI-A1-JXy" id="AlS-cB-nwk"/>
+                        <outlet property="waterLevelLabel" destination="3u0-6Y-FNB" id="zwC-id-4xw"/>
+                        <outlet property="waterProgressView" destination="uAp-6Y-WzQ" id="XwK-JL-qQT"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="135.1145038167939" y="3.5211267605633805"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="drop.fill" catalog="system" width="96" height="128"/>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="secondaryLabelColor">
+            <color red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="secondarySystemBackgroundColor">
+            <color red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemBlueColor">
+            <color red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemGray5Color">
+            <color red="0.8980392157" green="0.8980392157" blue="0.91764705879999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>
