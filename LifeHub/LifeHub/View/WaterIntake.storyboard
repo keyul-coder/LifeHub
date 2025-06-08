@@ -31,7 +31,7 @@
         <!--Water TrackerVC-->
         <scene sceneID="mPW-Z2-cHQ">
             <objects>
-                <viewController id="O1W-xk-Ab2" customClass="WaterTrackerVC" customModule="LifeHub" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="WaterTrackerVC" hidesBottomBarWhenPushed="YES" id="O1W-xk-Ab2" customClass="WaterTrackerVC" customModule="LifeHub" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="BPh-Th-Qb7">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="1200"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

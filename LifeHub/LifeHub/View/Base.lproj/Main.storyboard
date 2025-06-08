@@ -32,7 +32,7 @@
         <!--Home-->
         <scene sceneID="uXt-wm-Nwy">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="rcU-NO-8MI" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" hidesBottomBarWhenPushed="YES" id="rcU-NO-8MI" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Home" image="house" catalog="system" id="dwJ-vH-CSb"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="xp6-mj-LaB">
@@ -73,6 +73,78 @@
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="aw9-vN-7fk">
                                             <rect key="frame" x="0.0" y="0.0" width="381" height="128"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JVc-ln-jE8">
+                                                    <rect key="frame" x="16" y="12" width="349" height="104"/>
+                                                    <subviews>
+                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="drop.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="8r3-G8-QCT">
+                                                            <rect key="frame" x="24" y="30.666666666666668" width="34" height="32.666666666666657"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" secondItem="8r3-G8-QCT" secondAttribute="height" multiplier="1:1" id="2MS-rB-vvU"/>
+                                                                <constraint firstAttribute="width" constant="34" id="zqG-I8-aCP"/>
+                                                            </constraints>
+                                                            <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="17"/>
+                                                        </imageView>
+                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ger-Z3-NVr">
+                                                            <rect key="frame" x="12" y="18" width="58" height="58"/>
+                                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" constant="58" id="60K-xH-fBG"/>
+                                                                <constraint firstAttribute="width" secondItem="ger-Z3-NVr" secondAttribute="height" multiplier="1:1" id="Z9K-nv-7N3"/>
+                                                            </constraints>
+                                                            <userDefinedRuntimeAttributes>
+                                                                <userDefinedRuntimeAttribute type="boolean" keyPath="isRounded" value="YES"/>
+                                                                <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                                    <color key="value" systemColor="placeholderTextColor"/>
+                                                                </userDefinedRuntimeAttribute>
+                                                                <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                                    <real key="value" value="2"/>
+                                                                </userDefinedRuntimeAttribute>
+                                                            </userDefinedRuntimeAttributes>
+                                                        </view>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Water Intake" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Oj-3q-W25">
+                                                            <rect key="frame" x="82" y="18" width="255" height="26.333333333333329"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Fd-W7-NBs">
+                                                            <rect key="frame" x="82" y="52.333333333333329" width="255" height="33.666666666666671"/>
+                                                            <string key="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+</string>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                    <color key="backgroundColor" systemColor="secondarySystemFillColor"/>
+                                                    <constraints>
+                                                        <constraint firstItem="7Oj-3q-W25" firstAttribute="top" secondItem="ger-Z3-NVr" secondAttribute="top" id="3VJ-Cw-wDg"/>
+                                                        <constraint firstItem="8r3-G8-QCT" firstAttribute="centerY" secondItem="ger-Z3-NVr" secondAttribute="centerY" id="B4R-bE-zBC"/>
+                                                        <constraint firstItem="7Oj-3q-W25" firstAttribute="trailing" secondItem="1Fd-W7-NBs" secondAttribute="trailing" id="CgE-eY-tcC"/>
+                                                        <constraint firstAttribute="trailing" secondItem="7Oj-3q-W25" secondAttribute="trailing" constant="12" id="GES-Fi-vSi"/>
+                                                        <constraint firstItem="1Fd-W7-NBs" firstAttribute="top" secondItem="7Oj-3q-W25" secondAttribute="bottom" constant="8" id="Gwv-f2-2Rz"/>
+                                                        <constraint firstItem="ger-Z3-NVr" firstAttribute="centerY" secondItem="JVc-ln-jE8" secondAttribute="centerY" constant="-5" id="HjI-90-xyG"/>
+                                                        <constraint firstItem="8r3-G8-QCT" firstAttribute="centerX" secondItem="ger-Z3-NVr" secondAttribute="centerX" id="KJn-oX-yvR"/>
+                                                        <constraint firstItem="7Oj-3q-W25" firstAttribute="leading" secondItem="ger-Z3-NVr" secondAttribute="trailing" constant="12" id="cy0-dx-eUP"/>
+                                                        <constraint firstItem="7Oj-3q-W25" firstAttribute="leading" secondItem="1Fd-W7-NBs" secondAttribute="leading" id="oFD-e2-Amh"/>
+                                                        <constraint firstItem="ger-Z3-NVr" firstAttribute="leading" secondItem="JVc-ln-jE8" secondAttribute="leading" constant="12" id="wnh-sK-Xyg"/>
+                                                    </constraints>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                            <real key="value" value="12"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                    </userDefinedRuntimeAttributes>
+                                                </view>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="bottom" secondItem="JVc-ln-jE8" secondAttribute="bottom" constant="12" id="4Oe-ON-mOY"/>
+                                                <constraint firstItem="JVc-ln-jE8" firstAttribute="leading" secondItem="aw9-vN-7fk" secondAttribute="leading" constant="16" id="Lds-2r-3qZ"/>
+                                                <constraint firstAttribute="trailing" secondItem="JVc-ln-jE8" secondAttribute="trailing" constant="16" id="mm5-gK-YgR"/>
+                                                <constraint firstItem="JVc-ln-jE8" firstAttribute="top" secondItem="aw9-vN-7fk" secondAttribute="top" constant="12" id="uFe-vm-KVA"/>
+                                            </constraints>
                                         </collectionViewCellContentView>
                                         <size key="customSize" width="381" height="128"/>
                                     </collectionViewCell>
@@ -303,6 +375,7 @@
                     <connections>
                         <outlet property="collectionView" destination="OPv-Fa-T8r" id="76z-EL-505"/>
                         <segue destination="ffV-e9-cxE" kind="show" identifier="segueWellnessVC" id="qcr-S6-hdc"/>
+                        <segue destination="CNf-1P-KFF" kind="show" identifier="segueWaterTrackerVC" id="esP-45-uTq"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wdD-u4-TR8" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -312,12 +385,22 @@
         <!--WellnessVC-->
         <scene sceneID="xt5-Qt-ZZf">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="3r7-9M-q8a" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <viewControllerPlaceholder storyboardName="WellnessStoryboard" referencedIdentifier="WellnessVC" id="ffV-e9-cxE" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" id="5RB-O3-j5W"/>
                 </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3r7-9M-q8a" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2671" y="-382"/>
+        </scene>
+        <!--WaterTrackerVC-->
+        <scene sceneID="8li-Mf-VVi">
+            <objects>
+                <viewControllerPlaceholder storyboardName="WaterIntake" referencedIdentifier="WaterTrackerVC" id="CNf-1P-KFF" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="5pi-IF-kpU"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="qZ7-6y-BaO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2687" y="-253"/>
         </scene>
         <!--Settings-->
         <scene sceneID="420-5T-aKk">
@@ -338,10 +421,17 @@
     </scenes>
     <resources>
         <image name="checkmark.circle" catalog="system" width="128" height="123"/>
+        <image name="drop.fill" catalog="system" width="96" height="128"/>
         <image name="gear" catalog="system" width="128" height="122"/>
         <image name="house" catalog="system" width="128" height="104"/>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="placeholderTextColor">
+            <color red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.29803921570000003" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="secondarySystemFillColor">
+            <color red="0.47058823529999999" green="0.47058823529999999" blue="0.50196078430000002" alpha="0.16" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
