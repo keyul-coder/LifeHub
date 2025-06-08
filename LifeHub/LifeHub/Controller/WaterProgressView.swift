@@ -2,7 +2,7 @@
 //  WaterProgressView.swift
 //  LifeHub
 //
-//  Created by Gaurav Harkhani on 07/06/25.
+//  Created by smit patel on 07/06/25.
 //
 
 import UIKit
