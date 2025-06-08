@@ -27,6 +27,8 @@ class HomeVC: ParentVC {
             let _ = segue.destination as! WaterTrackerVC
         } else if segue.identifier == "segueTaskViewController" {
             let _ = segue.destination as! TaskViewController
+        } else if segue.identifier == "segueGoal" {
+            let _ = segue.destination as! Goal
         }
     }
 }
