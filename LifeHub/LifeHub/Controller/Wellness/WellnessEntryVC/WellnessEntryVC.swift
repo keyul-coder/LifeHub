@@ -28,6 +28,11 @@ class WellnessEntryVC: ParentVC {
         super.viewDidLoad()
         self.prepareUI()
     }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        self.textView.becomeFirstResponder()
+    }
 }
 
 // MARK: - UI Related Method(s)
