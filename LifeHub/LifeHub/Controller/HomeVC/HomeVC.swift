@@ -22,7 +22,9 @@ class HomeVC: ParentVC {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         super.prepare(for: segue, sender: sender)
         if segue.identifier == "segueWellnessVC" {
-//            let _ = segue.destination as! WellnessVC
+            let _ = segue.destination as! WellnessVC
+        } else if segue.identifier == "segueWaterTrackerVC" {
+            let _ = segue.destination as! WaterTrackerVC
         }
     }
 }
@@ -89,7 +91,7 @@ extension HomeVC: UICollectionViewDelegateFlowLayout, UICollectionViewDelegate, 
             width -= 32
             return CGSize(width: (width - 2) / 2, height: 88)
         case .progress:
-            return CGSize(width: width, height: 120)
+            return CGSize(width: width, height: 118)
         case .mainHeader:
             return CGSize(width: width, height: 180)
         }
@@ -132,6 +134,13 @@ extension HomeVC: UICollectionViewDelegateFlowLayout, UICollectionViewDelegate, 
                 }
             default:
                 return
+            }
+        case .progress:
+            switch self.viewModel.arrProgressSections[indexPath.row] {
+            case .waterIntakeCell:
+                self.performSegue(withIdentifier: "segueWaterTrackerVC", sender: nil)
+            case .taskProgressCell:
+                break
             }
         default:
             break

@@ -13,7 +13,7 @@
         <!--WellnessVC-->
         <scene sceneID="s0d-6b-0kx">
             <objects>
-                <viewController storyboardIdentifier="WellnessVC" id="Y6W-OH-hqX" customClass="WellnessVC" customModule="LifeHub" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="WellnessVC" hidesBottomBarWhenPushed="YES" id="Y6W-OH-hqX" customClass="WellnessVC" customModule="LifeHub" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -160,7 +160,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" translatesAutoresizingMaskIntoConstraints="NO" id="8dC-d8-e1E">
-                                <rect key="frame" x="12" y="174" width="136" height="34"/>
+                                <rect key="frame" x="12" y="174" width="136" height="34.333333333333343"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="136" id="Fzg-Em-clj"/>
                                 </constraints>
