@@ -24,10 +24,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 print("Notification permission granted: \(granted)")
             }
         }
-
-        // Set delegate to show notifications while app is open
         UNUserNotificationCenter.current().delegate = self
-
         return true
     }
 
@@ -35,7 +32,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, configurationForConnecting connectingSceneSession: UISceneSession, options: UIScene.ConnectionOptions) -> UISceneConfiguration {
         return UISceneConfiguration(name: "Default Configuration", sessionRole: connectingSceneSession.role)
     }
-
+    
     func application(_ application: UIApplication, didDiscardSceneSessions sceneSessions: Set<UISceneSession>) {}
 
     // MARK: - Core Data stack
@@ -69,6 +66,5 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
                                 willPresent notification: UNNotification,
                                 withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
         completionHandler([.banner, .sound])
-    }
 }
 
