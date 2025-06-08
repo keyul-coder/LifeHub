@@ -302,11 +302,22 @@
                     <navigationItem key="navigationItem" id="VgV-Pq-tlc"/>
                     <connections>
                         <outlet property="collectionView" destination="OPv-Fa-T8r" id="76z-EL-505"/>
+                        <segue destination="ffV-e9-cxE" kind="show" identifier="segueWellnessVC" id="qcr-S6-hdc"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wdD-u4-TR8" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1843.5114503816794" y="-382.3943661971831"/>
+        </scene>
+        <!--WellnessVC-->
+        <scene sceneID="xt5-Qt-ZZf">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3r7-9M-q8a" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <viewControllerPlaceholder storyboardName="WellnessStoryboard" referencedIdentifier="WellnessVC" id="ffV-e9-cxE" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="5RB-O3-j5W"/>
+                </viewControllerPlaceholder>
+            </objects>
+            <point key="canvasLocation" x="2671" y="-382"/>
         </scene>
         <!--Settings-->
         <scene sceneID="420-5T-aKk">

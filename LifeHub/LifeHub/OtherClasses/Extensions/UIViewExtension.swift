@@ -21,10 +21,9 @@ extension UIView {
     
     @IBInspectable var isRounded: Bool {
         get {
-            return self.isRounded
+            return self.frame.height / 2 == self.cornerRadius
         }
         set {
-            self.isRounded = newValue
             self.cornerRadius = newValue ? self.frame.height / 2 : self.cornerRadius
         }
     }

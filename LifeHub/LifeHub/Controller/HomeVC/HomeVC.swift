@@ -18,6 +18,13 @@ class HomeVC: ParentVC {
         super.viewDidLoad()
         self.prepareUI()
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        super.prepare(for: segue, sender: sender)
+        if segue.identifier == "segueWellnessVC" {
+//            let _ = segue.destination as! WellnessVC
+        }
+    }
 }
 
 // MARK: - UI Related Method(s)
@@ -114,11 +121,15 @@ extension HomeVC: UICollectionViewDelegateFlowLayout, UICollectionViewDelegate, 
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         collectionView.deselectItem(at: indexPath, animated: true)
+        print(#function)
         switch self.viewModel.arrSections[indexPath.section] {
         case .feature:
             switch self.viewModel.arrFeatures[indexPath.row] {
             case .wellness:
-                self.performSegue(withIdentifier: "segueWellnessVC", sender: nil)
+                DispatchQueue.main.async { [weak self] in
+                    guard let self = self else { return }
+                    self.performSegue(withIdentifier: "segueWellnessVC", sender: nil)
+                }
             default:
                 return
             }
