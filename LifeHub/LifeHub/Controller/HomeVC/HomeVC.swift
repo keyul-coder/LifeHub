@@ -25,6 +25,8 @@ class HomeVC: ParentVC {
             let _ = segue.destination as! WellnessVC
         } else if segue.identifier == "segueWaterTrackerVC" {
             let _ = segue.destination as! WaterTrackerVC
+        } else if segue.identifier == "segueTaskViewController" {
+            let _ = segue.destination as! TaskViewController
         }
     }
 }
@@ -132,6 +134,8 @@ extension HomeVC: UICollectionViewDelegateFlowLayout, UICollectionViewDelegate, 
                     guard let self = self else { return }
                     self.performSegue(withIdentifier: "segueWellnessVC", sender: nil)
                 }
+            case .tasks:
+                self.performSegue(withIdentifier: "segueTaskViewController", sender: nil)
             default:
                 return
             }
