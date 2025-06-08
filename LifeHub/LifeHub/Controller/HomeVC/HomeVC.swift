@@ -17,6 +17,7 @@ class HomeVC: ParentVC {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.prepareUI()
+        
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
