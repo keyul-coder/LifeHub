@@ -377,6 +377,7 @@ Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliqu
                         <segue destination="ffV-e9-cxE" kind="show" identifier="segueWellnessVC" id="qcr-S6-hdc"/>
                         <segue destination="CNf-1P-KFF" kind="show" identifier="segueWaterTrackerVC" id="esP-45-uTq"/>
                         <segue destination="hwh-QV-11X" kind="show" identifier="segueTaskViewController" id="VhY-pP-dyE"/>
+                        <segue destination="NNF-bX-aTS" kind="show" identifier="segueGoal" id="lg9-6b-gYz"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wdD-u4-TR8" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -412,6 +413,16 @@ Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliqu
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qZ7-6y-BaO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2687" y="-253"/>
+        </scene>
+        <!--Goal-->
+        <scene sceneID="Fiz-Jh-Fdc">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Goal" referencedIdentifier="Goal" id="NNF-bX-aTS" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="wrt-YH-DlX"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hPn-UB-0lt" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2675" y="-170"/>
         </scene>
         <!--Settings-->
         <scene sceneID="420-5T-aKk">
