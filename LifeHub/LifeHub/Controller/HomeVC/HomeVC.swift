@@ -141,6 +141,7 @@ extension HomeVC: UICollectionViewDelegateFlowLayout, UICollectionViewDelegate, 
                 self.performSegue(withIdentifier: "segueTaskViewController", sender: nil)
             case .habits:
                 self.performSegue(withIdentifier: "segueGoal", sender: nil)
+            
             default:
                 return
             }
