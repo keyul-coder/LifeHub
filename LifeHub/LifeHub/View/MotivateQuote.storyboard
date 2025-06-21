@@ -1,0 +1,670 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="23727" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Tab-Bar-Controller">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23721"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Tab Controller-->
+        <scene sceneID="Tab-Bar-Scene">
+            <objects>
+                <tabBarController storyboardIdentifier="QuotesTabBar" id="Tab-Bar-Controller" customClass="TabController" customModule="LifeHub" customModuleProvider="target" sceneMemberID="viewController">
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Tab-Bar">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="Main-Nav-Controller" kind="relationship" relationship="viewControllers" id="Main-Nav-Segue"/>
+                        <segue destination="Favorites-Nav-Controller" kind="relationship" relationship="viewControllers" id="Favorites-Nav-Segue"/>
+                        <segue destination="Settings-Nav-Controller" kind="relationship" relationship="viewControllers" id="Settings-Nav-Segue"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Tab-Bar-First-Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1000" y="0.0"/>
+        </scene>
+        <!--Quotes-->
+        <scene sceneID="Main-Nav-Scene">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Main-Nav-Controller" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Quotes" image="quote.bubble" catalog="system" id="Main-Tab-Item"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Main-Nav-Bar">
+                        <rect key="frame" x="0.0" y="96" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="Main-Root-Segue"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Main-Nav-First-Responder" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-100" y="0.0"/>
+        </scene>
+        <!--Daily Quotes-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="MotivationalViewController" customModule="LifeHub" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="hQn-gZ-8Xr">
+                                <rect key="frame" x="20" y="160" width="374" height="32"/>
+                                <segments>
+                                    <segment title="Motivation"/>
+                                    <segment title="Success"/>
+                                    <segment title="Happiness"/>
+                                </segments>
+                                <connections>
+                                    <action selector="categoryChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="fKm-1Q-dtr"/>
+                                </connections>
+                            </segmentedControl>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Qco-Qm-2lO">
+                                <rect key="frame" x="20" y="211" width="374" height="400"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="&quot;Your motivational quote will appear here&quot;" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gHW-dQ-8hJ">
+                                        <rect key="frame" x="20" y="30" width="334" height="290"/>
+                                        <fontDescription key="fontDescription" type="system" weight="light" pointSize="22"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="— Author Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7ej-Pd-0Pr">
+                                        <rect key="frame" x="20" y="340" width="334" height="40"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="mda-KN-xpI"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="16"/>
+                                        <color key="textColor" systemColor="secondaryLabelColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="Hto-Ul-IhN">
+                                        <rect key="frame" x="177" y="190" width="20" height="20"/>
+                                    </activityIndicatorView>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="secondarySystemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstItem="gHW-dQ-8hJ" firstAttribute="leading" secondItem="Qco-Qm-2lO" secondAttribute="leading" constant="20" id="14e-vM-bvJ"/>
+                                    <constraint firstAttribute="trailing" secondItem="gHW-dQ-8hJ" secondAttribute="trailing" constant="20" id="1uE-dB-z5P"/>
+                                    <constraint firstItem="7ej-Pd-0Pr" firstAttribute="leading" secondItem="Qco-Qm-2lO" secondAttribute="leading" constant="20" id="6F0-Ue-VHi"/>
+                                    <constraint firstItem="Hto-Ul-IhN" firstAttribute="centerX" secondItem="Qco-Qm-2lO" secondAttribute="centerX" id="7JH-Eb-5mN"/>
+                                    <constraint firstAttribute="height" constant="400" id="HHu-tE-hYl"/>
+                                    <constraint firstItem="gHW-dQ-8hJ" firstAttribute="top" secondItem="Qco-Qm-2lO" secondAttribute="top" constant="30" id="JgI-hS-qKT"/>
+                                    <constraint firstItem="7ej-Pd-0Pr" firstAttribute="top" secondItem="gHW-dQ-8hJ" secondAttribute="bottom" constant="20" id="Jvz-CU-9lz"/>
+                                    <constraint firstAttribute="trailing" secondItem="7ej-Pd-0Pr" secondAttribute="trailing" constant="20" id="LCk-3e-iXA"/>
+                                    <constraint firstItem="Hto-Ul-IhN" firstAttribute="centerY" secondItem="Qco-Qm-2lO" secondAttribute="centerY" id="VvJ-LS-A5r"/>
+                                    <constraint firstAttribute="bottom" secondItem="7ej-Pd-0Pr" secondAttribute="bottom" constant="20" id="fFp-Rb-3xz"/>
+                                </constraints>
+                            </view>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="0gY-OP-iGm">
+                                <rect key="frame" x="20" y="631" width="374" height="50"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xAo-cb-PqH">
+                                        <rect key="frame" x="0.0" y="0.0" width="177" height="50"/>
+                                        <color key="backgroundColor" systemColor="systemGray6Color"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="IYV-Wl-8uV"/>
+                                        </constraints>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal" image="heart" catalog="system">
+                                            <color key="titleColor" systemColor="systemRedColor"/>
+                                        </state>
+                                        <state key="selected" image="heart.fill" catalog="system"/>
+                                        <connections>
+                                            <action selector="favoritePressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Hfi-Oy-d5r"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FTq-JJ-bk4">
+                                        <rect key="frame" x="197" y="0.0" width="177" height="50"/>
+                                        <color key="backgroundColor" systemColor="systemGray6Color"/>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal" image="square.and.arrow.up" catalog="system">
+                                            <color key="titleColor" systemColor="systemBlueColor"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="sharePressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="g8R-xj-XGQ"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="3eh-K8-pLF">
+                                <rect key="frame" x="20" y="701" width="374" height="50"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fOB-Zj-zfv">
+                                        <rect key="frame" x="0.0" y="0.0" width="114.5" height="50"/>
+                                        <color key="backgroundColor" systemColor="systemGray6Color"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="Wd6-8x-qwU"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="16"/>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal" title="Previous">
+                                            <color key="titleColor" systemColor="systemBlueColor"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="previousQuotePressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="FJx-gJ-4CG"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KBn-9n-OIJ">
+                                        <rect key="frame" x="129.5" y="0.0" width="115" height="50"/>
+                                        <color key="backgroundColor" systemColor="systemGray6Color"/>
+                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="16"/>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal" title="Next">
+                                            <color key="titleColor" systemColor="systemBlueColor"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="nextQuotePressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="hnF-JL-T4c"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fPK-fF-wWC">
+                                        <rect key="frame" x="259.5" y="0.0" width="114.5" height="50"/>
+                                        <color key="backgroundColor" systemColor="systemGray6Color"/>
+                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="16"/>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal" title="Random">
+                                            <color key="titleColor" systemColor="systemPurpleColor"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="randomButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="OgB-Sc-f7p"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="hQn-gZ-8Xr" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="0YR-Zd-SaS"/>
+                            <constraint firstItem="3eh-K8-pLF" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="2hU-2z-wgB"/>
+                            <constraint firstItem="0gY-OP-iGm" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="7Q7-3u-vUb"/>
+                            <constraint firstItem="Qco-Qm-2lO" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="9Rx-LN-V7I"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="3eh-K8-pLF" secondAttribute="trailing" constant="20" id="GGl-hT-h4b"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="0gY-OP-iGm" secondAttribute="trailing" constant="20" id="L7R-Lk-kMP"/>
+                            <constraint firstItem="0gY-OP-iGm" firstAttribute="top" secondItem="Qco-Qm-2lO" secondAttribute="bottom" constant="20" id="M4o-cd-Flh"/>
+                            <constraint firstItem="3eh-K8-pLF" firstAttribute="top" secondItem="0gY-OP-iGm" secondAttribute="bottom" constant="20" id="QZd-c5-ihJ"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="hQn-gZ-8Xr" secondAttribute="trailing" constant="20" id="Txb-K9-xk5"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Qco-Qm-2lO" secondAttribute="trailing" constant="20" id="f7h-9i-DAc"/>
+                            <constraint firstItem="hQn-gZ-8Xr" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="20" id="ppz-8L-pBa"/>
+                            <constraint firstItem="Qco-Qm-2lO" firstAttribute="top" secondItem="hQn-gZ-8Xr" secondAttribute="bottom" constant="20" id="yao-qw-TBe"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Daily Quotes" id="Main-Nav-Item"/>
+                    <connections>
+                        <outlet property="activityIndicator" destination="Hto-Ul-IhN" id="6iU-tJ-5lm"/>
+                        <outlet property="authorLabel" destination="7ej-Pd-0Pr" id="jlF-TK-xWd"/>
+                        <outlet property="categorySegmentedControl" destination="hQn-gZ-8Xr" id="X8n-uh-2vR"/>
+                        <outlet property="favoriteButton" destination="xAo-cb-PqH" id="cZY-9r-TZz"/>
+                        <outlet property="nextButton" destination="KBn-9n-OIJ" id="JjY-Jr-7au"/>
+                        <outlet property="previousButton" destination="fOB-Zj-zfv" id="rNr-7s-Xvq"/>
+                        <outlet property="quoteCardView" destination="Qco-Qm-2lO" id="xw8-7p-GGP"/>
+                        <outlet property="quoteTextLabel" destination="gHW-dQ-8hJ" id="1mV-nI-c7w"/>
+                        <outlet property="randomButton" destination="fPK-fF-wWC" id="1jb-R0-0pL"/>
+                        <outlet property="shareButton" destination="FTq-JJ-bk4" id="W5V-fL-Qdz"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="800" y="0.0"/>
+        </scene>
+        <!--Favorites-->
+        <scene sceneID="Favorites-Nav-Scene">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Favorites-Nav-Controller" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Favorites" image="heart.fill" catalog="system" id="Favorites-Tab-Item"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Favorites-Nav-Bar">
+                        <rect key="frame" x="0.0" y="96" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="Favorites-View-Controller" kind="relationship" relationship="rootViewController" id="Favorites-Root-Segue"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Favorites-Nav-First-Responder" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-100" y="800"/>
+        </scene>
+        <!--Favorite Quotes-->
+        <scene sceneID="Favorites-Scene">
+            <objects>
+                <viewController id="Favorites-View-Controller" customClass="FavoritesViewController" customModule="LifeHub" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Favorites-View">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="Favorites-Table-View">
+                                <rect key="frame" x="0.0" y="140" width="414" height="639"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="FavoriteQuoteCell" rowHeight="120" id="Favorite-Quote-Cell">
+                                        <rect key="frame" x="0.0" y="50" width="414" height="120"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Favorite-Quote-Cell" id="Favorite-Cell-Content-View">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="120"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Favorite-Card-View">
+                                                    <rect key="frame" x="16" y="8" width="382" height="104"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Quote text will appear here" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Favorite-Quote-Label">
+                                                            <rect key="frame" x="16" y="12" width="350" height="60"/>
+                                                            <fontDescription key="fontDescription" type="system" weight="light" pointSize="16"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="— Author" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Favorite-Author-Label">
+                                                            <rect key="frame" x="16" y="80" width="350" height="16"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="height" constant="16" id="Favorite-Author-Height"/>
+                                                            </constraints>
+                                                            <fontDescription key="fontDescription" type="system" weight="medium" pointSize="14"/>
+                                                            <color key="textColor" systemColor="secondaryLabelColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                    <color key="backgroundColor" systemColor="secondarySystemBackgroundColor"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="bottom" secondItem="Favorite-Author-Label" secondAttribute="bottom" constant="8" id="Favorite-Author-Bottom"/>
+                                                        <constraint firstItem="Favorite-Author-Label" firstAttribute="leading" secondItem="Favorite-Card-View" secondAttribute="leading" constant="16" id="Favorite-Author-Leading"/>
+                                                        <constraint firstItem="Favorite-Author-Label" firstAttribute="top" secondItem="Favorite-Quote-Label" secondAttribute="bottom" constant="8" id="Favorite-Author-Top"/>
+                                                        <constraint firstAttribute="trailing" secondItem="Favorite-Author-Label" secondAttribute="trailing" constant="16" id="Favorite-Author-Trailing"/>
+                                                        <constraint firstItem="Favorite-Quote-Label" firstAttribute="leading" secondItem="Favorite-Card-View" secondAttribute="leading" constant="16" id="Favorite-Quote-Leading"/>
+                                                        <constraint firstItem="Favorite-Quote-Label" firstAttribute="top" secondItem="Favorite-Card-View" secondAttribute="top" constant="12" id="Favorite-Quote-Top"/>
+                                                        <constraint firstAttribute="trailing" secondItem="Favorite-Quote-Label" secondAttribute="trailing" constant="16" id="Favorite-Quote-Trailing"/>
+                                                    </constraints>
+                                                </view>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="bottom" secondItem="Favorite-Card-View" secondAttribute="bottom" constant="8" id="Favorite-Card-Bottom"/>
+                                                <constraint firstItem="Favorite-Card-View" firstAttribute="leading" secondItem="Favorite-Cell-Content-View" secondAttribute="leading" constant="16" id="Favorite-Card-Leading"/>
+                                                <constraint firstItem="Favorite-Card-View" firstAttribute="top" secondItem="Favorite-Cell-Content-View" secondAttribute="top" constant="8" id="Favorite-Card-Top"/>
+                                                <constraint firstAttribute="trailing" secondItem="Favorite-Card-View" secondAttribute="trailing" constant="16" id="Favorite-Card-Trailing"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="Favorites-View-Controller" id="Favorites-Table-DataSource"/>
+                                    <outlet property="delegate" destination="Favorites-View-Controller" id="Favorites-Table-Delegate"/>
+                                </connections>
+                            </tableView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No favorite quotes yet" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Favorites-Empty-Label">
+                                <rect key="frame" x="20" y="428" width="374" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="Favorites-Empty-Height"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="18"/>
+                                <color key="textColor" systemColor="secondaryLabelColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="Favorites-Safe-Area"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="Favorites-Empty-Label" firstAttribute="centerY" secondItem="Favorites-View" secondAttribute="centerY" id="Favorites-Empty-CenterY"/>
+                            <constraint firstItem="Favorites-Empty-Label" firstAttribute="leading" secondItem="Favorites-Safe-Area" secondAttribute="leading" constant="20" id="Favorites-Empty-Leading"/>
+                            <constraint firstItem="Favorites-Safe-Area" firstAttribute="trailing" secondItem="Favorites-Empty-Label" secondAttribute="trailing" constant="20" id="Favorites-Empty-Trailing"/>
+                            <constraint firstItem="Favorites-Safe-Area" firstAttribute="bottom" secondItem="Favorites-Table-View" secondAttribute="bottom" id="Favorites-Table-Bottom"/>
+                            <constraint firstItem="Favorites-Table-View" firstAttribute="leading" secondItem="Favorites-Safe-Area" secondAttribute="leading" id="Favorites-Table-Leading"/>
+                            <constraint firstItem="Favorites-Table-View" firstAttribute="top" secondItem="Favorites-Safe-Area" secondAttribute="top" id="Favorites-Table-Top"/>
+                            <constraint firstItem="Favorites-Safe-Area" firstAttribute="trailing" secondItem="Favorites-Table-View" secondAttribute="trailing" id="Favorites-Table-Trailing"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Favorite Quotes" id="Favorites-Nav-Item">
+                        <barButtonItem key="rightBarButtonItem" title="Clear All" id="Clear-All-Button">
+                            <connections>
+                                <action selector="clearAllFavorites:" destination="Favorites-View-Controller" id="Clear-All-Action"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="emptyStateLabel" destination="Favorites-Empty-Label" id="Favorites-Empty-Outlet"/>
+                        <outlet property="favoritesTableView" destination="Favorites-Table-View" id="Favorites-Table-Outlet"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Favorites-First-Responder" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="800" y="800"/>
+        </scene>
+        <!--Settings-->
+        <scene sceneID="Settings-Nav-Scene">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Settings-Nav-Controller" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Settings" image="gearshape.fill" catalog="system" id="Settings-Tab-Item"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Settings-Nav-Bar">
+                        <rect key="frame" x="0.0" y="96" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="Settings-View-Controller" kind="relationship" relationship="rootViewController" id="Settings-Root-Segue"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Settings-Nav-First-Responder" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-100" y="1600"/>
+        </scene>
+        <!--Settings-->
+        <scene sceneID="Settings-Scene">
+            <objects>
+                <viewController id="Settings-View-Controller" customClass="SettingsViewController" customModule="LifeHub" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Settings-View">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Settings-Scroll-View">
+                                <rect key="frame" x="0.0" y="140" width="414" height="639"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Settings-Content-View">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="800"/>
+                                        <subviews>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="App-Settings-Section">
+                                                <rect key="frame" x="20" y="20" width="374" height="200"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="App Settings" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="App-Settings-Title">
+                                                        <rect key="frame" x="16" y="16" width="342" height="24"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="24" id="App-Settings-Title-Height"/>
+                                                        </constraints>
+                                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Notifications-Setting">
+                                                        <rect key="frame" x="16" y="56" width="342" height="44"/>
+                                                        <subviews>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Daily Notifications" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Notifications-Label">
+                                                                <rect key="frame" x="0.0" y="0.0" width="293" height="44"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                                <nil key="textColor"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Notifications-Switch">
+                                                                <rect key="frame" x="293" y="6.5" width="51" height="31"/>
+                                                                <connections>
+                                                                    <action selector="notificationsToggled:" destination="Settings-View-Controller" eventType="valueChanged" id="6Ke-dI-Pbg"/>
+                                                                </connections>
+                                                            </switch>
+                                                        </subviews>
+                                                        <constraints>
+                                                            <constraint firstAttribute="bottom" secondItem="Notifications-Label" secondAttribute="bottom" id="Notifications-Label-Bottom"/>
+                                                            <constraint firstItem="Notifications-Label" firstAttribute="leading" secondItem="Notifications-Setting" secondAttribute="leading" id="Notifications-Label-Leading"/>
+                                                            <constraint firstItem="Notifications-Label" firstAttribute="top" secondItem="Notifications-Setting" secondAttribute="top" id="Notifications-Label-Top"/>
+                                                            <constraint firstAttribute="height" constant="44" id="Notifications-Setting-Height"/>
+                                                            <constraint firstItem="Notifications-Switch" firstAttribute="centerY" secondItem="Notifications-Setting" secondAttribute="centerY" id="Notifications-Switch-CenterY"/>
+                                                            <constraint firstItem="Notifications-Switch" firstAttribute="leading" secondItem="Notifications-Label" secondAttribute="trailing" id="Notifications-Switch-Leading"/>
+                                                            <constraint firstAttribute="trailing" secondItem="Notifications-Switch" secondAttribute="trailing" id="Notifications-Switch-Trailing"/>
+                                                        </constraints>
+                                                    </view>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Notification-Time-Setting">
+                                                        <rect key="frame" x="16" y="116" width="342" height="44"/>
+                                                        <subviews>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Notification Time" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Notification-Time-Label">
+                                                                <rect key="frame" x="0.0" y="0.0" width="123.5" height="44"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                                <nil key="textColor"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="time" minuteInterval="1" style="compact" translatesAutoresizingMaskIntoConstraints="NO" id="Notification-Time-Picker">
+                                                                <rect key="frame" x="131.5" y="4" width="210.5" height="36"/>
+                                                                <connections>
+                                                                    <action selector="notificationTimeChanged:" destination="Settings-View-Controller" eventType="valueChanged" id="IoA-ou-zR3"/>
+                                                                </connections>
+                                                            </datePicker>
+                                                        </subviews>
+                                                        <constraints>
+                                                            <constraint firstAttribute="bottom" secondItem="Notification-Time-Label" secondAttribute="bottom" id="Notification-Time-Label-Bottom"/>
+                                                            <constraint firstItem="Notification-Time-Label" firstAttribute="leading" secondItem="Notification-Time-Setting" secondAttribute="leading" id="Notification-Time-Label-Leading"/>
+                                                            <constraint firstItem="Notification-Time-Label" firstAttribute="top" secondItem="Notification-Time-Setting" secondAttribute="top" id="Notification-Time-Label-Top"/>
+                                                            <constraint firstItem="Notification-Time-Picker" firstAttribute="centerY" secondItem="Notification-Time-Setting" secondAttribute="centerY" id="Notification-Time-Picker-CenterY"/>
+                                                            <constraint firstItem="Notification-Time-Picker" firstAttribute="leading" secondItem="Notification-Time-Label" secondAttribute="trailing" constant="8" id="Notification-Time-Picker-Leading"/>
+                                                            <constraint firstAttribute="trailing" secondItem="Notification-Time-Picker" secondAttribute="trailing" id="Notification-Time-Picker-Trailing"/>
+                                                            <constraint firstAttribute="height" constant="44" id="Notification-Time-Setting-Height"/>
+                                                        </constraints>
+                                                    </view>
+                                                </subviews>
+                                                <color key="backgroundColor" systemColor="secondarySystemBackgroundColor"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="200" id="App-Settings-Section-Height"/>
+                                                    <constraint firstItem="App-Settings-Title" firstAttribute="leading" secondItem="App-Settings-Section" secondAttribute="leading" constant="16" id="App-Settings-Title-Leading"/>
+                                                    <constraint firstItem="App-Settings-Title" firstAttribute="top" secondItem="App-Settings-Section" secondAttribute="top" constant="16" id="App-Settings-Title-Top"/>
+                                                    <constraint firstAttribute="trailing" secondItem="App-Settings-Title" secondAttribute="trailing" constant="16" id="App-Settings-Title-Trailing"/>
+                                                    <constraint firstAttribute="bottom" secondItem="Notification-Time-Setting" secondAttribute="bottom" constant="40" id="Notification-Time-Setting-Bottom"/>
+                                                    <constraint firstItem="Notification-Time-Setting" firstAttribute="leading" secondItem="App-Settings-Section" secondAttribute="leading" constant="16" id="Notification-Time-Setting-Leading"/>
+                                                    <constraint firstItem="Notification-Time-Setting" firstAttribute="top" secondItem="Notifications-Setting" secondAttribute="bottom" constant="16" id="Notification-Time-Setting-Top"/>
+                                                    <constraint firstAttribute="trailing" secondItem="Notification-Time-Setting" secondAttribute="trailing" constant="16" id="Notification-Time-Setting-Trailing"/>
+                                                    <constraint firstItem="Notifications-Setting" firstAttribute="leading" secondItem="App-Settings-Section" secondAttribute="leading" constant="16" id="Notifications-Setting-Leading"/>
+                                                    <constraint firstItem="Notifications-Setting" firstAttribute="top" secondItem="App-Settings-Title" secondAttribute="bottom" constant="16" id="Notifications-Setting-Top"/>
+                                                    <constraint firstAttribute="trailing" secondItem="Notifications-Setting" secondAttribute="trailing" constant="16" id="Notifications-Setting-Trailing"/>
+                                                </constraints>
+                                            </view>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Quote-Preferences-Section">
+                                                <rect key="frame" x="20" y="240" width="374" height="160"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Quote Preferences" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Quote-Preferences-Title">
+                                                        <rect key="frame" x="16" y="16" width="342" height="24"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="24" id="Quote-Preferences-Title-Height"/>
+                                                        </constraints>
+                                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Default-Category-Setting">
+                                                        <rect key="frame" x="16" y="56" width="342" height="44"/>
+                                                        <subviews>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Default Category" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Default-Category-Label">
+                                                                <rect key="frame" x="0.0" y="0.0" width="192" height="44"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                                <nil key="textColor"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                            <segmentedControl opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="Default-Category-Segment">
+                                                                <rect key="frame" x="200" y="6.5" width="142" height="32"/>
+                                                                <segments>
+                                                                    <segment title="Motivation"/>
+                                                                    <segment title="Success"/>
+                                                                    <segment title="Happiness"/>
+                                                                </segments>
+                                                                <connections>
+                                                                    <action selector="defaultCategoryChanged:" destination="Settings-View-Controller" eventType="valueChanged" id="9X3-jg-euW"/>
+                                                                </connections>
+                                                            </segmentedControl>
+                                                        </subviews>
+                                                        <constraints>
+                                                            <constraint firstAttribute="bottom" secondItem="Default-Category-Label" secondAttribute="bottom" id="Default-Category-Label-Bottom"/>
+                                                            <constraint firstItem="Default-Category-Label" firstAttribute="leading" secondItem="Default-Category-Setting" secondAttribute="leading" id="Default-Category-Label-Leading"/>
+                                                            <constraint firstItem="Default-Category-Label" firstAttribute="top" secondItem="Default-Category-Setting" secondAttribute="top" id="Default-Category-Label-Top"/>
+                                                            <constraint firstItem="Default-Category-Segment" firstAttribute="centerY" secondItem="Default-Category-Setting" secondAttribute="centerY" id="Default-Category-Segment-CenterY"/>
+                                                            <constraint firstItem="Default-Category-Segment" firstAttribute="leading" secondItem="Default-Category-Label" secondAttribute="trailing" constant="8" id="Default-Category-Segment-Leading"/>
+                                                            <constraint firstAttribute="trailing" secondItem="Default-Category-Segment" secondAttribute="trailing" id="Default-Category-Segment-Trailing"/>
+                                                            <constraint firstAttribute="height" constant="44" id="Default-Category-Setting-Height"/>
+                                                        </constraints>
+                                                    </view>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Font-Size-Setting">
+                                                        <rect key="frame" x="16" y="116" width="342" height="28"/>
+                                                        <subviews>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Font Size" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Font-Size-Label">
+                                                                <rect key="frame" x="0.0" y="0.0" width="100" height="28"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="width" constant="100" id="Font-Size-Label-Width"/>
+                                                                </constraints>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                                <nil key="textColor"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="22" minValue="16" maxValue="30" translatesAutoresizingMaskIntoConstraints="NO" id="Font-Size-Slider">
+                                                                <rect key="frame" x="108" y="-1" width="234" height="31"/>
+                                                                <connections>
+                                                                    <action selector="fontSizeChanged:" destination="Settings-View-Controller" eventType="valueChanged" id="KdD-K7-QBf"/>
+                                                                </connections>
+                                                            </slider>
+                                                        </subviews>
+                                                        <constraints>
+                                                            <constraint firstAttribute="bottom" secondItem="Font-Size-Label" secondAttribute="bottom" id="Font-Size-Label-Bottom"/>
+                                                            <constraint firstItem="Font-Size-Label" firstAttribute="leading" secondItem="Font-Size-Setting" secondAttribute="leading" id="Font-Size-Label-Leading"/>
+                                                            <constraint firstItem="Font-Size-Label" firstAttribute="top" secondItem="Font-Size-Setting" secondAttribute="top" id="Font-Size-Label-Top"/>
+                                                            <constraint firstAttribute="height" constant="28" id="Font-Size-Setting-Height"/>
+                                                            <constraint firstItem="Font-Size-Slider" firstAttribute="centerY" secondItem="Font-Size-Setting" secondAttribute="centerY" id="Font-Size-Slider-CenterY"/>
+                                                            <constraint firstItem="Font-Size-Slider" firstAttribute="leading" secondItem="Font-Size-Label" secondAttribute="trailing" constant="10" id="Font-Size-Slider-Leading"/>
+                                                            <constraint firstAttribute="trailing" secondItem="Font-Size-Slider" secondAttribute="trailing" constant="2" id="Font-Size-Slider-Trailing"/>
+                                                        </constraints>
+                                                    </view>
+                                                </subviews>
+                                                <color key="backgroundColor" systemColor="secondarySystemBackgroundColor"/>
+                                                <constraints>
+                                                    <constraint firstItem="Default-Category-Setting" firstAttribute="leading" secondItem="Quote-Preferences-Section" secondAttribute="leading" constant="16" id="Default-Category-Setting-Leading"/>
+                                                    <constraint firstItem="Default-Category-Setting" firstAttribute="top" secondItem="Quote-Preferences-Title" secondAttribute="bottom" constant="16" id="Default-Category-Setting-Top"/>
+                                                    <constraint firstAttribute="trailing" secondItem="Default-Category-Setting" secondAttribute="trailing" constant="16" id="Default-Category-Setting-Trailing"/>
+                                                    <constraint firstAttribute="bottom" secondItem="Font-Size-Setting" secondAttribute="bottom" constant="16" id="Font-Size-Setting-Bottom"/>
+                                                    <constraint firstItem="Font-Size-Setting" firstAttribute="leading" secondItem="Quote-Preferences-Section" secondAttribute="leading" constant="16" id="Font-Size-Setting-Leading"/>
+                                                    <constraint firstItem="Font-Size-Setting" firstAttribute="top" secondItem="Default-Category-Setting" secondAttribute="bottom" constant="16" id="Font-Size-Setting-Top"/>
+                                                    <constraint firstAttribute="trailing" secondItem="Font-Size-Setting" secondAttribute="trailing" constant="16" id="Font-Size-Setting-Trailing"/>
+                                                    <constraint firstAttribute="height" constant="160" id="Quote-Preferences-Section-Height"/>
+                                                    <constraint firstItem="Quote-Preferences-Title" firstAttribute="leading" secondItem="Quote-Preferences-Section" secondAttribute="leading" constant="16" id="Quote-Preferences-Title-Leading"/>
+                                                    <constraint firstItem="Quote-Preferences-Title" firstAttribute="top" secondItem="Quote-Preferences-Section" secondAttribute="top" constant="16" id="Quote-Preferences-Title-Top"/>
+                                                    <constraint firstAttribute="trailing" secondItem="Quote-Preferences-Title" secondAttribute="trailing" constant="16" id="Quote-Preferences-Title-Trailing"/>
+                                                </constraints>
+                                            </view>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Data-Management-Section">
+                                                <rect key="frame" x="20" y="420" width="374" height="160"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Data Management" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Data-Management-Title">
+                                                        <rect key="frame" x="16" y="16" width="342" height="24"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="24" id="Data-Management-Title-Height"/>
+                                                        </constraints>
+                                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Export-Favorites-Button">
+                                                        <rect key="frame" x="16" y="56" width="342" height="44"/>
+                                                        <color key="backgroundColor" systemColor="systemBlueColor"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="44" id="Export-Favorites-Button-Height"/>
+                                                        </constraints>
+                                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="16"/>
+                                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                        <state key="normal" title="Export Favorite Quotes">
+                                                            <color key="titleColor" systemColor="systemBackgroundColor"/>
+                                                        </state>
+                                                        <connections>
+                                                            <action selector="exportFavorites:" destination="Settings-View-Controller" eventType="touchUpInside" id="bYt-7a-yrk"/>
+                                                        </connections>
+                                                    </button>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Clear-Data-Button">
+                                                        <rect key="frame" x="16" y="116" width="342" height="44"/>
+                                                        <color key="backgroundColor" systemColor="systemRedColor"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="44" id="Clear-Data-Button-Height"/>
+                                                        </constraints>
+                                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="16"/>
+                                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                        <state key="normal" title="Clear All Data">
+                                                            <color key="titleColor" systemColor="systemBackgroundColor"/>
+                                                        </state>
+                                                        <connections>
+                                                            <action selector="clearAllData:" destination="Settings-View-Controller" eventType="touchUpInside" id="FYo-GT-cjs"/>
+                                                        </connections>
+                                                    </button>
+                                                </subviews>
+                                                <color key="backgroundColor" systemColor="secondarySystemBackgroundColor"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="bottom" secondItem="Clear-Data-Button" secondAttribute="bottom" id="Clear-Data-Button-Bottom"/>
+                                                    <constraint firstItem="Clear-Data-Button" firstAttribute="leading" secondItem="Data-Management-Section" secondAttribute="leading" constant="16" id="Clear-Data-Button-Leading"/>
+                                                    <constraint firstItem="Clear-Data-Button" firstAttribute="top" secondItem="Export-Favorites-Button" secondAttribute="bottom" constant="16" id="Clear-Data-Button-Top"/>
+                                                    <constraint firstAttribute="trailing" secondItem="Clear-Data-Button" secondAttribute="trailing" constant="16" id="Clear-Data-Button-Trailing"/>
+                                                    <constraint firstAttribute="height" constant="160" id="Data-Management-Section-Height"/>
+                                                    <constraint firstItem="Data-Management-Title" firstAttribute="leading" secondItem="Data-Management-Section" secondAttribute="leading" constant="16" id="Data-Management-Title-Leading"/>
+                                                    <constraint firstItem="Data-Management-Title" firstAttribute="top" secondItem="Data-Management-Section" secondAttribute="top" constant="16" id="Data-Management-Title-Top"/>
+                                                    <constraint firstAttribute="trailing" secondItem="Data-Management-Title" secondAttribute="trailing" constant="16" id="Data-Management-Title-Trailing"/>
+                                                    <constraint firstItem="Export-Favorites-Button" firstAttribute="leading" secondItem="Data-Management-Section" secondAttribute="leading" constant="16" id="Export-Favorites-Button-Leading"/>
+                                                    <constraint firstItem="Export-Favorites-Button" firstAttribute="top" secondItem="Data-Management-Title" secondAttribute="bottom" constant="16" id="Export-Favorites-Button-Top"/>
+                                                    <constraint firstAttribute="trailing" secondItem="Export-Favorites-Button" secondAttribute="trailing" constant="16" id="Export-Favorites-Button-Trailing"/>
+                                                </constraints>
+                                            </view>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstItem="App-Settings-Section" firstAttribute="leading" secondItem="Settings-Content-View" secondAttribute="leading" constant="20" id="App-Settings-Leading"/>
+                                            <constraint firstItem="App-Settings-Section" firstAttribute="top" secondItem="Settings-Content-View" secondAttribute="top" constant="20" id="App-Settings-Top"/>
+                                            <constraint firstAttribute="trailing" secondItem="App-Settings-Section" secondAttribute="trailing" constant="20" id="App-Settings-Trailing"/>
+                                            <constraint firstItem="Data-Management-Section" firstAttribute="leading" secondItem="Settings-Content-View" secondAttribute="leading" constant="20" id="Data-Management-Leading"/>
+                                            <constraint firstItem="Data-Management-Section" firstAttribute="top" secondItem="Quote-Preferences-Section" secondAttribute="bottom" constant="20" id="Data-Management-Top"/>
+                                            <constraint firstAttribute="trailing" secondItem="Data-Management-Section" secondAttribute="trailing" constant="20" id="Data-Management-Trailing"/>
+                                            <constraint firstItem="Quote-Preferences-Section" firstAttribute="leading" secondItem="Settings-Content-View" secondAttribute="leading" constant="20" id="Quote-Preferences-Leading"/>
+                                            <constraint firstItem="Quote-Preferences-Section" firstAttribute="top" secondItem="App-Settings-Section" secondAttribute="bottom" constant="20" id="Quote-Preferences-Top"/>
+                                            <constraint firstAttribute="trailing" secondItem="Quote-Preferences-Section" secondAttribute="trailing" constant="20" id="Quote-Preferences-Trailing"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="Settings-Content-View" secondAttribute="bottom" id="Content-View-Bottom"/>
+                                    <constraint firstItem="Settings-Content-View" firstAttribute="leading" secondItem="Settings-Scroll-View" secondAttribute="leading" id="Content-View-Leading"/>
+                                    <constraint firstItem="Settings-Content-View" firstAttribute="top" secondItem="Settings-Scroll-View" secondAttribute="top" id="Content-View-Top"/>
+                                    <constraint firstAttribute="trailing" secondItem="Settings-Content-View" secondAttribute="trailing" id="Content-View-Trailing"/>
+                                    <constraint firstItem="Settings-Content-View" firstAttribute="width" secondItem="Settings-Scroll-View" secondAttribute="width" id="Content-View-Width"/>
+                                </constraints>
+                            </scrollView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="Settings-Safe-Area"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="Settings-Safe-Area" firstAttribute="bottom" secondItem="Settings-Scroll-View" secondAttribute="bottom" id="Scroll-View-Bottom"/>
+                            <constraint firstItem="Settings-Scroll-View" firstAttribute="leading" secondItem="Settings-Safe-Area" secondAttribute="leading" id="Scroll-View-Leading"/>
+                            <constraint firstItem="Settings-Scroll-View" firstAttribute="top" secondItem="Settings-Safe-Area" secondAttribute="top" id="Scroll-View-Top"/>
+                            <constraint firstItem="Settings-Safe-Area" firstAttribute="trailing" secondItem="Settings-Scroll-View" secondAttribute="trailing" id="Scroll-View-Trailing"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Settings" id="Settings-Nav-Item"/>
+                    <connections>
+                        <outlet property="clearDataButton" destination="Clear-Data-Button" id="7lf-YI-gOk"/>
+                        <outlet property="defaultCategorySegment" destination="Default-Category-Segment" id="6Q8-Dp-kB6"/>
+                        <outlet property="exportFavoritesButton" destination="Export-Favorites-Button" id="nOd-1l-ZOI"/>
+                        <outlet property="fontSizeSlider" destination="Font-Size-Slider" id="ELH-Y8-4H5"/>
+                        <outlet property="notificationTimePicker" destination="Notification-Time-Picker" id="mvn-D7-COw"/>
+                        <outlet property="notificationsSwitch" destination="Notifications-Switch" id="2El-Dd-vJb"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Settings-First-Responder" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="800" y="1600"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="gearshape.fill" catalog="system" width="128" height="123"/>
+        <image name="heart" catalog="system" width="128" height="107"/>
+        <image name="heart.fill" catalog="system" width="128" height="107"/>
+        <image name="quote.bubble" catalog="system" width="128" height="110"/>
+        <image name="square.and.arrow.up" catalog="system" width="110" height="128"/>
+        <systemColor name="secondaryLabelColor">
+            <color red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="secondarySystemBackgroundColor">
+            <color red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemBlueColor">
+            <color red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemGray6Color">
+            <color red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemPurpleColor">
+            <color red="0.68627450980000004" green="0.32156862749999998" blue="0.87058823529999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemRedColor">
+            <color red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>
