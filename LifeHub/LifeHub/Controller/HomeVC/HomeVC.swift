@@ -135,10 +135,7 @@ extension HomeVC: UICollectionViewDelegateFlowLayout, UICollectionViewDelegate, 
         case .feature:
             switch self.viewModel.arrFeatures[indexPath.row] {
             case .wellness:
-                DispatchQueue.main.async { [weak self] in
-                    guard let self = self else { return }
-                    self.performSegue(withIdentifier: "segueWellnessVC", sender: nil)
-                }
+                self.performSegue(withIdentifier: "segueWellnessVC", sender: nil)
             case .tasks:
                 self.performSegue(withIdentifier: "segueTaskViewController", sender: nil)
             case .habits:

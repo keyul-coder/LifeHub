@@ -126,6 +126,7 @@ class WaterTrackerVC: UIViewController {
 
 //MARK: - UITableview Delegate & Datasource Methods-
 extension WaterTrackerVC: UITableViewDelegate, UITableViewDataSource {
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return filteredEntries.count
     }
