@@ -115,6 +115,11 @@
                                             <color key="titleColor" systemColor="systemRedColor"/>
                                         </state>
                                         <state key="selected" image="heart.fill" catalog="system"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="9"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
                                         <connections>
                                             <action selector="favoritePressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Hfi-Oy-d5r"/>
                                         </connections>
@@ -126,6 +131,11 @@
                                         <state key="normal" image="square.and.arrow.up" catalog="system">
                                             <color key="titleColor" systemColor="systemBlueColor"/>
                                         </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="8"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
                                         <connections>
                                             <action selector="sharePressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="g8R-xj-XGQ"/>
                                         </connections>
@@ -146,6 +156,11 @@
                                         <state key="normal" title="Previous">
                                             <color key="titleColor" systemColor="systemBlueColor"/>
                                         </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="8"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
                                         <connections>
                                             <action selector="previousQuotePressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="FJx-gJ-4CG"/>
                                         </connections>
@@ -158,6 +173,11 @@
                                         <state key="normal" title="Next">
                                             <color key="titleColor" systemColor="systemBlueColor"/>
                                         </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="8"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
                                         <connections>
                                             <action selector="nextQuotePressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="hnF-JL-T4c"/>
                                         </connections>
@@ -170,6 +190,11 @@
                                         <state key="normal" title="Random">
                                             <color key="titleColor" systemColor="systemPurpleColor"/>
                                         </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="8"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
                                         <connections>
                                             <action selector="randomButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="OgB-Sc-f7p"/>
                                         </connections>
@@ -557,6 +582,11 @@
                                                         <state key="normal" title="Export Favorite Quotes">
                                                             <color key="titleColor" systemColor="systemBackgroundColor"/>
                                                         </state>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                                <real key="value" value="12"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                        </userDefinedRuntimeAttributes>
                                                         <connections>
                                                             <action selector="exportFavorites:" destination="Settings-View-Controller" eventType="touchUpInside" id="Export-Favorites-Action"/>
                                                         </connections>
@@ -572,6 +602,11 @@
                                                         <state key="normal" title="Clear All Data">
                                                             <color key="titleColor" systemColor="systemBackgroundColor"/>
                                                         </state>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                                <real key="value" value="12"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                        </userDefinedRuntimeAttributes>
                                                         <connections>
                                                             <action selector="clearAllData:" destination="Settings-View-Controller" eventType="touchUpInside" id="Clear-Data-Action"/>
                                                         </connections>
@@ -592,8 +627,8 @@
                                                     <constraint firstAttribute="trailing" secondItem="Export-Favorites-Button" secondAttribute="trailing" constant="16" id="Export-Favorites-Button-Trailing"/>
                                                 </constraints>
                                             </view>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="About-Section">
-                                                <rect key="frame" x="20" y="600" width="374" height="180"/>
+                                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="About-Section">
+                                                <rect key="frame" x="20" y="620" width="374" height="180"/>
                                                 <color key="backgroundColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="180" id="About-Section-Height"/>
