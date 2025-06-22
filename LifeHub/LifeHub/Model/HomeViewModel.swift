@@ -39,12 +39,13 @@ enum HomeSections: CaseIterable {
 enum Features: CaseIterable {
     case tasks
     case habits
-    case finances
+//    case finances
     case wellness
+    case quotes
     
     var cellIdentifier: String {
         switch self {
-        case .tasks, .habits, .finances, .wellness:
+        case .tasks, .habits, .wellness, .quotes:
             return "cellFeatures"
         }
     }
@@ -53,12 +54,29 @@ enum Features: CaseIterable {
         switch self {
         case .habits:
             return "Habits"
-        case .finances:
-            return "Finances"
+//        case .finances:
+//            return "Finances"
         case .tasks:
             return "Tasks"
         case .wellness:
             return "Wellness"
+        case .quotes:
+            return "Quotes"
+        }
+    }
+    
+    var subTitle: String {
+        switch self {
+//        case .finances:
+//            return "Manage your finances here"
+        case .habits:
+            return "Track your daily habits"
+        case .wellness:
+            return "Prioritize your wellness"
+        case .tasks:
+            return "Organize your tasks"
+        case .quotes:
+            return "Inspirational quotes"
         }
     }
     
@@ -66,12 +84,14 @@ enum Features: CaseIterable {
         switch self {
         case .habits:
             return "house"
-        case .finances:
-            return "dollarsign.circle"
+//        case .finances:
+//            return "dollarsign.circle"
         case .tasks:
             return "list.bullet"
         case .wellness:
             return "sunrise.fill"
+        case .quotes:
+            return "quote.bubble"
         }
     }
 }
