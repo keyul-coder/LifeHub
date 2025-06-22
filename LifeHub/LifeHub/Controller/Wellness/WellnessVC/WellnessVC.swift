@@ -48,7 +48,6 @@ extension WellnessVC {
             self.tableView.reloadData()
         }
     }
-    
 }
 
 // MARK: - @IBAction(s)

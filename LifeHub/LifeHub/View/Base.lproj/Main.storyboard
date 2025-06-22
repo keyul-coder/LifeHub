@@ -42,7 +42,7 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="bwY-u4-3ez" kind="relationship" relationship="rootViewController" id="Thm-XN-NvI"/>
+                        <segue destination="bwY-u4-3ez" kind="relationship" relationship="rootViewController" id="nbf-vf-xHu"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bul-wN-jZA" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -154,16 +154,11 @@ Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliqu
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="HSW-KL-cAb">
                                             <rect key="frame" x="0.0" y="0.0" width="381" height="128"/>
                                             <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ScG-5p-5Pa">
-                                                    <rect key="frame" x="132" y="47" width="75" height="35"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <state key="normal" title="Button"/>
-                                                    <buttonConfiguration key="configuration" style="plain" title="Button"/>
-                                                </button>
-                                            </subviews>
                                         </collectionViewCellContentView>
                                         <size key="customSize" width="381" height="128"/>
+                                        <connections>
+                                            <segue destination="cxx-Kz-MuR" kind="show" identifier="segueQuotesTabBar" id="ZNw-rl-FW4"/>
+                                        </connections>
                                     </collectionViewCell>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="cellFeatures" id="nqs-un-6Ey" customClass="FeaturesCell" customModule="LifeHub" customModuleProvider="target">
                                         <rect key="frame" x="8.6666666666666661" y="306" width="376" height="128"/>
@@ -386,22 +381,21 @@ Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliqu
                         <segue destination="CNf-1P-KFF" kind="show" identifier="segueWaterTrackerVC" id="esP-45-uTq"/>
                         <segue destination="hwh-QV-11X" kind="show" identifier="segueTaskViewController" id="VhY-pP-dyE"/>
                         <segue destination="NNF-bX-aTS" kind="show" identifier="segueGoal" id="lg9-6b-gYz"/>
-                        <segue destination="pmj-NY-T2Z" kind="show" id="6Et-06-JVe"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wdD-u4-TR8" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1851" y="-382"/>
+            <point key="canvasLocation" x="1952" y="-382"/>
         </scene>
-        <!--Diet-->
-        <scene sceneID="qYY-yL-h9h">
+        <!--QuotesTabBar-->
+        <scene sceneID="xbF-or-UxF">
             <objects>
-                <viewControllerPlaceholder storyboardIdentifier="DietVC" storyboardName="Diet" id="pmj-NY-T2Z" sceneMemberID="viewController">
-                    <navigationItem key="navigationItem" id="M9c-19-gTw"/>
+                <viewControllerPlaceholder storyboardIdentifier="QuotesTabBar" storyboardName="MotivateQuote" referencedIdentifier="QuotesTabBar" id="cxx-Kz-MuR" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="fgm-ap-bdi"/>
                 </viewControllerPlaceholder>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="oah-o9-fLk" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="aRq-oH-bdt" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2585" y="-620"/>
+            <point key="canvasLocation" x="2625" y="-614"/>
         </scene>
         <!--TaskViewController-->
         <scene sceneID="ZNt-BE-rgH">
@@ -469,16 +463,16 @@ Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliqu
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="placeholderTextColor">
-            <color red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.29803921570000003" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.29803921568627451" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="secondarySystemFillColor">
-            <color red="0.47058823529999999" green="0.47058823529999999" blue="0.50196078430000002" alpha="0.16" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.47058823529411764" green="0.47058823529411764" blue="0.50196078431372548" alpha="0.16" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="tertiarySystemFillColor">
-            <color red="0.46274509800000002" green="0.46274509800000002" blue="0.50196078430000002" alpha="0.12" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.46274509803921571" green="0.46274509803921571" blue="0.50196078431372548" alpha="0.12" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
