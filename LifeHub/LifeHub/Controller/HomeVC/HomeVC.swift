@@ -30,6 +30,8 @@ class HomeVC: ParentVC {
             let _ = segue.destination as! TaskViewController
         } else if segue.identifier == "segueGoal" {
             let _ = segue.destination as! Goal
+        } else if segue.identifier == "segueQuotesTabBar" {
+            let _ = segue.destination as! UITabBarController
         }
     }
 }
@@ -133,16 +135,13 @@ extension HomeVC: UICollectionViewDelegateFlowLayout, UICollectionViewDelegate, 
         case .feature:
             switch self.viewModel.arrFeatures[indexPath.row] {
             case .wellness:
-                DispatchQueue.main.async { [weak self] in
-                    guard let self = self else { return }
-                    self.performSegue(withIdentifier: "segueWellnessVC", sender: nil)
-                }
+                self.performSegue(withIdentifier: "segueWellnessVC", sender: nil)
             case .tasks:
                 self.performSegue(withIdentifier: "segueTaskViewController", sender: nil)
             case .habits:
                 self.performSegue(withIdentifier: "segueGoal", sender: nil)
-            default:
-                return
+            case .quotes:
+                self.performSegue(withIdentifier: "segueQuotesTabBar", sender: nil)
             }
         case .progress:
             switch self.viewModel.arrProgressSections[indexPath.row] {

@@ -2,7 +2,7 @@
 //  WaterTrackerVC.swift
 //  LifeHub
 //
-//  Created by smit patel on 07/06/25.
+//  Created by Smit Patel  on 07/06/25.
 //
 
 import UIKit
@@ -126,6 +126,7 @@ class WaterTrackerVC: UIViewController {
 
 //MARK: - UITableview Delegate & Datasource Methods-
 extension WaterTrackerVC: UITableViewDelegate, UITableViewDataSource {
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return filteredEntries.count
     }

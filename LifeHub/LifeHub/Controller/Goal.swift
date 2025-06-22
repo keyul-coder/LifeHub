@@ -17,6 +17,7 @@ class Goal: UIViewController {
     @IBOutlet weak var savebutton: UIButton!
     @IBOutlet weak var desplaydata: UITableView!
     @IBOutlet weak var descriptiontaxt: UITextField!
+    @IBOutlet weak var calenderBarButton: UIBarButtonItem!
     
     
     // MARK: - Properties
@@ -34,6 +35,15 @@ class Goal: UIViewController {
         setupCategoryMenu()
     }
     private let goalsKey = "savedGoals"
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        super.prepare(for: segue, sender: sender)
+        if segue.identifier == "segueTaskAndHabitCalenderVC" {
+            let vc = segue.destination as! TaskAndHabitCalenderVC
+            vc.isFromHabits = true
+            vc.arrGoals = self.goals
+        }
+    }
 
     private func saveGoals() {
         if let encoded = try? JSONEncoder().encode(goals) {
@@ -121,6 +131,10 @@ class Goal: UIViewController {
         goals.insert(newGoal, at: 0)
         desplaydata.reloadData()
         clearForm()
+    }
+    
+    @IBAction func onTapCalenderBarButton(_ sender: UIBarButtonItem) {
+        self.performSegue(withIdentifier: "segueTaskAndHabitCalenderVC", sender: nil)
     }
     
     // MARK: - Helper Methods
