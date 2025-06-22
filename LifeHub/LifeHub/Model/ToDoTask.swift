@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct ToDoTask {
+struct ToDoTask: Codable {
     var title: String
     var date: Date
     var priority: String

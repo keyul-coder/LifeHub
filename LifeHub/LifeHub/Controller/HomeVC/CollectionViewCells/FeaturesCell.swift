@@ -19,18 +19,7 @@ class FeaturesCell: UICollectionViewCell {
         didSet {
             self.featureImageView.image = UIImage(systemName: type.systemImageName)
             self.featureTitleLabel.text = type.title
-            switch self.type {
-            case .finances:
-                self.featureSubtitleLabel.text = "Manage your finances here"
-            case .habits:
-                self.featureSubtitleLabel.text = "Track your daily habits"
-            case .wellness:
-                self.featureSubtitleLabel.text = "Prioritize your wellness"
-            case .tasks:
-                self.featureSubtitleLabel.text = "Organize your tasks"
-            case .none:
-                return
-            }
+            self.featureSubtitleLabel.text = type.subTitle
         }
     }
 }
