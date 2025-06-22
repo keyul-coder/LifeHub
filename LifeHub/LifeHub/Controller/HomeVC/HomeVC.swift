@@ -30,6 +30,8 @@ class HomeVC: ParentVC {
             let _ = segue.destination as! TaskViewController
         } else if segue.identifier == "segueGoal" {
             let _ = segue.destination as! Goal
+        } else if segue.identifier == "segueQuotesTabBar" {
+            let _ = segue.destination as! UITabBarController
         }
     }
 }
@@ -141,8 +143,8 @@ extension HomeVC: UICollectionViewDelegateFlowLayout, UICollectionViewDelegate, 
                 self.performSegue(withIdentifier: "segueTaskViewController", sender: nil)
             case .habits:
                 self.performSegue(withIdentifier: "segueGoal", sender: nil)
-            default:
-                return
+            case .quotes:
+                self.performSegue(withIdentifier: "segueQuotesTabBar", sender: nil)
             }
         case .progress:
             switch self.viewModel.arrProgressSections[indexPath.row] {
