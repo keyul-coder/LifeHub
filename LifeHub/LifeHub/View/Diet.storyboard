@@ -12,7 +12,7 @@
         <!--Diet plan-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController storyboardIdentifier="DietVC" id="BYZ-38-t0r" customClass="DietViewController" customModule="LifeHub" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="DietViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="BYZ-38-t0r" customClass="DietViewController" customModule="LifeHub" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -38,7 +38,7 @@
                                 <rect key="frame" x="11" y="292" width="371" height="492"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="DietPlanCell" id="JhR-YM-Vex" customClass="DietPlanTableViewCell" customModule="smit">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="DietPlanCell" id="JhR-YM-Vex" customClass="DietPlanTableViewCell" customModule="LifeHub">
                                         <rect key="frame" x="0.0" y="50" width="371" height="44.333332061767578"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="JhR-YM-Vex" id="3VD-JO-Iri">
@@ -71,14 +71,12 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="Mai-V0-afA" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="11" id="27O-Q4-jfY"/>
-                            <constraint firstItem="UbK-Pe-d6H" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="3Mm-uL-98m"/>
                             <constraint firstItem="U3x-gx-B6F" firstAttribute="centerX" secondItem="Mai-V0-afA" secondAttribute="centerX" id="94j-wj-bu5"/>
-                            <constraint firstItem="Mai-V0-afA" firstAttribute="centerX" secondItem="UbK-Pe-d6H" secondAttribute="centerX" id="B3F-xs-Aad"/>
-                            <constraint firstItem="U3x-gx-B6F" firstAttribute="centerX" secondItem="UbK-Pe-d6H" secondAttribute="centerX" id="GLS-mU-1Iw"/>
                             <constraint firstAttribute="trailing" secondItem="U3x-gx-B6F" secondAttribute="trailing" constant="10" id="Mp3-zy-xXS"/>
+                            <constraint firstItem="UbK-Pe-d6H" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="O8w-xA-4hI"/>
                             <constraint firstItem="U3x-gx-B6F" firstAttribute="top" secondItem="UbK-Pe-d6H" secondAttribute="bottom" constant="33" id="OeK-kQ-QYQ"/>
                             <constraint firstItem="U3x-gx-B6F" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="TtT-8q-cwV"/>
-                            <constraint firstItem="UbK-Pe-d6H" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-16" id="gQT-Cq-cae"/>
+                            <constraint firstItem="UbK-Pe-d6H" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="dqw-7J-dEC"/>
                             <constraint firstItem="UbK-Pe-d6H" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="skJ-9Z-vh0"/>
                             <constraint firstItem="U3x-gx-B6F" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="10" id="vLx-bS-xxT"/>
                             <constraint firstItem="Mai-V0-afA" firstAttribute="top" secondItem="U3x-gx-B6F" secondAttribute="bottom" constant="10" id="x3t-G7-nXd"/>
@@ -89,7 +87,7 @@
                     <connections>
                         <outlet property="categorySegmentedControl" destination="U3x-gx-B6F" id="Gyj-9a-itq"/>
                         <outlet property="searchBar" destination="UbK-Pe-d6H" id="TNj-Au-0Yz"/>
-                        <outlet property="tableView" destination="Mai-V0-afA" id="sLB-jg-rJn"/>
+                        <outlet property="tableView" destination="Mai-V0-afA" id="to9-Pt-HNq"/>
                         <segue destination="St4-Rg-023" kind="show" identifier="showDietDetail" id="pAh-up-BQV"/>
                     </connections>
                 </viewController>
@@ -328,7 +326,7 @@ foods and healthy fats.
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="systemMintColor">
-            <color red="0.0" green="0.78039215689999997" blue="0.74509803919999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.0" green="0.7803921568627451" blue="0.74509803921568629" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

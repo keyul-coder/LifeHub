@@ -386,17 +386,17 @@ Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliqu
                         <segue destination="CNf-1P-KFF" kind="show" identifier="segueWaterTrackerVC" id="esP-45-uTq"/>
                         <segue destination="hwh-QV-11X" kind="show" identifier="segueTaskViewController" id="VhY-pP-dyE"/>
                         <segue destination="NNF-bX-aTS" kind="show" identifier="segueGoal" id="lg9-6b-gYz"/>
-                        <segue destination="pmj-NY-T2Z" kind="show" id="6Et-06-JVe"/>
+                        <segue destination="pmj-NY-T2Z" kind="show" identifier="segueDietViewController" id="6Et-06-JVe"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wdD-u4-TR8" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1851" y="-382"/>
         </scene>
-        <!--Diet-->
+        <!--DietViewController-->
         <scene sceneID="qYY-yL-h9h">
             <objects>
-                <viewControllerPlaceholder storyboardIdentifier="DietVC" storyboardName="Diet" id="pmj-NY-T2Z" sceneMemberID="viewController">
+                <viewControllerPlaceholder storyboardIdentifier="DietVC" storyboardName="Diet" referencedIdentifier="DietViewController" id="pmj-NY-T2Z" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" id="M9c-19-gTw"/>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oah-o9-fLk" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -469,16 +469,16 @@ Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliqu
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="placeholderTextColor">
-            <color red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.29803921570000003" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.29803921568627451" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="secondarySystemFillColor">
-            <color red="0.47058823529999999" green="0.47058823529999999" blue="0.50196078430000002" alpha="0.16" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.47058823529411764" green="0.47058823529411764" blue="0.50196078431372548" alpha="0.16" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="tertiarySystemFillColor">
-            <color red="0.46274509800000002" green="0.46274509800000002" blue="0.50196078430000002" alpha="0.12" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.46274509803921571" green="0.46274509803921571" blue="0.50196078431372548" alpha="0.12" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

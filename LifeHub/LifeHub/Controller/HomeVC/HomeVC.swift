@@ -150,7 +150,7 @@ extension HomeVC: UICollectionViewDelegateFlowLayout, UICollectionViewDelegate, 
             case .waterIntakeCell:
                 self.performSegue(withIdentifier: "segueWaterTrackerVC", sender: nil)
             case .taskProgressCell:
-                break
+                self.performSegue(withIdentifier: "segueDietViewController", sender: nil)
             }
         default:
             break
