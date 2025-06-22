@@ -142,13 +142,15 @@ extension HomeVC: UICollectionViewDelegateFlowLayout, UICollectionViewDelegate, 
                 self.performSegue(withIdentifier: "segueGoal", sender: nil)
             case .quotes:
                 self.performSegue(withIdentifier: "segueQuotesTabBar", sender: nil)
+            case .diet:
+                self.performSegue(withIdentifier: "segueDietViewController", sender: nil)
             }
         case .progress:
             switch self.viewModel.arrProgressSections[indexPath.row] {
             case .waterIntakeCell:
                 self.performSegue(withIdentifier: "segueWaterTrackerVC", sender: nil)
             case .taskProgressCell:
-                self.performSegue(withIdentifier: "segueDietViewController", sender: nil)
+                break
             }
         default:
             break
