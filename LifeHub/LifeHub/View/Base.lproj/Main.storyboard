@@ -381,6 +381,7 @@ Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliqu
                         <segue destination="CNf-1P-KFF" kind="show" identifier="segueWaterTrackerVC" id="esP-45-uTq"/>
                         <segue destination="hwh-QV-11X" kind="show" identifier="segueTaskViewController" id="VhY-pP-dyE"/>
                         <segue destination="NNF-bX-aTS" kind="show" identifier="segueGoal" id="lg9-6b-gYz"/>
+                        <segue destination="8Eh-i1-RS3" kind="show" identifier="segueDietViewController" id="vK0-hJ-akB"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wdD-u4-TR8" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -436,6 +437,16 @@ Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliqu
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hPn-UB-0lt" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2675" y="-170"/>
+        </scene>
+        <!--DietViewController-->
+        <scene sceneID="E2I-Hc-Agg">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Diet" referencedIdentifier="DietViewController" id="8Eh-i1-RS3" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="i3A-5N-aKb"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ft2-Nc-ZjS" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2636" y="-105"/>
         </scene>
         <!--Settings-->
         <scene sceneID="420-5T-aKk">
