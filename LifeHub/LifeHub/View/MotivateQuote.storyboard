@@ -12,7 +12,7 @@
         <!--Tab Controller-->
         <scene sceneID="Tab-Bar-Scene">
             <objects>
-                <tabBarController storyboardIdentifier="QuotesTabBar" id="Tab-Bar-Controller" customClass="TabController" customModule="LifeHub" customModuleProvider="target" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="QuotesTabBar" id="Tab-Bar-Controller" customClass="TabController" customModule="LifeHub" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Tab-Bar">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -360,10 +360,10 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Settings-Scroll-View">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Settings-Scroll-View">
                                 <rect key="frame" x="0.0" y="140" width="414" height="639"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Settings-Content-View">
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Settings-Content-View">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="800"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="App-Settings-Section">
@@ -390,7 +390,7 @@
                                                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Notifications-Switch">
                                                                 <rect key="frame" x="293" y="6.5" width="51" height="31"/>
                                                                 <connections>
-                                                                    <action selector="notificationsToggled:" destination="Settings-View-Controller" eventType="valueChanged" id="6Ke-dI-Pbg"/>
+                                                                    <action selector="notificationsToggled:" destination="Settings-View-Controller" eventType="valueChanged" id="Notifications-Toggle-Action"/>
                                                                 </connections>
                                                             </switch>
                                                         </subviews>
@@ -416,7 +416,7 @@
                                                             <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="time" minuteInterval="1" style="compact" translatesAutoresizingMaskIntoConstraints="NO" id="Notification-Time-Picker">
                                                                 <rect key="frame" x="131.5" y="4" width="210.5" height="36"/>
                                                                 <connections>
-                                                                    <action selector="notificationTimeChanged:" destination="Settings-View-Controller" eventType="valueChanged" id="IoA-ou-zR3"/>
+                                                                    <action selector="notificationTimeChanged:" destination="Settings-View-Controller" eventType="valueChanged" id="Notification-Time-Action"/>
                                                                 </connections>
                                                             </datePicker>
                                                         </subviews>
@@ -475,7 +475,7 @@
                                                                     <segment title="Happiness"/>
                                                                 </segments>
                                                                 <connections>
-                                                                    <action selector="defaultCategoryChanged:" destination="Settings-View-Controller" eventType="valueChanged" id="9X3-jg-euW"/>
+                                                                    <action selector="defaultCategoryChanged:" destination="Settings-View-Controller" eventType="valueChanged" id="Default-Category-Action"/>
                                                                 </connections>
                                                             </segmentedControl>
                                                         </subviews>
@@ -504,7 +504,7 @@
                                                             <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="22" minValue="16" maxValue="30" translatesAutoresizingMaskIntoConstraints="NO" id="Font-Size-Slider">
                                                                 <rect key="frame" x="108" y="-1" width="234" height="31"/>
                                                                 <connections>
-                                                                    <action selector="fontSizeChanged:" destination="Settings-View-Controller" eventType="valueChanged" id="KdD-K7-QBf"/>
+                                                                    <action selector="fontSizeChanged:" destination="Settings-View-Controller" eventType="valueChanged" id="Font-Size-Action"/>
                                                                 </connections>
                                                             </slider>
                                                         </subviews>
@@ -558,7 +558,7 @@
                                                             <color key="titleColor" systemColor="systemBackgroundColor"/>
                                                         </state>
                                                         <connections>
-                                                            <action selector="exportFavorites:" destination="Settings-View-Controller" eventType="touchUpInside" id="bYt-7a-yrk"/>
+                                                            <action selector="exportFavorites:" destination="Settings-View-Controller" eventType="touchUpInside" id="Export-Favorites-Action"/>
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Clear-Data-Button">
@@ -573,7 +573,7 @@
                                                             <color key="titleColor" systemColor="systemBackgroundColor"/>
                                                         </state>
                                                         <connections>
-                                                            <action selector="clearAllData:" destination="Settings-View-Controller" eventType="touchUpInside" id="FYo-GT-cjs"/>
+                                                            <action selector="clearAllData:" destination="Settings-View-Controller" eventType="touchUpInside" id="Clear-Data-Action"/>
                                                         </connections>
                                                     </button>
                                                 </subviews>
@@ -592,8 +592,19 @@
                                                     <constraint firstAttribute="trailing" secondItem="Export-Favorites-Button" secondAttribute="trailing" constant="16" id="Export-Favorites-Button-Trailing"/>
                                                 </constraints>
                                             </view>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="About-Section">
+                                                <rect key="frame" x="20" y="600" width="374" height="180"/>
+                                                <color key="backgroundColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="180" id="About-Section-Height"/>
+                                                </constraints>
+                                            </view>
                                         </subviews>
                                         <constraints>
+                                            <constraint firstAttribute="bottom" secondItem="About-Section" secondAttribute="bottom" constant="20" id="About-Section-Bottom"/>
+                                            <constraint firstItem="About-Section" firstAttribute="leading" secondItem="Settings-Content-View" secondAttribute="leading" constant="20" id="About-Section-Leading"/>
+                                            <constraint firstItem="About-Section" firstAttribute="top" secondItem="Data-Management-Section" secondAttribute="bottom" constant="20" id="About-Section-Top"/>
+                                            <constraint firstAttribute="trailing" secondItem="About-Section" secondAttribute="trailing" constant="20" id="About-Section-Trailing"/>
                                             <constraint firstItem="App-Settings-Section" firstAttribute="leading" secondItem="Settings-Content-View" secondAttribute="leading" constant="20" id="App-Settings-Leading"/>
                                             <constraint firstItem="App-Settings-Section" firstAttribute="top" secondItem="Settings-Content-View" secondAttribute="top" constant="20" id="App-Settings-Top"/>
                                             <constraint firstAttribute="trailing" secondItem="App-Settings-Section" secondAttribute="trailing" constant="20" id="App-Settings-Trailing"/>
@@ -626,12 +637,12 @@
                     </view>
                     <navigationItem key="navigationItem" title="Settings" id="Settings-Nav-Item"/>
                     <connections>
-                        <outlet property="clearDataButton" destination="Clear-Data-Button" id="7lf-YI-gOk"/>
-                        <outlet property="defaultCategorySegment" destination="Default-Category-Segment" id="6Q8-Dp-kB6"/>
-                        <outlet property="exportFavoritesButton" destination="Export-Favorites-Button" id="nOd-1l-ZOI"/>
-                        <outlet property="fontSizeSlider" destination="Font-Size-Slider" id="ELH-Y8-4H5"/>
-                        <outlet property="notificationTimePicker" destination="Notification-Time-Picker" id="mvn-D7-COw"/>
-                        <outlet property="notificationsSwitch" destination="Notifications-Switch" id="2El-Dd-vJb"/>
+                        <outlet property="clearDataButton" destination="Clear-Data-Button" id="Clear-Data-Outlet"/>
+                        <outlet property="defaultCategorySegment" destination="Default-Category-Segment" id="Default-Category-Outlet"/>
+                        <outlet property="exportFavoritesButton" destination="Export-Favorites-Button" id="Export-Favorites-Outlet"/>
+                        <outlet property="fontSizeSlider" destination="Font-Size-Slider" id="Font-Size-Outlet"/>
+                        <outlet property="notificationTimePicker" destination="Notification-Time-Picker" id="Notification-Time-Outlet"/>
+                        <outlet property="notificationsSwitch" destination="Notifications-Switch" id="Notifications-Switch-Outlet"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Settings-First-Responder" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
