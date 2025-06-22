@@ -156,6 +156,9 @@ Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliqu
                                             <autoresizingMask key="autoresizingMask"/>
                                         </collectionViewCellContentView>
                                         <size key="customSize" width="381" height="128"/>
+                                        <connections>
+                                            <segue destination="cxx-Kz-MuR" kind="show" identifier="segueQuotesTabBar" id="ZNw-rl-FW4"/>
+                                        </connections>
                                     </collectionViewCell>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="cellFeatures" id="nqs-un-6Ey" customClass="FeaturesCell" customModule="LifeHub" customModuleProvider="target">
                                         <rect key="frame" x="8.6666666666666661" y="306" width="376" height="128"/>
@@ -382,7 +385,17 @@ Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliqu
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wdD-u4-TR8" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1843.5114503816794" y="-382.3943661971831"/>
+            <point key="canvasLocation" x="1952" y="-382"/>
+        </scene>
+        <!--QuotesTabBar-->
+        <scene sceneID="xbF-or-UxF">
+            <objects>
+                <viewControllerPlaceholder storyboardIdentifier="QuotesTabBar" storyboardName="MotivateQuote" referencedIdentifier="QuotesTabBar" id="cxx-Kz-MuR" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="fgm-ap-bdi"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="aRq-oH-bdt" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2625" y="-614"/>
         </scene>
         <!--TaskViewController-->
         <scene sceneID="ZNt-BE-rgH">
