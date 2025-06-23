@@ -16,14 +16,13 @@ struct Badge {
     var isEarned: Bool
 }
 
-class BadgeViewController: UIViewController {
+class BadgeViewController: ParentVC {
     
     // MARK: - IBOutlets
     @IBOutlet weak var headerView: UIView!
     @IBOutlet weak var currentStreakLabel: UILabel!
     @IBOutlet weak var badgesEarnedLabel: UILabel!
     @IBOutlet weak var totalBadgesLabel: UILabel!
-    @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var nextMilestoneView: UIView!
     @IBOutlet weak var nextMilestoneLabel: UILabel!
     @IBOutlet weak var progressView: UIProgressView!
