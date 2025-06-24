@@ -144,6 +144,8 @@ extension HomeVC: UICollectionViewDelegateFlowLayout, UICollectionViewDelegate, 
                 self.performSegue(withIdentifier: "segueQuotesTabBar", sender: nil)
             case .diet:
                 self.performSegue(withIdentifier: "segueDietViewController", sender: nil)
+            case .badges:
+                self.performSegue(withIdentifier: "segueBadgeViewController", sender: nil)
             }
         case .progress:
             switch self.viewModel.arrProgressSections[indexPath.row] {
