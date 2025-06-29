@@ -134,4 +134,5 @@ class HomeViewModel {
     var arrSections: [HomeSections] = HomeSections.allCases
     var arrFeatures: [Features] = Features.allCases
     var arrProgressSections: [ProgressSection] = ProgressSection.allCases
+    var intakeRecords: [WaterIntake] = []
 }

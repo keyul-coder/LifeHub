@@ -6,18 +6,24 @@
 //
 
 import UIKit
+import CoreData
 
 /// HomeVC
 class HomeVC: ParentVC {
     
     /// Varaiable Declaration(s)
     private var viewModel: HomeViewModel = HomeViewModel()
-    
+    @IBOutlet weak var lblWaterIntakeValue: UILabel!
     /// View Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         self.prepareUI()
         
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        fetchWaterIntakeData()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -42,6 +48,24 @@ extension HomeVC {
     func prepareUI() {
         
     }
+    
+    func fetchWaterIntakeData() {
+        let context = CoreDataStack.shared.context
+        let request: NSFetchRequest<WaterIntake> = WaterIntake.fetchRequest()
+        
+        let startOfDay = Calendar.current.startOfDay(for: Date())
+        let endOfDay = Calendar.current.date(byAdding: .day, value: 1, to: startOfDay)!
+        
+        request.predicate = NSPredicate(format: "timestamp >= %@ AND timestamp < %@", startOfDay as NSDate, endOfDay as NSDate)
+        request.sortDescriptors = [NSSortDescriptor(key: "timestamp", ascending: false)]
+        
+        do {
+            viewModel.intakeRecords = try context.fetch(request)
+            collectionView.reloadData()
+        } catch {
+            print("Fetch error: \(error)")
+        }
+    }
 }
 
 
@@ -65,19 +89,26 @@ extension HomeVC: UICollectionViewDelegateFlowLayout, UICollectionViewDelegate, 
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         switch self.viewModel.arrSections[indexPath.section] {
-        case .mainHeader:
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: self.viewModel.arrSections[indexPath.section].cellIdentifier, for: indexPath) as! MainHeaderCollectionViewCell
-            cell.parentVC = self
-            return cell
-        case .feature:
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: self.viewModel.arrFeatures[indexPath.row].cellIdentifier, for: indexPath) as! FeaturesCell
-            cell.tag = indexPath.row
-            cell.parentVC = self
-            cell.type = self.viewModel.arrFeatures[indexPath.row]
-            return cell
-        case .progress:
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: self.viewModel.arrProgressSections[indexPath.row].cellIdentifier, for: indexPath)
-            return cell
+            case .mainHeader:
+                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: self.viewModel.arrSections[indexPath.section].cellIdentifier, for: indexPath) as! MainHeaderCollectionViewCell
+                cell.parentVC = self
+                return cell
+            case .feature:
+                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: self.viewModel.arrFeatures[indexPath.row].cellIdentifier, for: indexPath) as! FeaturesCell
+                cell.tag = indexPath.row
+                cell.parentVC = self
+                cell.type = self.viewModel.arrFeatures[indexPath.row]
+                return cell
+            case .progress:
+                if self.viewModel.arrProgressSections[indexPath.row].cellIdentifier == "cellWaterIntake" {
+                    let cell = collectionView.dequeueReusableCell(withReuseIdentifier: self.viewModel.arrProgressSections[indexPath.row].cellIdentifier, for: indexPath) as! WaterIntakeCell
+                    cell.configure(with: viewModel.intakeRecords.reduce(0) { $0 + Int($1.amount) })
+                    return cell
+                } else {
+                    let cell = collectionView.dequeueReusableCell(withReuseIdentifier: self.viewModel.arrProgressSections[indexPath.row].cellIdentifier, for: indexPath)
+                    return cell
+                }
+               
         }
     }
     
