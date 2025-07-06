@@ -162,7 +162,7 @@ Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliqu
                                         </collectionViewCellContentView>
                                         <size key="customSize" width="381" height="128"/>
                                         <connections>
-                                            <segue destination="cxx-Kz-MuR" kind="show" identifier="segueQuotesTabBar" id="ZNw-rl-FW4"/>
+                                            <segue destination="oTk-7K-8iW" kind="show" id="uFp-2G-Tb3"/>
                                         </connections>
                                     </collectionViewCell>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="cellFeatures" id="nqs-un-6Ey" customClass="FeaturesCell" customModule="LifeHub" customModuleProvider="target">
@@ -392,7 +392,7 @@ Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliqu
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wdD-u4-TR8" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1952" y="-382"/>
+            <point key="canvasLocation" x="1918" y="-358"/>
         </scene>
         <!--QuotesTabBar-->
         <scene sceneID="xbF-or-UxF">
@@ -463,6 +463,16 @@ Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliqu
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ft2-Nc-ZjS" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2636" y="-105"/>
+        </scene>
+        <!--BudgetVC-->
+        <scene sceneID="QI0-ZS-NIq">
+            <objects>
+                <viewControllerPlaceholder storyboardIdentifier="BudgetVC" storyboardName="finance" referencedIdentifier="BudgetVC" id="oTk-7K-8iW" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="lwb-z5-f2T"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="DQt-sK-1Nd" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2547" y="-8"/>
         </scene>
         <!--Settings-->
         <scene sceneID="420-5T-aKk">
