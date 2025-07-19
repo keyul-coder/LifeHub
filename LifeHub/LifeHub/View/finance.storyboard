@@ -52,9 +52,12 @@
                             <constraint firstItem="hQx-4T-8uZ" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="dmL-y3-oGz"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Budget Manager" id="8vT-NJ-PdH"/>
+                    <navigationItem key="navigationItem" title="Budget Manager" id="8vT-NJ-PdH">
+                        <barButtonItem key="rightBarButtonItem" image="line.3.horizontal.decrease" catalog="system" changesSelectionAsPrimaryAction="YES" id="oCh-UG-CkO"/>
+                    </navigationItem>
                     <connections>
                         <outlet property="addButton" destination="mFy-gH-2bA" id="Wqy-dJ-mKf"/>
+                        <outlet property="barButton" destination="oCh-UG-CkO" id="e91-dw-Jgb"/>
                         <outlet property="tableView" destination="hQx-4T-8uZ" id="1ze-9B-gKr"/>
                         <segue destination="7Vh-xl-QmA" kind="show" identifier="showBudgetDetail" id="mfE-0k-QnX"/>
                     </connections>
@@ -422,6 +425,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="line.3.horizontal.decrease" catalog="system" width="128" height="73"/>
         <systemColor name="secondaryLabelColor">
             <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
