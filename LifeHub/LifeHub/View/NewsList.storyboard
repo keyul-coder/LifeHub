@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeArea="YES" colorMatched="YES" initialViewController="NewsListVC">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21679"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document" minToolsVersion="11.0"/>
+        <capability name="collection view cell content view" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--News List View Controller-->
+        <scene sceneID="NewsListScene">
+            <objects>
+                <viewController id="NewsListVC" customClass="NewsListViewController" customModule="LifeHub" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="NewsListView">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CustomNavBar">
+                                <rect key="frame" x="0.0" y="59" width="393" height="44"/>
+                                <items>
+                                    <navigationItem title="News" id="NavItem">
+                                        <barButtonItem key="leftBarButtonItem" image="chevron.left" catalog="system" id="BackBarButton">
+                                            <connections>
+                                                <action selector="backButtonTapped:" destination="NewsListVC" id="BackBarButtonAction"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="CategorySegmentedControl">
+                                <rect key="frame" x="16" y="119" width="361" height="32"/>
+                                <segments>
+                                    <segment title="All"/>
+                                    <segment title="Health"/>
+                                    <segment title="Tech"/>
+                                    <segment title="Sports"/>
+                                    <segment title="Business"/>
+                                </segments>
+                                <connections>
+                                    <action selector="categoryChanged:" destination="NewsListVC" eventType="valueChanged" id="CategoryChangedAction"/>
+                                </connections>
+                            </segmentedControl>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="NewsCollectionView">
+                                <rect key="frame" x="0.0" y="167" width="393" height="651"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="16" minimumInteritemSpacing="16" id="NewsFlowLayout">
+                                    <size key="itemSize" width="361" height="200"/>
+                                    <size key="headerSize" width="0.0" height="0.0"/>
+                                    <size key="footerSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="16" minY="16" maxX="16" maxY="16"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="NewsCardCell" id="NewsCardCellID">
+                                        <rect key="frame" x="16" y="16" width="361" height="200"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="NewsCardContentView">
+                                            <rect key="frame" x="0.0" y="0.0" width="361" height="200"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CardContainerView">
+                                                    <rect key="frame" x="0.0" y="0.0" width="361" height="200"/>
+                                                    <subviews>
+                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="NewsImageView">
+                                                            <rect key="frame" x="0.0" y="0.0" width="361" height="120"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="height" constant="120" id="NewsImageHeight"/>
+                                                            </constraints>
+                                                        </imageView>
+                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TextContainerView">
+                                                            <rect key="frame" x="12" y="128" width="337" height="64"/>
+                                                            <subviews>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="News Title" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NewsTitleLabel">
+                                                                    <rect key="frame" x="0.0" y="0.0" width="337" height="20.333333333333332"/>
+                                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                                                    <color key="textColor" systemColor="labelColor"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="News Description" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NewsDescriptionLabel">
+                                                                    <rect key="frame" x="0.0" y="28.333333333333332" width="337" height="16.333333333333332"/>
+                                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                                    <color key="textColor" systemColor="secondaryLabelColor"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Source • 2h ago" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NewsSourceLabel">
+                                                                    <rect key="frame" x="0.0" y="52.666666666666664" width="337" height="11.333333333333336"/>
+                                                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                                    <color key="textColor" systemColor="tertiaryLabelColor"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
+                                                            </subviews>
+                                                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                            <constraints>
+                                                                <constraint firstItem="NewsTitleLabel" firstAttribute="leading" secondItem="TextContainerView" secondAttribute="leading" id="TitleLeading"/>
+                                                                <constraint firstAttribute="trailing" secondItem="NewsTitleLabel" secondAttribute="trailing" id="TitleTrailing"/>
+                                                                <constraint firstItem="NewsDescriptionLabel" firstAttribute="top" secondItem="NewsTitleLabel" secondAttribute="bottom" constant="8" id="DescriptionTop"/>
+                                                                <constraint firstItem="NewsDescriptionLabel" firstAttribute="leading" secondItem="TextContainerView" secondAttribute="leading" id="DescriptionLeading"/>
+                                                                <constraint firstAttribute="trailing" secondItem="NewsDescriptionLabel" secondAttribute="trailing" id="DescriptionTrailing"/>
+                                                                <constraint firstItem="NewsSourceLabel" firstAttribute="top" secondItem="NewsDescriptionLabel" secondAttribute="bottom" constant="8" id="SourceTop"/>
+                                                                <constraint firstItem="NewsSourceLabel" firstAttribute="leading" secondItem="TextContainerView" secondAttribute="leading" id="SourceLeading"/>
+                                                                <constraint firstAttribute="trailing" secondItem="NewsSourceLabel" secondAttribute="trailing" id="SourceTrailing"/>
+                                                                <constraint firstItem="NewsTitleLabel" firstAttribute="top" secondItem="TextContainerView" secondAttribute="top" id="TitleTop"/>
+                                                                <constraint firstAttribute="bottom" secondItem="NewsSourceLabel" secondAttribute="bottom" id="SourceBottom"/>
+                                                            </constraints>
+                                                        </view>
+                                                    </subviews>
+                                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                    <constraints>
+                                                        <constraint firstItem="NewsImageView" firstAttribute="leading" secondItem="CardContainerView" secondAttribute="leading" id="ImageLeading"/>
+                                                        <constraint firstAttribute="trailing" secondItem="NewsImageView" secondAttribute="trailing" id="ImageTrailing"/>
+                                                        <constraint firstItem="NewsImageView" firstAttribute="top" secondItem="CardContainerView" secondAttribute="top" id="ImageTop"/>
+                                                        <constraint firstItem="TextContainerView" firstAttribute="leading" secondItem="CardContainerView" secondAttribute="leading" constant="12" id="TextContainerLeading"/>
+                                                        <constraint firstAttribute="trailing" secondItem="TextContainerView" secondAttribute="trailing" constant="12" id="TextContainerTrailing"/>
+                                                        <constraint firstItem="TextContainerView" firstAttribute="top" secondItem="NewsImageView" secondAttribute="bottom" constant="8" id="TextContainerTop"/>
+                                                        <constraint firstAttribute="bottom" secondItem="TextContainerView" secondAttribute="bottom" constant="8" id="TextContainerBottom"/>
+                                                    </constraints>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                            <integer key="value" value="12"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds">
+                                                            <boolean key="value" value="YES"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                    </userDefinedRuntimeAttributes>
+                                                </view>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="CardContainerView" firstAttribute="leading" secondItem="NewsCardContentView" secondAttribute="leading" id="CardLeading"/>
+                                                <constraint firstAttribute="trailing" secondItem="CardContainerView" secondAttribute="trailing" id="CardTrailing"/>
+                                                <constraint firstItem="CardContainerView" firstAttribute="top" secondItem="NewsCardContentView" secondAttribute="top" id="CardTop"/>
+                                                <constraint firstAttribute="bottom" secondItem="CardContainerView" secondAttribute="bottom" id="CardBottom"/>
+                                            </constraints>
+                                        </collectionViewCellContentView>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="12"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="layer.shadowColor">
+                                                <color key="value" systemColor="labelColor"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.shadowOpacity">
+                                                <real key="value" value="0.1"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="size" keyPath="layer.shadowOffset">
+                                                <size key="value" width="0.0" height="2"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.shadowRadius">
+                                                <integer key="value" value="4"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="LoadingIndicator">
+                                <rect key="frame" x="178" y="492.66666666666669" width="37" height="37"/>
+                            </activityIndicatorView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="CustomNavBar" firstAttribute="leading" secondItem="SafeArea" secondAttribute="leading" id="NavBarLeading"/>
+                            <constraint firstItem="SafeArea" firstAttribute="trailing" secondItem="CustomNavBar" secondAttribute="trailing" id="NavBarTrailing"/>
+                            <constraint firstItem="CustomNavBar" firstAttribute="top" secondItem="SafeArea" secondAttribute="top" id="NavBarTop"/>
+                            <constraint firstItem="CategorySegmentedControl" firstAttribute="leading" secondItem="SafeArea" secondAttribute="leading" constant="16" id="SegmentLeading"/>
+                            <constraint firstItem="SafeArea" firstAttribute="trailing" secondItem="CategorySegmentedControl" secondAttribute="trailing" constant="16" id="SegmentTrailing"/>
+                            <constraint firstItem="CategorySegmentedControl" firstAttribute="top" secondItem="CustomNavBar" secondAttribute="bottom" constant="16" id="SegmentTop"/>
+                            <constraint firstItem="NewsCollectionView" firstAttribute="leading" secondItem="SafeArea" secondAttribute="leading" id="CollectionLeading"/>
+                            <constraint firstItem="SafeArea" firstAttribute="trailing" secondItem="NewsCollectionView" secondAttribute="trailing" id="CollectionTrailing"/>
+                            <constraint firstItem="NewsCollectionView" firstAttribute="top" secondItem="CategorySegmentedControl" secondAttribute="bottom" constant="16" id="CollectionTop"/>
+                            <constraint firstItem="SafeArea" firstAttribute="bottom" secondItem="NewsCollectionView" secondAttribute="bottom" id="CollectionBottom"/>
+                            <constraint firstItem="LoadingIndicator" firstAttribute="centerX" secondItem="NewsListView" secondAttribute="centerX" id="LoadingCenterX"/>
+                            <constraint firstItem="LoadingIndicator" firstAttribute="centerY" secondItem="NewsListView" secondAttribute="centerY" id="LoadingCenterY"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="SafeArea"/>
+                    </view>
+                    <connections>
+                        <outlet property="categorySegmentedControl" destination="CategorySegmentedControl" id="SegmentOutlet"/>
+                        <outlet property="loadingIndicator" destination="LoadingIndicator" id="LoadingOutlet"/>
+                        <outlet property="newsCollectionView" destination="NewsCollectionView" id="CollectionOutlet"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="NewsListFirstResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="20" y="4"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="chevron.left" catalog="system" width="97" height="128"/>
+        <systemColor name="labelColor">
+            <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="secondaryLabelColor">
+            <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemBackgroundColor">
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="tertiaryLabelColor">
+            <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.29803921568627451" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>

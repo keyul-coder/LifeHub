@@ -12,18 +12,27 @@ import CoreData
 class HomeVC: ParentVC {
     
     /// Varaiable Declaration(s)
-    private var viewModel: HomeViewModel = HomeViewModel()
+    var viewModel: HomeViewModel = HomeViewModel()
     @IBOutlet weak var lblWaterIntakeValue: UILabel!
     /// View Life Cycle
+    ///
     override func viewDidLoad() {
         super.viewDidLoad()
         self.prepareUI()
-        
+        fetchNews()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         fetchWaterIntakeData()
+        updateWaterIntakeDisplay()
+    }
+    
+    private func updateWaterIntakeDisplay() {
+        // Update the main header cell with current water intake
+        if let mainHeaderCell = collectionView.visibleCells.first(where: { $0 is MainHeaderCollectionViewCell }) as? MainHeaderCollectionViewCell {
+            mainHeaderCell.updateWaterIntakeWithRecords(viewModel.intakeRecords)
+        }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -61,10 +70,32 @@ extension HomeVC {
         
         do {
             viewModel.intakeRecords = try context.fetch(request)
-            collectionView.reloadData()
+            DispatchQueue.main.async {
+                self.collectionView.reloadData()
+            }
         } catch {
             print("Fetch error: \(error)")
         }
+    }
+    
+    private func fetchNews() {
+        NewsService().fetchTopHeadlines { [weak self] articles in
+            guard let self = self, let randomArticle = articles?.randomElement() else {
+                print("No articles available or failed to fetch")
+                return
+            }
+            
+            self.viewModel.newsArticles = randomArticle
+            DispatchQueue.main.async {
+                self.collectionView.reloadData()
+            }
+        }
+    }
+    
+    func navigateToNewsDetail() {
+        // Navigate to news list instead of single article
+        let newsListVC = NewsListViewController.instantiate()
+        navigationController?.pushViewController(newsListVC, animated: true)
     }
 }
 
@@ -92,6 +123,13 @@ extension HomeVC: UICollectionViewDelegateFlowLayout, UICollectionViewDelegate, 
             case .mainHeader:
                 let cell = collectionView.dequeueReusableCell(withReuseIdentifier: self.viewModel.arrSections[indexPath.section].cellIdentifier, for: indexPath) as! MainHeaderCollectionViewCell
                 cell.parentVC = self
+                if let data = viewModel.newsArticles {
+                    cell.setupdate(data: data)
+                }
+                
+                // Update water intake percentage using the records
+                cell.updateWaterIntakeWithRecords(viewModel.intakeRecords)
+                
                 return cell
             case .feature:
                 let cell = collectionView.dequeueReusableCell(withReuseIdentifier: self.viewModel.arrFeatures[indexPath.row].cellIdentifier, for: indexPath) as! FeaturesCell
@@ -102,7 +140,7 @@ extension HomeVC: UICollectionViewDelegateFlowLayout, UICollectionViewDelegate, 
             case .progress:
                 if self.viewModel.arrProgressSections[indexPath.row].cellIdentifier == "cellWaterIntake" {
                     let cell = collectionView.dequeueReusableCell(withReuseIdentifier: self.viewModel.arrProgressSections[indexPath.row].cellIdentifier, for: indexPath) as! WaterIntakeCell
-                    cell.configure(with: viewModel.intakeRecords.reduce(0) { $0 + Int($1.amount) })
+                    cell.configure(with: viewModel.intakeRecords)
                     return cell
                 } else {
                     let cell = collectionView.dequeueReusableCell(withReuseIdentifier: self.viewModel.arrProgressSections[indexPath.row].cellIdentifier, for: indexPath)
@@ -131,7 +169,7 @@ extension HomeVC: UICollectionViewDelegateFlowLayout, UICollectionViewDelegate, 
         case .progress:
             return CGSize(width: width, height: 118)
         case .mainHeader:
-            return CGSize(width: width, height: 180)
+            return CGSize(width: width, height: 280)
         }
     }
     
@@ -163,6 +201,9 @@ extension HomeVC: UICollectionViewDelegateFlowLayout, UICollectionViewDelegate, 
         collectionView.deselectItem(at: indexPath, animated: true)
         print(#function)
         switch self.viewModel.arrSections[indexPath.section] {
+        case .mainHeader:
+            // Handle news article tap
+            navigateToNewsDetail()
         case .feature:
             switch self.viewModel.arrFeatures[indexPath.row] {
             case .wellness:
@@ -185,8 +226,6 @@ extension HomeVC: UICollectionViewDelegateFlowLayout, UICollectionViewDelegate, 
             case .taskProgressCell:
                 break
             }
-        default:
-            break
         }
     }
 }

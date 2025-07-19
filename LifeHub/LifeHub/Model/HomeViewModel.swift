@@ -135,4 +135,5 @@ class HomeViewModel {
     var arrFeatures: [Features] = Features.allCases
     var arrProgressSections: [ProgressSection] = ProgressSection.allCases
     var intakeRecords: [WaterIntake] = []
+    var newsArticles:NewsArticle?
 }

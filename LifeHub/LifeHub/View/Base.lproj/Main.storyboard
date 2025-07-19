@@ -62,13 +62,13 @@
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="Es2-Nz-loH">
                                     <size key="itemSize" width="128" height="128"/>
-                                    <size key="headerReferenceSize" width="50" height="50"/>
+                                    <size key="headerReferenceSize" width="50" height="80"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="cellWaterIntake" id="DMU-MC-kwk" customClass="WaterIntakeCell" customModule="LifeHub" customModuleProvider="target">
-                                        <rect key="frame" x="6" y="50" width="381" height="128"/>
+                                        <rect key="frame" x="6" y="80" width="381" height="128"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="aw9-vN-7fk">
                                             <rect key="frame" x="0.0" y="0.0" width="381" height="128"/>
@@ -154,7 +154,7 @@ Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliqu
                                         </connections>
                                     </collectionViewCell>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="cellTaskProgress" id="1al-y3-fsf">
-                                        <rect key="frame" x="6" y="178" width="381" height="128"/>
+                                        <rect key="frame" x="6" y="208" width="381" height="128"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="HSW-KL-cAb">
                                             <rect key="frame" x="0.0" y="0.0" width="381" height="128"/>
@@ -166,7 +166,7 @@ Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliqu
                                         </connections>
                                     </collectionViewCell>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="cellFeatures" id="nqs-un-6Ey" customClass="FeaturesCell" customModule="LifeHub" customModuleProvider="target">
-                                        <rect key="frame" x="8.6666666666666661" y="306" width="376" height="128"/>
+                                        <rect key="frame" x="8.6666666666666661" y="336" width="376" height="128"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="GOE-9r-x9x">
                                             <rect key="frame" x="0.0" y="0.0" width="376" height="128"/>
@@ -220,10 +220,10 @@ Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliqu
                                         </connections>
                                     </collectionViewCell>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="cellHeader" id="N2H-8t-Zbu" customClass="MainHeaderCollectionViewCell" customModule="LifeHub" customModuleProvider="target">
-                                        <rect key="frame" x="10" y="434" width="373" height="190"/>
+                                        <rect key="frame" x="10" y="464" width="373" height="250"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="tS5-uI-APm">
-                                            <rect key="frame" x="0.0" y="0.0" width="373" height="190"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="373" height="250"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Good Morning!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ysg-vG-O6i">
@@ -239,13 +239,13 @@ Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliqu
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Vgn-8u-Q5Q">
-                                                    <rect key="frame" x="0.0" y="65" width="373" height="80"/>
+                                                    <rect key="frame" x="0.0" y="165" width="373" height="80"/>
                                                     <subviews>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="v3r-Bc-yEc">
                                                             <rect key="frame" x="0.0" y="0.0" width="117.66666666666667" height="80"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gOr-Hq-TW3">
-                                                                    <rect key="frame" x="51.333333333333336" y="24.333333333333329" width="15.000000000000007" height="28.666666666666671"/>
+                                                                    <rect key="frame" x="51.333333333333336" y="24.333333333333343" width="15.000000000000007" height="28.666666666666671"/>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="24"/>
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>
@@ -270,7 +270,7 @@ Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliqu
                                                             <rect key="frame" x="127.66666666666666" y="0.0" width="117.66666666666666" height="80"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8uC-wX-SL3">
-                                                                    <rect key="frame" x="51.333333333333329" y="24.333333333333329" width="15" height="28.666666666666671"/>
+                                                                    <rect key="frame" x="51.333333333333329" y="24.333333333333343" width="15" height="28.666666666666671"/>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="24"/>
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>
@@ -295,7 +295,7 @@ Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliqu
                                                             <rect key="frame" x="255.33333333333334" y="0.0" width="117.66666666666666" height="80"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0%" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jNP-l4-It2">
-                                                                    <rect key="frame" x="41.333333333333343" y="24.333333333333329" width="35" height="28.666666666666671"/>
+                                                                    <rect key="frame" x="41.333333333333343" y="24.333333333333343" width="35" height="28.666666666666671"/>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="24"/>
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>
@@ -318,37 +318,88 @@ Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliqu
                                                         </view>
                                                     </subviews>
                                                     <constraints>
+                                                        <constraint firstItem="tWY-0n-swl" firstAttribute="top" secondItem="Vgn-8u-Q5Q" secondAttribute="top" id="QKj-oE-LHQ"/>
+                                                        <constraint firstItem="Nsu-Mn-Q1Q" firstAttribute="top" secondItem="Vgn-8u-Q5Q" secondAttribute="top" id="YRZ-08-yk7"/>
+                                                        <constraint firstItem="v3r-Bc-yEc" firstAttribute="top" secondItem="Vgn-8u-Q5Q" secondAttribute="top" id="pyV-hS-E8t"/>
                                                         <constraint firstAttribute="height" constant="80" id="r02-xL-R7Q"/>
                                                     </constraints>
                                                 </stackView>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KTd-WQ-liv">
+                                                    <rect key="frame" x="10" y="75" width="353" height="80"/>
+                                                    <subviews>
+                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Mf1-sc-gp4">
+                                                            <rect key="frame" x="8" y="8" width="50" height="50"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="height" constant="50" id="s3T-Jv-hF6"/>
+                                                                <constraint firstAttribute="width" constant="50" id="zpr-58-WoT"/>
+                                                            </constraints>
+                                                            <userDefinedRuntimeAttributes>
+                                                                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                                    <integer key="value" value="10"/>
+                                                                </userDefinedRuntimeAttribute>
+                                                            </userDefinedRuntimeAttributes>
+                                                        </imageView>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p8d-uE-pmH">
+                                                            <rect key="frame" x="66" y="7.9999999999999982" width="279" height="20.333333333333329"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ah0-i2-5JN">
+                                                            <rect key="frame" x="66" y="36.333333333333329" width="279" height="17"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                    <constraints>
+                                                        <constraint firstItem="Ah0-i2-5JN" firstAttribute="leading" secondItem="Mf1-sc-gp4" secondAttribute="trailing" constant="8" id="24Z-Q6-vUu"/>
+                                                        <constraint firstItem="Mf1-sc-gp4" firstAttribute="top" secondItem="p8d-uE-pmH" secondAttribute="top" id="7In-kv-wjE"/>
+                                                        <constraint firstItem="Mf1-sc-gp4" firstAttribute="leading" secondItem="KTd-WQ-liv" secondAttribute="leading" constant="8" id="7ai-CZ-IiA"/>
+                                                        <constraint firstItem="Ah0-i2-5JN" firstAttribute="top" secondItem="p8d-uE-pmH" secondAttribute="bottom" constant="8" id="8AE-uz-WmC"/>
+                                                        <constraint firstAttribute="trailing" secondItem="p8d-uE-pmH" secondAttribute="trailing" constant="8" id="C3t-ky-S1H"/>
+                                                        <constraint firstItem="p8d-uE-pmH" firstAttribute="leading" secondItem="Mf1-sc-gp4" secondAttribute="trailing" constant="8" id="el9-5J-l4O"/>
+                                                        <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="Ah0-i2-5JN" secondAttribute="bottom" constant="8" id="f5k-Vq-r3b"/>
+                                                        <constraint firstItem="p8d-uE-pmH" firstAttribute="top" secondItem="KTd-WQ-liv" secondAttribute="top" constant="8" id="fvC-RN-03h"/>
+                                                        <constraint firstAttribute="trailing" secondItem="Ah0-i2-5JN" secondAttribute="trailing" constant="8" id="mQR-gQ-lPX"/>
+                                                    </constraints>
+                                                </view>
                                             </subviews>
                                             <constraints>
+                                                <constraint firstAttribute="trailing" secondItem="KTd-WQ-liv" secondAttribute="trailing" constant="10" id="4zj-az-b9v"/>
+                                                <constraint firstItem="KTd-WQ-liv" firstAttribute="top" secondItem="PcT-BO-OFi" secondAttribute="bottom" constant="10" id="7x1-vi-9sV"/>
+                                                <constraint firstAttribute="bottom" secondItem="Vgn-8u-Q5Q" secondAttribute="bottom" constant="5" id="99R-ZG-Xdd"/>
                                                 <constraint firstItem="ysg-vG-O6i" firstAttribute="leading" secondItem="tS5-uI-APm" secondAttribute="leading" constant="16" id="Dde-J4-Kwn"/>
                                                 <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="Vgn-8u-Q5Q" secondAttribute="bottom" id="GAv-SV-6fV"/>
+                                                <constraint firstItem="KTd-WQ-liv" firstAttribute="leading" secondItem="tS5-uI-APm" secondAttribute="leading" constant="10" id="JV0-8e-Dqg"/>
                                                 <constraint firstItem="ysg-vG-O6i" firstAttribute="top" secondItem="tS5-uI-APm" secondAttribute="top" constant="12" id="Mrs-q4-10z"/>
                                                 <constraint firstItem="PcT-BO-OFi" firstAttribute="top" secondItem="ysg-vG-O6i" secondAttribute="bottom" constant="4" id="QFP-97-042"/>
-                                                <constraint firstItem="Vgn-8u-Q5Q" firstAttribute="top" secondItem="PcT-BO-OFi" secondAttribute="bottom" id="Wrq-7f-uBl"/>
+                                                <constraint firstItem="Vgn-8u-Q5Q" firstAttribute="top" secondItem="KTd-WQ-liv" secondAttribute="bottom" constant="10" id="WMi-jo-z3C"/>
                                                 <constraint firstItem="ysg-vG-O6i" firstAttribute="leading" secondItem="PcT-BO-OFi" secondAttribute="leading" id="ZMn-cv-oAm"/>
                                                 <constraint firstItem="Vgn-8u-Q5Q" firstAttribute="leading" secondItem="tS5-uI-APm" secondAttribute="leading" id="hEo-ae-bOx"/>
                                                 <constraint firstAttribute="trailing" secondItem="Vgn-8u-Q5Q" secondAttribute="trailing" id="lSJ-5b-GVK"/>
                                             </constraints>
                                         </collectionViewCellContentView>
-                                        <size key="customSize" width="373" height="190"/>
+                                        <size key="customSize" width="373" height="250"/>
                                         <connections>
                                             <outlet property="headerLabel" destination="ysg-vG-O6i" id="xnn-rD-Xy6"/>
                                             <outlet property="lblDaysStreakValue" destination="8uC-wX-SL3" id="zZ4-7w-Ng2"/>
                                             <outlet property="lblTaksDoneValue" destination="gOr-Hq-TW3" id="gup-t6-6SL"/>
                                             <outlet property="lblUSerName" destination="PcT-BO-OFi" id="THn-vP-Sof"/>
                                             <outlet property="lblWaterIntakePercentageValue" destination="jNP-l4-It2" id="WP4-dH-cTP"/>
+                                            <outlet property="newImage" destination="Mf1-sc-gp4" id="CGr-Jw-aC6"/>
+                                            <outlet property="newsSubtitle" destination="Ah0-i2-5JN" id="9om-fu-nPj"/>
+                                            <outlet property="newsTitle" destination="p8d-uE-pmH" id="9k7-nF-I7M"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
                                 <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="cellHeaderTitle" id="P7h-MS-91k" customClass="TitleHeaderCollectionViewCell" customModule="LifeHub" customModuleProvider="target">
-                                    <rect key="frame" x="0.0" y="0.0" width="393" height="50"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="393" height="80"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="za9-H9-d9E">
-                                            <rect key="frame" x="16" y="0.0" width="361" height="50"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="za9-H9-d9E">
+                                            <rect key="frame" x="16" y="0.0" width="361" height="60"/>
                                             <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="18"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
@@ -357,7 +408,7 @@ Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliqu
                                     <constraints>
                                         <constraint firstItem="za9-H9-d9E" firstAttribute="leading" secondItem="P7h-MS-91k" secondAttribute="leading" constant="16" id="0B4-nZ-GTR"/>
                                         <constraint firstAttribute="trailing" secondItem="za9-H9-d9E" secondAttribute="trailing" constant="16" id="43L-dg-xwb"/>
-                                        <constraint firstAttribute="bottom" secondItem="za9-H9-d9E" secondAttribute="bottom" id="dus-48-ODD"/>
+                                        <constraint firstAttribute="bottom" secondItem="za9-H9-d9E" secondAttribute="bottom" constant="8" id="NXu-nD-WvF"/>
                                         <constraint firstItem="za9-H9-d9E" firstAttribute="top" secondItem="P7h-MS-91k" secondAttribute="top" id="loS-rU-xPQ"/>
                                     </constraints>
                                     <connections>
@@ -392,7 +443,7 @@ Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliqu
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wdD-u4-TR8" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1952" y="-382"/>
+            <point key="canvasLocation" x="1951.9083969465648" y="-382.3943661971831"/>
         </scene>
         <!--QuotesTabBar-->
         <scene sceneID="xbF-or-UxF">
@@ -490,16 +541,16 @@ Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliqu
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="placeholderTextColor">
-            <color red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.29803921570000003" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.29803921568627451" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="secondarySystemFillColor">
-            <color red="0.47058823529999999" green="0.47058823529999999" blue="0.50196078430000002" alpha="0.16" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.47058823529411764" green="0.47058823529411764" blue="0.50196078431372548" alpha="0.16" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="tertiarySystemFillColor">
-            <color red="0.46274509800000002" green="0.46274509800000002" blue="0.50196078430000002" alpha="0.12" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.46274509803921571" green="0.46274509803921571" blue="0.50196078431372548" alpha="0.12" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
