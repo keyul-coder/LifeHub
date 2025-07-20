@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="23727" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Main-Nav-Controller">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="23727" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Tab-Bar-Controller">
     <device id="retina6_3" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
@@ -9,11 +9,30 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-
+        <!--Tab Controller-->
+        <scene sceneID="Tab-Bar-Scene">
+            <objects>
+                <tabBarController storyboardIdentifier="QuotesTabBar" hidesBottomBarWhenPushed="YES" id="Tab-Bar-Controller" customClass="TabController" customModule="LifeHub" customModuleProvider="target" sceneMemberID="viewController">
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Tab-Bar">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="Main-Nav-Controller" kind="relationship" relationship="viewControllers" id="Main-Nav-Segue"/>
+                        <segue destination="Favorites-Nav-Controller" kind="relationship" relationship="viewControllers" id="Favorites-Nav-Segue"/>
+                        <segue destination="Settings-Nav-Controller" kind="relationship" relationship="viewControllers" id="Settings-Nav-Segue"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Tab-Bar-First-Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1000" y="0.0"/>
+        </scene>
         <!--Quotes-->
         <scene sceneID="Main-Nav-Scene">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Main-Nav-Controller" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Quotes" image="quote.bubble" catalog="system" id="Main-Tab-Item"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Main-Nav-Bar">
                         <rect key="frame" x="0.0" y="124" width="402" height="44"/>
@@ -175,13 +194,7 @@
                             <constraint firstItem="Qco-Qm-2lO" firstAttribute="top" secondItem="hQn-gZ-8Xr" secondAttribute="bottom" constant="20" id="yao-qw-TBe"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Daily Quotes" id="Main-Nav-Item">
-                        <barButtonItem key="rightBarButtonItem" title="Favorites" image="heart.fill" catalog="system" id="favorites-nav-button">
-                            <connections>
-                                <action selector="viewFavoritesPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="favorites-nav-action"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="Daily Quotes" id="Main-Nav-Item"/>
                     <connections>
                         <outlet property="activityIndicator" destination="Hto-Ul-IhN" id="6iU-tJ-5lm"/>
                         <outlet property="authorLabel" destination="7ej-Pd-0Pr" id="jlF-TK-xWd"/>
@@ -193,14 +206,31 @@
                         <outlet property="quoteTextLabel" destination="gHW-dQ-8hJ" id="1mV-nI-c7w"/>
                         <outlet property="randomButton" destination="fPK-fF-wWC" id="1jb-R0-0pL"/>
                         <outlet property="shareButton" destination="FTq-JJ-bk4" id="W5V-fL-Qdz"/>
-                        <segue destination="Favorites-View-Controller" kind="show" identifier="segueFavorites" id="favorites-segue"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="800" y="0.0"/>
         </scene>
-
+        <!--Favorites-->
+        <scene sceneID="Favorites-Nav-Scene">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Favorites-Nav-Controller" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Favorites" image="heart.fill" catalog="system" id="Favorites-Tab-Item"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Favorites-Nav-Bar">
+                        <rect key="frame" x="0.0" y="124" width="402" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="Favorites-View-Controller" kind="relationship" relationship="rootViewController" id="Favorites-Root-Segue"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Favorites-Nav-First-Responder" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-100" y="800"/>
+        </scene>
         <!--Favorite Quotes-->
         <scene sceneID="Favorites-Scene">
             <objects>
