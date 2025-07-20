@@ -9,6 +9,7 @@ import UIKit
 import CoreData
 import UserNotifications
 import FirebaseCore
+import FirebaseAuth
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -30,6 +31,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
         }
         UNUserNotificationCenter.current().delegate = self
+        print(Auth.auth().currentUser?.uid ?? "" + "User")
         return true
     }
 

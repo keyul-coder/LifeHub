@@ -80,7 +80,9 @@ class SignUpViewController: UIViewController {
                 }
                 
                 // Account created successfully - navigate to main app
-                self?.navigateToMainApp()
+                if let sceneDelegate = UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate {
+                    sceneDelegate.showMainApp()
+                }
             }
         }
     }
@@ -140,17 +142,6 @@ class SignUpViewController: UIViewController {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "OK", style: .default))
         present(alert, animated: true)
-    }
-    
-    private func navigateToMainApp() {
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        if let tabController = storyboard.instantiateViewController(withIdentifier: "TabController") as? TabController {
-            // Set as root view controller
-            if let sceneDelegate = UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate {
-                sceneDelegate.window?.rootViewController = tabController
-                sceneDelegate.window?.makeKeyAndVisible()
-            }
-        }
     }
 }
 

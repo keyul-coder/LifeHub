@@ -22,9 +22,12 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window = UIWindow(windowScene: windowScene)
         
         // Always show login screen on app launch (logout any existing session)
-        logoutUserOnAppLaunch()
-        showLoginScreen()
-        
+//        logoutUserOnAppLaunch()
+        if let _ = Auth.auth().currentUser?.uid {
+            showMainApp()
+        } else {
+            showLoginScreen()
+        }
         window?.makeKeyAndVisible()
     }
     
@@ -36,7 +39,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         }
     }
     
-    private func showMainApp() {
+    func showMainApp() {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         if let tabController = storyboard.instantiateViewController(withIdentifier: "TabController") as? TabController {
             window?.rootViewController = tabController
