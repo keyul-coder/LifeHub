@@ -190,6 +190,10 @@ class BudgetListViewController: UIViewController, UITableViewDataSource,
         let budget = self.filteredBudgets[indexPath.row]
         performSegue(withIdentifier: "showBudgetDetail", sender: budget)
     }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return UITableView.automaticDimension
+    }
 
     // MARK: - @IBAction(s)
     @IBAction func addBudgetTapped(_ sender: UIButton) {
