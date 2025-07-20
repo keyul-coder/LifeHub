@@ -32,6 +32,9 @@ class TaskViewController: UIViewController, UITableViewDataSource,
             forCellReuseIdentifier: "TaskCell"
         )
 
+        // Load saved tasks
+        loadTasksFromUserDefaults()
+
         // Ask for notification permissions here
         UNUserNotificationCenter.current().requestAuthorization(options: [
             .alert, .sound, .badge,
@@ -76,6 +79,7 @@ class TaskViewController: UIViewController, UITableViewDataSource,
         } else {
             tasks.append(task)
         }
+        saveTasksToUserDefaults()
         tableView.reloadData()
         scheduleNotification(for: task)
     }
@@ -100,13 +104,27 @@ class TaskViewController: UIViewController, UITableViewDataSource,
         formatter.timeStyle = .short
         let dateString = formatter.string(from: task.date)
 
+        let completionIcon = task.isCompleted ? "✅" : "⭕"
+        let completionStatus = task.isCompleted ? "Completed" : "Pending"
+        
         cell.textLabel?.numberOfLines = 0
         cell.textLabel?.text = """
-            \(task.title)
+            \(completionIcon) \(task.title)
             🗓️ \(dateString)
             ⏫ \(task.priority)
             🔁 Recurring: \(task.isRecurring ? "Yes" : "No")
+            📋 Status: \(completionStatus)
             """
+        
+        // Style completed tasks differently
+        if task.isCompleted {
+            cell.textLabel?.textColor = .systemGray
+            cell.backgroundColor = .systemGray6
+        } else {
+            cell.textLabel?.textColor = .label
+            cell.backgroundColor = .systemBackground
+        }
+        
         return cell
     }
     // MARK: - Edit on Tap
@@ -129,15 +147,48 @@ class TaskViewController: UIViewController, UITableViewDataSource,
         tableView.deselectRow(at: indexPath, animated: true)
     }
 
-    // MARK: - Enable swipe to delete
-    func tableView(
-        _ tableView: UITableView,
-        commit editingStyle: UITableViewCell.EditingStyle,
-        forRowAt indexPath: IndexPath
-    ) {
-        if editingStyle == .delete {
-            tasks.remove(at: indexPath.row)
-            tableView.deleteRows(at: [indexPath], with: .fade)
+    // MARK: - Swipe Actions
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let task = tasks[indexPath.row]
+        
+        // Complete/Incomplete action
+        let completeAction = UIContextualAction(style: .normal, title: task.isCompleted ? "Mark Incomplete" : "Mark Complete") { [weak self] (action, view, completionHandler) in
+            self?.tasks[indexPath.row].toggleCompletion()
+            self?.saveTasksToUserDefaults()
+            self?.tableView.reloadRows(at: [indexPath], with: .automatic)
+            completionHandler(true)
+        }
+        completeAction.backgroundColor = task.isCompleted ? .systemOrange : .systemGreen
+        completeAction.image = UIImage(systemName: task.isCompleted ? "xmark.circle" : "checkmark.circle")
+        
+        // Delete action
+        let deleteAction = UIContextualAction(style: .destructive, title: "Delete") { [weak self] (action, view, completionHandler) in
+            self?.tasks.remove(at: indexPath.row)
+            self?.saveTasksToUserDefaults()
+            self?.tableView.deleteRows(at: [indexPath], with: .fade)
+            completionHandler(true)
+        }
+        deleteAction.image = UIImage(systemName: "trash")
+        
+        let configuration = UISwipeActionsConfiguration(actions: [deleteAction, completeAction])
+        return configuration
+    }
+    
+    // MARK: - UserDefaults Methods
+    func saveTasksToUserDefaults() {
+        do {
+            let data = try JSONEncoder().encode(tasks)
+            UserDefaults.standard.set(data, forKey: "SavedTasks")
+        } catch {
+            print("Failed to save tasks: \(error)")
+        }
+    }
+    
+    func loadTasksFromUserDefaults() {
+        if let data = UserDefaults.standard.data(forKey: "SavedTasks"),
+           let savedTasks = try? JSONDecoder().decode([ToDoTask].self, from: data) {
+            tasks = savedTasks
+            tableView.reloadData()
         }
     }
 

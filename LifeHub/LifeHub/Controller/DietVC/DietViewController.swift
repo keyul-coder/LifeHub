@@ -58,7 +58,7 @@ class DietViewController: UIViewController {
     }
     
     private func getCategoryFromSegmentedControl() -> String {
-        let categories = ["all", "Weight", "muscles", "balanced", "keto"]
+        let categories = ["all", "weight", "muscles", "balanced", "keto"]
         let selectedIndex = categorySegmentedControl.selectedSegmentIndex
         return categories[selectedIndex]
     }

@@ -20,4 +20,14 @@ class MainHeaderCollectionViewCell: UICollectionViewCell {
     
     /// Carried Varaiable(s)
     weak var parentVC: HomeVC!
+    
+    func configure() {
+           
+
+           // ✅ Set tasks done count
+           lblTaksDoneValue.text = "\(parentVC?.viewModel.completedTasksCount ?? 0)"
+
+           
+       }
 }
+

@@ -23,6 +23,8 @@ extension TabController {
     func prepareUI() {
         print(self.classForCoder)
         self.delegate = self
+        
+        // Add Settings tab
     }
 }
 
