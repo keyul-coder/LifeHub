@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="23727" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="23727" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeArea="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina6_3" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
@@ -18,176 +18,482 @@
                         <rect key="frame" x="0.0" y="0.0" width="402" height="874"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mil-2c-7pL">
-                                <rect key="frame" x="8" y="672" width="386" height="73"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <!-- Navigation Bar -->
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nav-bar-id">
+                                <rect key="frame" x="0.0" y="47" width="402" height="44"/>
+                                <items>
+                                    <navigationItem title="🏆 Achievements" id="nav-item-id">
+                                        <barButtonItem key="leftBarButtonItem" image="chevron.left" catalog="system" id="back-btn-id">
+                                            <color key="tintColor" systemColor="systemBlueColor"/>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                            
+                            <!-- Scroll View Container -->
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="scroll-view-id">
+                                <rect key="frame" x="0.0" y="91" width="402" height="749"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Next Milestone: 3 Day Streak" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mil-3d-9Kx">
-                                        <rect key="frame" x="8" y="10" width="358" height="25"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pro-4e-8sT">
-                                        <rect key="frame" x="8" y="43" width="358" height="4"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    </progressView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="1/3 days completed" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pro-5f-3nF">
-                                        <rect key="frame" x="8" y="55" width="229.5" height="18"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                </subviews>
-                            </view>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="btn-6f-3nF">
-                                <rect key="frame" x="115" y="758" width="184" height="50"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
-                                <state key="normal" title="Complete Today's Task">
-                                    <color key="titleColor" systemColor="systemBlueColor"/>
-                                </state>
-                                <connections>
-                                    <action selector="completeStreakTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="GZk-7r-RKP"/>
-                                </connections>
-                            </button>
-                            <view contentMode="center" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hdr-5d-9Vb" customClass="BadgeCollectionViewCell" customModule="LifeHub" customModuleProvider="target">
-                                <rect key="frame" x="16" y="69" width="371" height="120"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Current Streak🔥" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cur-7e-5bD">
-                                        <rect key="frame" x="8" y="61" width="122" height="18"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Badges Earned" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bad-3f-9Kx">
-                                        <rect key="frame" x="136" y="33" width="120" height="20.5"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
-                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Current Streak" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="str-k1-8Xq">
-                                        <rect key="frame" x="7" y="33" width="117" height="20"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
-                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Total Badges" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tot-1a-3mV">
-                                        <rect key="frame" x="266" y="32" width="103" height="20"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
-                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Total Badges💯" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tot-2b-4nF">
-                                        <rect key="frame" x="256" y="55" width="113" height="28"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Badges Earned🎁" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ear-2c-7pL">
-                                        <rect key="frame" x="128" y="56" width="128" height="28"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                </subviews>
-                                <color key="backgroundColor" systemColor="systemCyanColor"/>
-                            </view>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="col-3d-9Kx">
-                                <rect key="frame" x="16" y="216" width="370" height="422"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="flo-2c-7pL">
-                                    <size key="itemSize" width="128" height="128"/>
-                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                    <inset key="sectionInset" minX="20" minY="0.0" maxX="20" maxY="0.0"/>
-                                </collectionViewFlowLayout>
-                                <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="BadgeCell" id="bad-1a-3mV" customClass="BadgeCollectionViewCell" customModule="LifeHub">
-                                        <rect key="frame" x="20" y="0.0" width="128" height="128"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" insetsLayoutMarginsFromSafeArea="NO" id="con-2b-4nF">
-                                            <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <subviews>
-                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="con-3c-5rD">
-                                                    <rect key="frame" x="8" y="8" width="112" height="112"/>
-                                                    <subviews>
-                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="img-4d-1eK">
-                                                            <rect key="frame" x="42" y="16" width="28" height="28"/>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="content-view-id">
+                                        <rect key="frame" x="0.0" y="0.0" width="402" height="900"/>
+                                        <subviews>
+                                            <!-- Header Stats Card -->
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="header-stats-view">
+                                                <rect key="frame" x="16" y="20" width="370" height="140"/>
+                                                <subviews>
+                                                    <!-- Stats Stack View -->
+                                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="stats-stack-view">
+                                                        <rect key="frame" x="20" y="20" width="330" height="100"/>
+                                                        <subviews>
+                                                            <!-- Current Streak -->
+                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="streak-container">
+                                                                <rect key="frame" x="0.0" y="0.0" width="109.33333333333333" height="100"/>
+                                                                <subviews>
+                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="🔥" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="streak-icon-label">
+                                                                        <rect key="frame" x="42.666666666666664" y="10" width="24" height="24"/>
+                                                                        <constraints>
+                                                                            <constraint firstAttribute="width" constant="24" id="streak-icon-width"/>
+                                                                            <constraint firstAttribute="height" constant="24" id="streak-icon-height"/>
+                                                                        </constraints>
+                                                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                                                        <nil key="textColor"/>
+                                                                        <nil key="highlightedColor"/>
+                                                                    </label>
+                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="current-streak-value">
+                                                                        <rect key="frame" x="8" y="42" width="93.333333333333329" height="28"/>
+                                                                        <fontDescription key="fontDescription" type="system" weight="bold" pointSize="24"/>
+                                                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                        <nil key="highlightedColor"/>
+                                                                    </label>
+                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Day Streak" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="streak-label">
+                                                                        <rect key="frame" x="8" y="74" width="93.333333333333329" height="16"/>
+                                                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="13"/>
+                                                                        <color key="textColor" red="1" green="1" blue="1" alpha="0.80000000000000004" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                        <nil key="highlightedColor"/>
+                                                                    </label>
+                                                                </subviews>
+                                                                <constraints>
+                                                                    <constraint firstItem="streak-icon-label" firstAttribute="centerX" secondItem="streak-container" secondAttribute="centerX" id="streak-icon-center-x"/>
+                                                                    <constraint firstItem="streak-icon-label" firstAttribute="top" secondItem="streak-container" secondAttribute="top" constant="10" id="streak-icon-top"/>
+                                                                    <constraint firstItem="current-streak-value" firstAttribute="top" secondItem="streak-icon-label" secondAttribute="bottom" constant="8" id="streak-value-top"/>
+                                                                    <constraint firstItem="current-streak-value" firstAttribute="leading" secondItem="streak-container" secondAttribute="leading" constant="8" id="streak-value-leading"/>
+                                                                    <constraint firstAttribute="trailing" secondItem="current-streak-value" secondAttribute="trailing" constant="8" id="streak-value-trailing"/>
+                                                                    <constraint firstItem="streak-label" firstAttribute="top" secondItem="current-streak-value" secondAttribute="bottom" constant="4" id="streak-label-top"/>
+                                                                    <constraint firstItem="streak-label" firstAttribute="leading" secondItem="streak-container" secondAttribute="leading" constant="8" id="streak-label-leading"/>
+                                                                    <constraint firstAttribute="trailing" secondItem="streak-label" secondAttribute="trailing" constant="8" id="streak-label-trailing"/>
+                                                                    <constraint firstAttribute="bottom" secondItem="streak-label" secondAttribute="bottom" constant="10" id="streak-label-bottom"/>
+                                                                </constraints>
+                                                            </view>
+                                                            
+                                                            <!-- Badges Earned -->
+                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="badges-container">
+                                                                <rect key="frame" x="110.33333333333333" y="0.0" width="109.33333333333333" height="100"/>
+                                                                <subviews>
+                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="🏆" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="badges-icon-label">
+                                                                        <rect key="frame" x="42.666666666666664" y="10" width="24" height="24"/>
+                                                                        <constraints>
+                                                                            <constraint firstAttribute="width" constant="24" id="badges-icon-width"/>
+                                                                            <constraint firstAttribute="height" constant="24" id="badges-icon-height"/>
+                                                                        </constraints>
+                                                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                                                        <nil key="textColor"/>
+                                                                        <nil key="highlightedColor"/>
+                                                                    </label>
+                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0/10" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="badges-earned-value">
+                                                                        <rect key="frame" x="8" y="42" width="93.333333333333329" height="28"/>
+                                                                        <fontDescription key="fontDescription" type="system" weight="bold" pointSize="24"/>
+                                                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                        <nil key="highlightedColor"/>
+                                                                    </label>
+                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Badges Earned" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="badges-label">
+                                                                        <rect key="frame" x="8" y="74" width="93.333333333333329" height="16"/>
+                                                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="13"/>
+                                                                        <color key="textColor" red="1" green="1" blue="1" alpha="0.80000000000000004" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                        <nil key="highlightedColor"/>
+                                                                    </label>
+                                                                </subviews>
+                                                                <constraints>
+                                                                    <constraint firstItem="badges-icon-label" firstAttribute="centerX" secondItem="badges-container" secondAttribute="centerX" id="badges-icon-center-x"/>
+                                                                    <constraint firstItem="badges-icon-label" firstAttribute="top" secondItem="badges-container" secondAttribute="top" constant="10" id="badges-icon-top"/>
+                                                                    <constraint firstItem="badges-earned-value" firstAttribute="top" secondItem="badges-icon-label" secondAttribute="bottom" constant="8" id="badges-value-top"/>
+                                                                    <constraint firstItem="badges-earned-value" firstAttribute="leading" secondItem="badges-container" secondAttribute="leading" constant="8" id="badges-value-leading"/>
+                                                                    <constraint firstAttribute="trailing" secondItem="badges-earned-value" secondAttribute="trailing" constant="8" id="badges-value-trailing"/>
+                                                                    <constraint firstItem="badges-label" firstAttribute="top" secondItem="badges-earned-value" secondAttribute="bottom" constant="4" id="badges-label-top"/>
+                                                                    <constraint firstItem="badges-label" firstAttribute="leading" secondItem="badges-container" secondAttribute="leading" constant="8" id="badges-label-leading"/>
+                                                                    <constraint firstAttribute="trailing" secondItem="badges-label" secondAttribute="trailing" constant="8" id="badges-label-trailing"/>
+                                                                    <constraint firstAttribute="bottom" secondItem="badges-label" secondAttribute="bottom" constant="10" id="badges-label-bottom"/>
+                                                                </constraints>
+                                                            </view>
+                                                            
+                                                            <!-- Total Badges -->
+                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="total-container">
+                                                                <rect key="frame" x="220.66666666666666" y="0.0" width="109.33333333333334" height="100"/>
+                                                                <subviews>
+                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="⭐" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="total-icon-label">
+                                                                        <rect key="frame" x="42.666666666666664" y="10" width="24" height="24"/>
+                                                                        <constraints>
+                                                                            <constraint firstAttribute="width" constant="24" id="total-icon-width"/>
+                                                                            <constraint firstAttribute="height" constant="24" id="total-icon-height"/>
+                                                                        </constraints>
+                                                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                                                        <nil key="textColor"/>
+                                                                        <nil key="highlightedColor"/>
+                                                                    </label>
+                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="total-badges-value">
+                                                                        <rect key="frame" x="8" y="42" width="93.333333333333329" height="28"/>
+                                                                        <fontDescription key="fontDescription" type="system" weight="bold" pointSize="24"/>
+                                                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                        <nil key="highlightedColor"/>
+                                                                    </label>
+                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Total Badges" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="total-label">
+                                                                        <rect key="frame" x="8" y="74" width="93.333333333333329" height="16"/>
+                                                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="13"/>
+                                                                        <color key="textColor" red="1" green="1" blue="1" alpha="0.80000000000000004" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                        <nil key="highlightedColor"/>
+                                                                    </label>
+                                                                </subviews>
+                                                                <constraints>
+                                                                    <constraint firstItem="total-icon-label" firstAttribute="centerX" secondItem="total-container" secondAttribute="centerX" id="total-icon-center-x"/>
+                                                                    <constraint firstItem="total-icon-label" firstAttribute="top" secondItem="total-container" secondAttribute="top" constant="10" id="total-icon-top"/>
+                                                                    <constraint firstItem="total-badges-value" firstAttribute="top" secondItem="total-icon-label" secondAttribute="bottom" constant="8" id="total-value-top"/>
+                                                                    <constraint firstItem="total-badges-value" firstAttribute="leading" secondItem="total-container" secondAttribute="leading" constant="8" id="total-value-leading"/>
+                                                                    <constraint firstAttribute="trailing" secondItem="total-badges-value" secondAttribute="trailing" constant="8" id="total-value-trailing"/>
+                                                                    <constraint firstItem="total-label" firstAttribute="top" secondItem="total-badges-value" secondAttribute="bottom" constant="4" id="total-label-top"/>
+                                                                    <constraint firstItem="total-label" firstAttribute="leading" secondItem="total-container" secondAttribute="leading" constant="8" id="total-label-leading"/>
+                                                                    <constraint firstAttribute="trailing" secondItem="total-label" secondAttribute="trailing" constant="8" id="total-label-trailing"/>
+                                                                    <constraint firstAttribute="bottom" secondItem="total-label" secondAttribute="bottom" constant="10" id="total-label-bottom"/>
+                                                                </constraints>
+                                                            </view>
+                                                        </subviews>
+                                                    </stackView>
+                                                </subviews>
+                                                <color key="backgroundColor" systemColor="systemBlueColor"/>
+                                                <constraints>
+                                                    <constraint firstItem="stats-stack-view" firstAttribute="leading" secondItem="header-stats-view" secondAttribute="leading" constant="20" id="stats-leading"/>
+                                                    <constraint firstItem="stats-stack-view" firstAttribute="top" secondItem="header-stats-view" secondAttribute="top" constant="20" id="stats-top"/>
+                                                    <constraint firstAttribute="trailing" secondItem="stats-stack-view" secondAttribute="trailing" constant="20" id="stats-trailing"/>
+                                                    <constraint firstAttribute="bottom" secondItem="stats-stack-view" secondAttribute="bottom" constant="20" id="stats-bottom"/>
+                                                    <constraint firstAttribute="height" constant="140" id="header-height"/>
+                                                </constraints>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                        <integer key="value" value="20"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="layer.shadowColor">
+                                                        <color key="value" systemColor="labelColor"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.shadowOpacity">
+                                                        <real key="value" value="0.15"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="size" keyPath="layer.shadowOffset">
+                                                        <size key="value" width="0.0" height="4"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.shadowRadius">
+                                                        <integer key="value" value="12"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                            </view>
+                                            
+                                            <!-- Progress Section -->
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="progress-section-view">
+                                                <rect key="frame" x="16" y="180" width="370" height="100"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="🎯 Next Milestone" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="milestone-title-label">
+                                                        <rect key="frame" x="20" y="16" width="330" height="20"/>
+                                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Next Badge: 3 Day Streak" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="next-milestone-label">
+                                                        <rect key="frame" x="20" y="44" width="330" height="16"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                        <color key="textColor" systemColor="secondaryLabelColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.33000000000000002" translatesAutoresizingMaskIntoConstraints="NO" id="milestone-progress-view">
+                                                        <rect key="frame" x="20" y="68" width="250" height="4"/>
+                                                        <color key="progressTintColor" systemColor="systemGreenColor"/>
+                                                        <color key="trackTintColor" systemColor="systemGray5Color"/>
+                                                    </progressView>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1/3" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="progress-count-label">
+                                                        <rect key="frame" x="278" y="64" width="72" height="16"/>
+                                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="13"/>
+                                                        <color key="textColor" systemColor="systemGreenColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                <constraints>
+                                                    <constraint firstItem="milestone-title-label" firstAttribute="leading" secondItem="progress-section-view" secondAttribute="leading" constant="20" id="milestone-title-leading"/>
+                                                    <constraint firstItem="milestone-title-label" firstAttribute="top" secondItem="progress-section-view" secondAttribute="top" constant="16" id="milestone-title-top"/>
+                                                    <constraint firstAttribute="trailing" secondItem="milestone-title-label" secondAttribute="trailing" constant="20" id="milestone-title-trailing"/>
+                                                    <constraint firstItem="next-milestone-label" firstAttribute="leading" secondItem="progress-section-view" secondAttribute="leading" constant="20" id="next-milestone-leading"/>
+                                                    <constraint firstItem="next-milestone-label" firstAttribute="top" secondItem="milestone-title-label" secondAttribute="bottom" constant="8" id="next-milestone-top"/>
+                                                    <constraint firstAttribute="trailing" secondItem="next-milestone-label" secondAttribute="trailing" constant="20" id="next-milestone-trailing"/>
+                                                    <constraint firstItem="milestone-progress-view" firstAttribute="leading" secondItem="progress-section-view" secondAttribute="leading" constant="20" id="milestone-progress-leading"/>
+                                                    <constraint firstItem="milestone-progress-view" firstAttribute="top" secondItem="next-milestone-label" secondAttribute="bottom" constant="8" id="milestone-progress-top"/>
+                                                    <constraint firstItem="progress-count-label" firstAttribute="leading" secondItem="milestone-progress-view" secondAttribute="trailing" constant="8" id="progress-count-leading"/>
+                                                    <constraint firstItem="progress-count-label" firstAttribute="centerY" secondItem="milestone-progress-view" secondAttribute="centerY" id="progress-count-center-y"/>
+                                                    <constraint firstAttribute="trailing" secondItem="progress-count-label" secondAttribute="trailing" constant="20" id="progress-count-trailing"/>
+                                                    <constraint firstAttribute="bottom" secondItem="milestone-progress-view" secondAttribute="bottom" constant="28" id="milestone-progress-bottom"/>
+                                                    <constraint firstAttribute="height" constant="100" id="progress-section-height"/>
+                                                </constraints>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                        <integer key="value" value="16"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="layer.shadowColor">
+                                                        <color key="value" systemColor="labelColor"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.shadowOpacity">
+                                                        <real key="value" value="0.08"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="size" keyPath="layer.shadowOffset">
+                                                        <size key="value" width="0.0" height="2"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.shadowRadius">
+                                                        <integer key="value" value="8"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                            </view>
+                                            
+                                            <!-- Badges Collection Title -->
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="🏅 Your Badges" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="badges-title-label">
+                                                <rect key="frame" x="20" y="300" width="362" height="24"/>
+                                                <fontDescription key="fontDescription" type="system" weight="bold" pointSize="20"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            
+                                            <!-- Badges Collection View -->
+                                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="badges-collection-view">
+                                                <rect key="frame" x="16" y="344" width="370" height="400"/>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="400" id="collection-height"/>
+                                                </constraints>
+                                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="16" minimumInteritemSpacing="16" id="collection-flow-layout">
+                                                    <size key="itemSize" width="160" height="160"/>
+                                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                                    <inset key="sectionInset" minX="8" minY="8" maxX="8" maxY="8"/>
+                                                </collectionViewFlowLayout>
+                                                <cells>
+                                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="BadgeCell" id="badge-cell-id" customClass="BadgeCollectionViewCell" customModule="LifeHub">
+                                                        <rect key="frame" x="8" y="8" width="160" height="160"/>
+                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="badge-content-view">
+                                                            <rect key="frame" x="0.0" y="0.0" width="160" height="160"/>
+                                                            <autoresizingMask key="autoresizingMask"/>
+                                                            <subviews>
+                                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="badge-container-view">
+                                                                    <rect key="frame" x="8" y="8" width="144" height="144"/>
+                                                                    <subviews>
+                                                                        <!-- Badge Icon Background Circle -->
+                                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="icon-bg-circle">
+                                                                            <rect key="frame" x="47" y="20" width="50" height="50"/>
+                                                                            <color key="backgroundColor" systemColor="systemGray5Color"/>
+                                                                            <constraints>
+                                                                                <constraint firstAttribute="width" constant="50" id="icon-bg-width"/>
+                                                                                <constraint firstAttribute="height" constant="50" id="icon-bg-height"/>
+                                                                            </constraints>
+                                                                            <userDefinedRuntimeAttributes>
+                                                                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                                                    <integer key="value" value="25"/>
+                                                                                </userDefinedRuntimeAttribute>
+                                                                            </userDefinedRuntimeAttributes>
+                                                                        </view>
+                                                                        
+                                                                        <!-- Badge Icon -->
+                                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="badge-icon-image">
+                                                                            <rect key="frame" x="59" y="32" width="26" height="26"/>
+                                                                            <constraints>
+                                                                                <constraint firstAttribute="width" constant="26" id="badge-icon-width"/>
+                                                                                <constraint firstAttribute="height" constant="26" id="badge-icon-height"/>
+                                                                            </constraints>
+                                                                        </imageView>
+                                                                        
+                                                                        <!-- Badge Name -->
+                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Badge Name" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="badge-name-label">
+                                                                            <rect key="frame" x="12" y="82" width="120" height="36"/>
+                                                                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
+                                                                            <nil key="textColor"/>
+                                                                            <nil key="highlightedColor"/>
+                                                                        </label>
+                                                                        
+                                                                        <!-- Badge Requirement -->
+                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="5 day streak" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="badge-requirement-label">
+                                                                            <rect key="frame" x="12" y="122" width="120" height="14"/>
+                                                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                                            <color key="textColor" systemColor="secondaryLabelColor"/>
+                                                                            <nil key="highlightedColor"/>
+                                                                        </label>
+                                                                    </subviews>
+                                                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                                    <constraints>
+                                                                        <constraint firstItem="icon-bg-circle" firstAttribute="centerX" secondItem="badge-container-view" secondAttribute="centerX" id="icon-bg-center-x"/>
+                                                                        <constraint firstItem="icon-bg-circle" firstAttribute="top" secondItem="badge-container-view" secondAttribute="top" constant="20" id="icon-bg-top"/>
+                                                                        <constraint firstItem="badge-icon-image" firstAttribute="centerX" secondItem="icon-bg-circle" secondAttribute="centerX" id="badge-icon-center-x"/>
+                                                                        <constraint firstItem="badge-icon-image" firstAttribute="centerY" secondItem="icon-bg-circle" secondAttribute="centerY" id="badge-icon-center-y"/>
+                                                                        <constraint firstItem="badge-name-label" firstAttribute="top" secondItem="icon-bg-circle" secondAttribute="bottom" constant="12" id="badge-name-top"/>
+                                                                        <constraint firstItem="badge-name-label" firstAttribute="leading" secondItem="badge-container-view" secondAttribute="leading" constant="12" id="badge-name-leading"/>
+                                                                        <constraint firstAttribute="trailing" secondItem="badge-name-label" secondAttribute="trailing" constant="12" id="badge-name-trailing"/>
+                                                                        <constraint firstItem="badge-requirement-label" firstAttribute="top" secondItem="badge-name-label" secondAttribute="bottom" constant="4" id="badge-requirement-top"/>
+                                                                        <constraint firstItem="badge-requirement-label" firstAttribute="leading" secondItem="badge-container-view" secondAttribute="leading" constant="12" id="badge-requirement-leading"/>
+                                                                        <constraint firstAttribute="trailing" secondItem="badge-requirement-label" secondAttribute="trailing" constant="12" id="badge-requirement-trailing"/>
+                                                                        <constraint firstAttribute="bottom" secondItem="badge-requirement-label" secondAttribute="bottom" constant="8" id="badge-requirement-bottom"/>
+                                                                    </constraints>
+                                                                    <userDefinedRuntimeAttributes>
+                                                                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                                            <integer key="value" value="16"/>
+                                                                        </userDefinedRuntimeAttribute>
+                                                                        <userDefinedRuntimeAttribute type="color" keyPath="layer.shadowColor">
+                                                                            <color key="value" systemColor="labelColor"/>
+                                                                        </userDefinedRuntimeAttribute>
+                                                                        <userDefinedRuntimeAttribute type="number" keyPath="layer.shadowOpacity">
+                                                                            <real key="value" value="0.06"/>
+                                                                        </userDefinedRuntimeAttribute>
+                                                                        <userDefinedRuntimeAttribute type="size" keyPath="layer.shadowOffset">
+                                                                            <size key="value" width="0.0" height="2"/>
+                                                                        </userDefinedRuntimeAttribute>
+                                                                        <userDefinedRuntimeAttribute type="number" keyPath="layer.shadowRadius">
+                                                                            <integer key="value" value="6"/>
+                                                                        </userDefinedRuntimeAttribute>
+                                                                    </userDefinedRuntimeAttributes>
+                                                                </view>
+                                                            </subviews>
                                                             <constraints>
-                                                                <constraint firstAttribute="height" constant="35" id="BLI-3c-a4t"/>
-                                                                <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="28" id="MdU-KO-Knb"/>
-                                                                <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="28" id="Vym-fI-OBg"/>
-                                                                <constraint firstAttribute="width" constant="35" id="dre-Uc-HBC"/>
+                                                                <constraint firstItem="badge-container-view" firstAttribute="leading" secondItem="badge-content-view" secondAttribute="leading" constant="8" id="badge-container-leading"/>
+                                                                <constraint firstItem="badge-container-view" firstAttribute="top" secondItem="badge-content-view" secondAttribute="top" constant="8" id="badge-container-top"/>
+                                                                <constraint firstAttribute="trailing" secondItem="badge-container-view" secondAttribute="trailing" constant="8" id="badge-container-trailing"/>
+                                                                <constraint firstAttribute="bottom" secondItem="badge-container-view" secondAttribute="bottom" constant="8" id="badge-container-bottom"/>
                                                             </constraints>
-                                                        </imageView>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Badge Name" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nam-5e-8sT">
-                                                            <rect key="frame" x="16" y="60" width="80" height="20"/>
-                                                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="14"/>
-                                                            <nil key="textColor"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="5 day streak" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="req-6f-3nF">
-                                                            <rect key="frame" x="16" y="84" width="80" height="16"/>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                                            <nil key="textColor"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
-                                                    </subviews>
-                                                    <color key="backgroundColor" systemColor="systemGray6Color"/>
-                                                    <constraints>
-                                                        <constraint firstItem="nam-5e-8sT" firstAttribute="top" secondItem="img-4d-1eK" secondAttribute="bottom" constant="16" id="1iA-6S-Ja9"/>
-                                                        <constraint firstAttribute="height" constant="112" id="AyT-vJ-C9E"/>
-                                                        <constraint firstItem="nam-5e-8sT" firstAttribute="centerX" secondItem="con-3c-5rD" secondAttribute="centerX" id="DOy-Oq-miB"/>
-                                                        <constraint firstItem="img-4d-1eK" firstAttribute="centerX" secondItem="con-3c-5rD" secondAttribute="centerX" id="LUg-Fn-Kac"/>
-                                                        <constraint firstAttribute="width" constant="112" id="LXG-Sx-rXA"/>
-                                                        <constraint firstItem="req-6f-3nF" firstAttribute="centerX" secondItem="con-3c-5rD" secondAttribute="centerX" id="Nxc-yC-9zr"/>
-                                                        <constraint firstAttribute="bottom" secondItem="req-6f-3nF" secondAttribute="bottom" constant="4" id="yHb-g6-KHs"/>
-                                                    </constraints>
-                                                </view>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstAttribute="trailing" secondItem="con-3c-5rD" secondAttribute="trailing" constant="8" id="ZgJ-PD-s6v"/>
-                                                <constraint firstAttribute="bottom" secondItem="con-3c-5rD" secondAttribute="bottom" constant="8" id="aSv-gg-qha"/>
-                                                <constraint firstItem="con-3c-5rD" firstAttribute="top" secondItem="con-2b-4nF" secondAttribute="top" constant="8" id="emI-qI-Ngw"/>
-                                                <constraint firstItem="con-3c-5rD" firstAttribute="leading" secondItem="con-2b-4nF" secondAttribute="leading" constant="8" id="gd8-q5-vqD"/>
-                                            </constraints>
-                                        </collectionViewCellContentView>
-                                        <size key="customSize" width="128" height="128"/>
-                                        <connections>
-                                            <outlet property="badgeIconImageView" destination="img-4d-1eK" id="MbZ-d2-ByE"/>
-                                            <outlet property="badgeNameLabel" destination="nam-5e-8sT" id="nam-5e-8sT-outlet"/>
-                                            <outlet property="badgeRequirementLabel" destination="req-6f-3nF" id="req-6f-3nF-outlet"/>
-                                            <outlet property="containerView" destination="con-3c-5rD" id="con-3c-5rD-outlet"/>
-                                        </connections>
-                                    </collectionViewCell>
-                                </cells>
-                            </collectionView>
+                                                        </collectionViewCellContentView>
+                                                        <size key="customSize" width="160" height="160"/>
+                                                        <connections>
+                                                            <outlet property="badgeIconImageView" destination="badge-icon-image" id="badge-icon-outlet"/>
+                                                            <outlet property="badgeNameLabel" destination="badge-name-label" id="badge-name-outlet"/>
+                                                            <outlet property="badgeRequirementLabel" destination="badge-requirement-label" id="badge-requirement-outlet"/>
+                                                            <outlet property="containerView" destination="badge-container-view" id="badge-container-outlet"/>
+                                                        </connections>
+                                                    </collectionViewCell>
+                                                </cells>
+                                            </collectionView>
+                                            
+                                            <!-- Complete Task Button -->
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="complete-task-button">
+                                                <rect key="frame" x="36" y="764" width="330" height="56"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="56" id="button-height"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="18"/>
+                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                <state key="normal" title="🎯 Complete Today's Task">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                        <integer key="value" value="16"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="backgroundColor">
+                                                        <color key="value" systemColor="systemBlueColor"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="layer.shadowColor">
+                                                        <color key="value" systemColor="systemBlueColor"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.shadowOpacity">
+                                                        <real key="value" value="0.3"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="size" keyPath="layer.shadowOffset">
+                                                        <size key="value" width="0.0" height="4"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.shadowRadius">
+                                                        <integer key="value" value="8"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="completeStreakTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="complete-task-action"/>
+                                                </connections>
+                                            </button>
+                                            
+                                            <!-- Bottom Spacing -->
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bottom-spacer">
+                                                <rect key="frame" x="0.0" y="840" width="402" height="60"/>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="60" id="bottom-spacer-height"/>
+                                                </constraints>
+                                            </view>
+                                        </subviews>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <constraints>
+                                            <!-- Header Stats Constraints -->
+                                            <constraint firstItem="header-stats-view" firstAttribute="leading" secondItem="content-view-id" secondAttribute="leading" constant="16" id="header-leading"/>
+                                            <constraint firstItem="header-stats-view" firstAttribute="top" secondItem="content-view-id" secondAttribute="top" constant="20" id="header-top"/>
+                                            <constraint firstAttribute="trailing" secondItem="header-stats-view" secondAttribute="trailing" constant="16" id="header-trailing"/>
+                                            
+                                            <!-- Progress Section Constraints -->
+                                            <constraint firstItem="progress-section-view" firstAttribute="leading" secondItem="content-view-id" secondAttribute="leading" constant="16" id="progress-section-leading"/>
+                                            <constraint firstItem="progress-section-view" firstAttribute="top" secondItem="header-stats-view" secondAttribute="bottom" constant="20" id="progress-section-top"/>
+                                            <constraint firstAttribute="trailing" secondItem="progress-section-view" secondAttribute="trailing" constant="16" id="progress-section-trailing"/>
+                                            
+                                            <!-- Badges Title Constraints -->
+                                            <constraint firstItem="badges-title-label" firstAttribute="leading" secondItem="content-view-id" secondAttribute="leading" constant="20" id="badges-title-leading"/>
+                                            <constraint firstItem="badges-title-label" firstAttribute="top" secondItem="progress-section-view" secondAttribute="bottom" constant="20" id="badges-section-title-top"/>
+                                            <constraint firstAttribute="trailing" secondItem="badges-title-label" secondAttribute="trailing" constant="20" id="badges-title-trailing"/>
+                                            
+                                            <!-- Collection View Constraints -->
+                                            <constraint firstItem="badges-collection-view" firstAttribute="leading" secondItem="content-view-id" secondAttribute="leading" constant="16" id="collection-leading"/>
+                                            <constraint firstItem="badges-collection-view" firstAttribute="top" secondItem="badges-title-label" secondAttribute="bottom" constant="20" id="collection-top"/>
+                                            <constraint firstAttribute="trailing" secondItem="badges-collection-view" secondAttribute="trailing" constant="16" id="collection-trailing"/>
+                                            
+                                            <!-- Complete Task Button Constraints -->
+                                            <constraint firstItem="complete-task-button" firstAttribute="leading" secondItem="content-view-id" secondAttribute="leading" constant="36" id="button-leading"/>
+                                            <constraint firstItem="complete-task-button" firstAttribute="top" secondItem="badges-collection-view" secondAttribute="bottom" constant="20" id="complete-button-top"/>
+                                            <constraint firstAttribute="trailing" secondItem="complete-task-button" secondAttribute="trailing" constant="36" id="button-trailing"/>
+                                            
+                                            <!-- Bottom Spacer Constraints -->
+                                            <constraint firstItem="bottom-spacer" firstAttribute="leading" secondItem="content-view-id" secondAttribute="leading" id="spacer-leading"/>
+                                            <constraint firstItem="bottom-spacer" firstAttribute="top" secondItem="complete-task-button" secondAttribute="bottom" constant="20" id="bottom-spacer-top"/>
+                                            <constraint firstAttribute="trailing" secondItem="bottom-spacer" secondAttribute="trailing" id="spacer-trailing"/>
+                                            <constraint firstAttribute="bottom" secondItem="bottom-spacer" secondAttribute="bottom" id="spacer-bottom"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="content-view-id" firstAttribute="leading" secondItem="scroll-view-id" secondAttribute="leading" id="content-leading"/>
+                                    <constraint firstItem="content-view-id" firstAttribute="top" secondItem="scroll-view-id" secondAttribute="top" id="content-top"/>
+                                    <constraint firstAttribute="trailing" secondItem="content-view-id" secondAttribute="trailing" id="content-trailing"/>
+                                    <constraint firstAttribute="bottom" secondItem="content-view-id" secondAttribute="bottom" id="content-bottom"/>
+                                    <constraint firstItem="content-view-id" firstAttribute="width" secondItem="scroll-view-id" secondAttribute="width" id="content-width"/>
+                                </constraints>
+                            </scrollView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" systemColor="systemGroupedBackgroundColor"/>
+                        <constraints>
+                            <!-- Navigation Bar Constraints -->
+                            <constraint firstItem="nav-bar-id" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="nav-leading"/>
+                            <constraint firstItem="nav-bar-id" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="nav-top"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="nav-bar-id" secondAttribute="trailing" id="nav-trailing"/>
+                            
+                            <!-- Scroll View Constraints -->
+                            <constraint firstItem="scroll-view-id" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="scroll-leading"/>
+                            <constraint firstItem="scroll-view-id" firstAttribute="top" secondItem="nav-bar-id" secondAttribute="bottom" id="scroll-top"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="scroll-view-id" secondAttribute="trailing" id="scroll-trailing"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="scroll-view-id" secondAttribute="bottom" id="scroll-bottom"/>
+                        </constraints>
                     </view>
                     <connections>
-                        <outlet property="badgesEarnedLabel" destination="bad-3f-9Kx" id="cMa-hs-DtX"/>
-                        <outlet property="collectionView" destination="col-3d-9Kx" id="YP8-b9-2uR"/>
-                        <outlet property="currentStreakLabel" destination="str-k1-8Xq" id="zdG-tn-QCg"/>
-                        <outlet property="headerView" destination="hdr-5d-9Vb" id="6hj-pa-39q"/>
-                        <outlet property="nextMilestoneLabel" destination="mil-3d-9Kx" id="p0c-m9-6c9"/>
-                        <outlet property="nextMilestoneView" destination="mil-2c-7pL" id="pXI-ag-m9y"/>
-                        <outlet property="progressLabel" destination="pro-5f-3nF" id="Il2-TK-PvB"/>
-                        <outlet property="progressView" destination="pro-4e-8sT" id="TEx-8C-7oH"/>
-                        <outlet property="totalBadgesLabel" destination="tot-1a-3mV" id="zdM-Df-OeO"/>
+                        <outlet property="badgesEarnedLabel" destination="badges-earned-value" id="badges-earned-outlet"/>
+                        <outlet property="collectionView" destination="badges-collection-view" id="collection-outlet"/>
+                        <outlet property="currentStreakLabel" destination="current-streak-value" id="current-streak-outlet"/>
+                        <outlet property="headerView" destination="header-stats-view" id="header-view-outlet"/>
+                        <outlet property="nextMilestoneLabel" destination="next-milestone-label" id="next-milestone-outlet"/>
+                        <outlet property="nextMilestoneView" destination="progress-section-view" id="next-milestone-view-outlet"/>
+                        <outlet property="progressLabel" destination="progress-count-label" id="progress-label-outlet"/>
+                        <outlet property="progressView" destination="milestone-progress-view" id="progress-view-outlet"/>
+                        <outlet property="totalBadgesLabel" destination="total-badges-value" id="total-badges-outlet"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -196,17 +502,27 @@
         </scene>
     </scenes>
     <resources>
+        <image name="chevron.left" catalog="system" width="97" height="128"/>
+        <systemColor name="labelColor">
+            <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="secondaryLabelColor">
+            <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="systemBlueColor">
             <color red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
-        <systemColor name="systemCyanColor">
-            <color red="0.1960784314" green="0.67843137249999996" blue="0.90196078430000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        <systemColor name="systemGray5Color">
+            <color red="0.89803921568627454" green="0.89803921568627454" blue="0.91764705882352937" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
-        <systemColor name="systemGray6Color">
-            <color red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        <systemColor name="systemGreenColor">
+            <color red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemGroupedBackgroundColor">
+            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

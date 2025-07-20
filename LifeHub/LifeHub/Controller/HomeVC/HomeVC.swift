@@ -29,9 +29,11 @@ class HomeVC: ParentVC {
     }
     
     private func updateWaterIntakeDisplay() {
-        // Update the main header cell with current water intake
+        // Update the main header cell with current water intake, streak, and tasks
         if let mainHeaderCell = collectionView.visibleCells.first(where: { $0 is MainHeaderCollectionViewCell }) as? MainHeaderCollectionViewCell {
             mainHeaderCell.updateWaterIntakeWithRecords(viewModel.intakeRecords)
+            mainHeaderCell.updateDayStreak()
+            mainHeaderCell.updateTasksDone()
         }
     }
     
@@ -115,6 +117,8 @@ extension HomeVC: UICollectionViewDelegateFlowLayout, UICollectionViewDelegate, 
             return self.viewModel.arrProgressSections.count
         case .mainHeader:
             return 1
+        case .news:
+            return viewModel.newsArticles != nil ? 1 : 0
         }
     }
     
@@ -123,13 +127,23 @@ extension HomeVC: UICollectionViewDelegateFlowLayout, UICollectionViewDelegate, 
             case .mainHeader:
                 let cell = collectionView.dequeueReusableCell(withReuseIdentifier: self.viewModel.arrSections[indexPath.section].cellIdentifier, for: indexPath) as! MainHeaderCollectionViewCell
                 cell.parentVC = self
-                if let data = viewModel.newsArticles {
-                    cell.setupdate(data: data)
-                }
                 
                 // Update water intake percentage using the records
                 cell.updateWaterIntakeWithRecords(viewModel.intakeRecords)
                 
+                // Update day streak from badge system
+                cell.updateDayStreak()
+                
+                // Update tasks done count
+                cell.updateTasksDone()
+                
+                return cell
+            case .news:
+                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: self.viewModel.arrSections[indexPath.section].cellIdentifier, for: indexPath) as! NewsCardCell
+                cell.parentVC = self
+                if let data = viewModel.newsArticles {
+                    cell.configure(with: data)
+                }
                 return cell
             case .feature:
                 let cell = collectionView.dequeueReusableCell(withReuseIdentifier: self.viewModel.arrFeatures[indexPath.row].cellIdentifier, for: indexPath) as! FeaturesCell
@@ -169,7 +183,9 @@ extension HomeVC: UICollectionViewDelegateFlowLayout, UICollectionViewDelegate, 
         case .progress:
             return CGSize(width: width, height: 118)
         case .mainHeader:
-            return CGSize(width: width, height: 280)
+            return CGSize(width: width, height: 200) // Reduced height since news is removed
+        case .news:
+            return CGSize(width: width - 32, height: 140) // Compact news card
         }
     }
     
@@ -183,6 +199,8 @@ extension HomeVC: UICollectionViewDelegateFlowLayout, UICollectionViewDelegate, 
         
         switch self.viewModel.arrSections[section] {
         case .feature:
+            return UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 16)
+        case .news:
             return UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 16)
         default:
             return .zero
@@ -202,6 +220,9 @@ extension HomeVC: UICollectionViewDelegateFlowLayout, UICollectionViewDelegate, 
         print(#function)
         switch self.viewModel.arrSections[indexPath.section] {
         case .mainHeader:
+            // Main header doesn't need tap handling anymore
+            break
+        case .news:
             // Handle news article tap
             navigateToNewsDetail()
         case .feature:
@@ -217,7 +238,17 @@ extension HomeVC: UICollectionViewDelegateFlowLayout, UICollectionViewDelegate, 
             case .diet:
                 self.performSegue(withIdentifier: "segueDietViewController", sender: nil)
             case .badges:
-                self.performSegue(withIdentifier: "segueBadgeViewController", sender: nil)
+                print("🏆 Badge tapped - attempting to navigate")
+                // Try programmatic navigation first to test
+                let storyboard = UIStoryboard(name: "Badge", bundle: nil)
+                if let badgeVC = storyboard.instantiateViewController(withIdentifier: "BadgeViewController") as? BadgeViewController {
+                    print("✅ BadgeViewController instantiated successfully")
+                    navigationController?.pushViewController(badgeVC, animated: true)
+                } else {
+                    print("❌ Failed to instantiate BadgeViewController")
+                    // Fallback to segue
+                    self.performSegue(withIdentifier: "segueBadgeViewController", sender: nil)
+                }
             }
         case .progress:
             switch self.viewModel.arrProgressSections[indexPath.row] {

@@ -14,66 +14,24 @@ class MainHeaderCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var lblUSerName: UILabel!
     @IBOutlet weak var lblTaksDoneValue: UILabel!
     @IBOutlet weak var lblDaysStreakValue: UILabel!
-    @IBOutlet weak var newImage: UIImageView!
     @IBOutlet weak var lblWaterIntakePercentageValue: UILabel!
-    @IBOutlet weak var newsSubtitle: UILabel!
-    @IBOutlet weak var newsTitle: UILabel!
-    /// Variable Declaration(s)
-    private var currentArticle: NewsArticle?
     
     /// Carried Varaiable(s)
     weak var parentVC: HomeVC!
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        setupNewsCardTapGesture()
+        setupUI()
     }
     
-    private func setupNewsCardTapGesture() {
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(newsCardTapped))
-        
-        // Create a container view for the news section if it doesn't exist
-        // Assuming the news section includes the image, title, and subtitle
-        if let newsContainer = createNewsContainerView() {
-            newsContainer.addGestureRecognizer(tapGesture)
-            newsContainer.isUserInteractionEnabled = true
-        }
-    }
-    
-    private func createNewsContainerView() -> UIView? {
-        // Find the common superview of news elements
-        guard let imageSuperview = newImage.superview,
-              let titleSuperview = newsTitle.superview,
-              let subtitleSuperview = newsSubtitle.superview,
-              imageSuperview == titleSuperview && titleSuperview == subtitleSuperview else {
-            // If they don't share the same superview, add gesture to the cell itself
-            let tapGesture = UITapGestureRecognizer(target: self, action: #selector(newsCardTapped))
-            self.addGestureRecognizer(tapGesture)
-            self.isUserInteractionEnabled = true
-            return self
-        }
-        
-        return imageSuperview
-    }
-    
-    @objc private func newsCardTapped() {
-        guard let parentVC = parentVC else { return }
-        
-        // Add haptic feedback
-        let impactFeedback = UIImpactFeedbackGenerator(style: .light)
-        impactFeedback.impactOccurred()
-        
-        // Navigate to news list using parent VC method
-        parentVC.navigateToNewsDetail()
-    }
-    
-    func setupdate(data: NewsArticle) {
-        self.currentArticle = data
-        self.newsTitle.text = data.title
-        self.newsSubtitle.text = data.description
-        if let urlString = data.urlToImage, let url = URL(string: urlString) {
-            self.loadImage(from: url)
-        }
+    private func setupUI() {
+        // Setup styling for the main header card
+        self.layer.cornerRadius = 16
+        self.layer.shadowColor = UIColor.label.cgColor
+        self.layer.shadowOpacity = 0.08
+        self.layer.shadowOffset = CGSize(width: 0, height: 2)
+        self.layer.shadowRadius = 8
+        self.backgroundColor = .systemBackground
     }
     
     func updateWaterIntakePercentage(currentIntake: Int, dailyGoal: Int = WaterIntakeConstants.defaultDailyGoal) {
@@ -87,13 +45,17 @@ class MainHeaderCollectionViewCell: UICollectionViewCell {
         self.lblWaterIntakePercentageValue.text = "\(percentage)%"
     }
     
-    private func loadImage(from url: URL) {
-        URLSession.shared.dataTask(with: url) { data, _, _ in
-            if let data = data, let image = UIImage(data: data) {
-                DispatchQueue.main.async {
-                    self.newImage.image = image
-                }
-            }
-        }.resume()
-    }    
+    func updateDayStreak() {
+        // Get current streak from badge system
+        let currentStreak = UserDefaults.standard.integer(forKey: "currentStreak")
+        self.lblDaysStreakValue.text = "\(currentStreak)"
+    }
+    
+    func updateTasksDone() {
+        // Get today's completed tasks count
+        let completedCount = TaskManager.shared.getTodaysCompletedTasksCount()
+        self.lblTaksDoneValue.text = "\(completedCount)"
+    }
+    
+    
 }
