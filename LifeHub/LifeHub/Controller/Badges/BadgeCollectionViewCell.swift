@@ -18,7 +18,7 @@ class BadgeCollectionViewCell: UICollectionViewCell {
     // MARK: - Lifecycle
     override func awakeFromNib() {
         super.awakeFromNib()
-//        setupCell()
+        setupCell()
     }
     
     override func prepareForReuse() {

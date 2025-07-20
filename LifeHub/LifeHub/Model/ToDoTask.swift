@@ -13,5 +13,19 @@ struct ToDoTask: Codable {
     var priority: String
     var isRecurring: Bool
     var subtasks: String
+    var isCompleted: Bool = false
+    var completedDate: Date?
+    
+    // Helper method to mark task as completed
+    mutating func markCompleted() {
+        isCompleted = true
+        completedDate = Date()
+    }
+    
+    // Helper method to check if task was completed today
+    func wasCompletedToday() -> Bool {
+        guard let completedDate = completedDate else { return false }
+        return Calendar.current.isDateInToday(completedDate)
+    }
 }
 

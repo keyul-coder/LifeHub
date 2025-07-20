@@ -31,6 +31,9 @@ class TaskViewController: UIViewController, UITableViewDataSource,
             UITableViewCell.self,
             forCellReuseIdentifier: "TaskCell"
         )
+        
+        // Load saved tasks
+        loadTasks()
 
         // Ask for notification permissions here
         UNUserNotificationCenter.current().requestAuthorization(options: [
@@ -41,6 +44,21 @@ class TaskViewController: UIViewController, UITableViewDataSource,
             }
         }
 
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        // Reload tasks when returning to this view
+        loadTasks()
+        tableView.reloadData()
+    }
+    
+    private func loadTasks() {
+        tasks = TaskManager.shared.loadTasks()
+    }
+    
+    private func saveTasks() {
+        TaskManager.shared.saveTasks(tasks)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -76,6 +94,7 @@ class TaskViewController: UIViewController, UITableViewDataSource,
         } else {
             tasks.append(task)
         }
+        saveTasks()
         tableView.reloadData()
         scheduleNotification(for: task)
     }
@@ -101,12 +120,27 @@ class TaskViewController: UIViewController, UITableViewDataSource,
         let dateString = formatter.string(from: task.date)
 
         cell.textLabel?.numberOfLines = 0
+        
+        // Add completion status to display
+        let completionStatus = task.isCompleted ? "✅ Completed" : "⏳ Pending"
+        
         cell.textLabel?.text = """
             \(task.title)
             🗓️ \(dateString)
             ⏫ \(task.priority)
             🔁 Recurring: \(task.isRecurring ? "Yes" : "No")
+            \(completionStatus)
             """
+            
+        // Style completed tasks differently
+        if task.isCompleted {
+            cell.textLabel?.textColor = .systemGray
+            cell.backgroundColor = .systemGray6
+        } else {
+            cell.textLabel?.textColor = .label
+            cell.backgroundColor = .systemBackground
+        }
+        
         return cell
     }
     // MARK: - Edit on Tap
@@ -129,7 +163,7 @@ class TaskViewController: UIViewController, UITableViewDataSource,
         tableView.deselectRow(at: indexPath, animated: true)
     }
 
-    // MARK: - Enable swipe to delete
+    // MARK: - Enable swipe actions
     func tableView(
         _ tableView: UITableView,
         commit editingStyle: UITableViewCell.EditingStyle,
@@ -137,8 +171,56 @@ class TaskViewController: UIViewController, UITableViewDataSource,
     ) {
         if editingStyle == .delete {
             tasks.remove(at: indexPath.row)
+            saveTasks()
             tableView.deleteRows(at: [indexPath], with: .fade)
         }
+    }
+    
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let task = tasks[indexPath.row]
+        
+        if task.isCompleted {
+            // Mark as incomplete action
+            let incompleteAction = UIContextualAction(style: .normal, title: "Mark Incomplete") { [weak self] (_, _, completionHandler) in
+                self?.markTaskIncomplete(at: indexPath.row)
+                completionHandler(true)
+            }
+            incompleteAction.backgroundColor = .systemOrange
+            return UISwipeActionsConfiguration(actions: [incompleteAction])
+        } else {
+            // Mark as complete action
+            let completeAction = UIContextualAction(style: .normal, title: "Complete") { [weak self] (_, _, completionHandler) in
+                self?.markTaskComplete(at: indexPath.row)
+                completionHandler(true)
+            }
+            completeAction.backgroundColor = .systemGreen
+            return UISwipeActionsConfiguration(actions: [completeAction])
+        }
+    }
+    
+    private func markTaskComplete(at index: Int) {
+        guard index < tasks.count else { return }
+        tasks[index].markCompleted()
+        saveTasks()
+        
+        // Update streak and badge system
+        TaskManager.shared.updateStreakIfNeeded()
+        
+        tableView.reloadRows(at: [IndexPath(row: index, section: 0)], with: .automatic)
+        
+        // Show completion feedback
+        let alert = UIAlertController(title: "Task Completed! 🎉", message: "Great job completing '\(tasks[index].title)'", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Continue", style: .default))
+        present(alert, animated: true)
+    }
+    
+    private func markTaskIncomplete(at index: Int) {
+        guard index < tasks.count else { return }
+        tasks[index].isCompleted = false
+        tasks[index].completedDate = nil
+        saveTasks()
+        
+        tableView.reloadRows(at: [IndexPath(row: index, section: 0)], with: .automatic)
     }
 
     // MARK: - Schedule notification for task date/time
