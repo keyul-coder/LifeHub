@@ -49,10 +49,11 @@ enum Features: CaseIterable {
     case quotes
     case diet
     case badges
+    case Mood
     
     var cellIdentifier: String {
         switch self {
-        case .tasks, .habits, .wellness, .quotes, .diet, .badges:
+        case .tasks, .habits, .wellness, .quotes, .diet, .badges, .Mood:
             return "cellFeatures"
         }
     }
@@ -73,6 +74,8 @@ enum Features: CaseIterable {
             return "Diet"
         case .badges:
             return "Badges"
+        case .Mood:
+            return "Mood"
         }
     }
     
@@ -92,6 +95,8 @@ enum Features: CaseIterable {
             return "Track your diet"
         case .badges:
             return "Unlock special badges"
+        case .Mood:
+            return "Track your mood"
         }
     }
     
@@ -111,7 +116,8 @@ enum Features: CaseIterable {
             return "pencil"
         case .badges:
             return "star.fill"
-
+        case .Mood:
+            return "moon"
         }
     }
 }

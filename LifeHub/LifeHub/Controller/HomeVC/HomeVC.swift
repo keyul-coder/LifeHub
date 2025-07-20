@@ -249,6 +249,9 @@ extension HomeVC: UICollectionViewDelegateFlowLayout, UICollectionViewDelegate, 
                     // Fallback to segue
                     self.performSegue(withIdentifier: "segueBadgeViewController", sender: nil)
                 }
+            case .Mood:
+                /// Perfom Segue or whatever that is required.
+                break
             }
         case .progress:
             switch self.viewModel.arrProgressSections[indexPath.row] {
