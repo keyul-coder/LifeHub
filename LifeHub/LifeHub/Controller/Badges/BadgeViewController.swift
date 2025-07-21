@@ -52,53 +52,37 @@ class BadgeViewController: ParentVC {
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("🏆 BadgeViewController viewDidLoad called")
         setupUI()
         setupCollectionView()
         loadUserData()
         updateUI()
-        print("🏆 BadgeViewController setup completed")
     }
     
     // MARK: - Setup Methods
     private func setupUI() {
-        print("🏆 Setting up UI...")
-        
         // Round header view corners
-        headerView?.layer.cornerRadius = 12
-        headerView?.clipsToBounds = true
+        headerView.layer.cornerRadius = 12
+        headerView.clipsToBounds = true
         
         // Round milestone view corners
-        nextMilestoneView?.layer.cornerRadius = 8
-        nextMilestoneView?.backgroundColor = UIColor.systemGray6
+        nextMilestoneView.layer.cornerRadius = 8
+        nextMilestoneView.backgroundColor = UIColor.systemGray6
         
         // Setup progress view
-        progressView?.progressTintColor = UIColor.systemBlue
-        progressView?.trackTintColor = UIColor.systemGray4
-        
-        print("🏆 UI setup completed")
+        progressView.progressTintColor = UIColor.systemBlue
+        progressView.trackTintColor = UIColor.systemGray4
     }
     
     private func setupCollectionView() {
-        print("🏆 Setting up collection view...")
-        
-        guard let collectionView = collectionView else {
-            print("❌ Collection view is nil!")
-            return
-        }
-        
         collectionView.delegate = self
         collectionView.dataSource = self
         
         // Setup flow layout
         if let flowLayout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout {
-            flowLayout.itemSize = CGSize(width: 160, height: 160)
-            flowLayout.minimumInteritemSpacing = 16
-            flowLayout.minimumLineSpacing = 16
-            flowLayout.sectionInset = UIEdgeInsets(top: 8, left: 8, bottom: 8, right: 8)
-            print("🏆 Collection view layout configured")
-        } else {
-            print("❌ Failed to get flow layout")
+            flowLayout.itemSize = CGSize(width: 128, height: 128)
+            flowLayout.minimumInteritemSpacing = 10
+            flowLayout.minimumLineSpacing = 10
+            flowLayout.sectionInset = UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 20)
         }
     }
     
@@ -126,47 +110,37 @@ class BadgeViewController: ParentVC {
     
     // MARK: - UI Update Methods
     private func updateUI() {
-        print("🏆 Updating UI...")
         updateStreakLabels()
         updateMilestoneProgress()
-        
-        DispatchQueue.main.async { [weak self] in
-            self?.collectionView.reloadData()
-            print("🏆 Collection view reloaded")
-        }
+        collectionView.reloadData()
     }
     
     private func updateStreakLabels() {
         // Update current streak
-        currentStreakLabel?.text = "\(currentStreak)"
+        currentStreakLabel.text = "\(currentStreak)"
         
         // Update badges earned count
         let earnedCount = badges.filter { $0.isEarned }.count
         let totalCount = badges.count
-        badgesEarnedLabel?.text = "\(earnedCount)/\(totalCount)"
-        totalBadgesLabel?.text = "\(totalCount)"
-        
-        print("🏆 Updated labels - Streak: \(currentStreak), Badges: \(earnedCount)/\(totalCount)")
+        badgesEarnedLabel.text = "\(earnedCount)/\(totalCount)"
+        totalBadgesLabel.text = "\(totalCount)"
     }
     
     private func updateMilestoneProgress() {
         guard let nextBadge = getNextUnlockedBadge() else {
             // All badges earned
-            nextMilestoneLabel?.text = "All badges earned! 🎉"
-            progressView?.progress = 1.0
-            progressLabel?.text = "Congratulations!"
-            print("🏆 All badges earned!")
+            nextMilestoneLabel.text = "All badges earned! 🎉"
+            progressView.progress = 1.0
+            progressLabel.text = "Congratulations!"
             return
         }
         
         let progress = Float(currentStreak) / Float(nextBadge.requiredStreak)
         let clampedProgress = min(progress, 1.0)
         
-        nextMilestoneLabel?.text = "Next Milestone: \(nextBadge.name)"
-        progressView?.progress = clampedProgress
-        progressLabel?.text = "\(currentStreak)/\(nextBadge.requiredStreak) days completed"
-        
-        print("🏆 Updated milestone progress: \(nextBadge.name) - \(currentStreak)/\(nextBadge.requiredStreak)")
+        nextMilestoneLabel.text = "Next Milestone: \(nextBadge.name)"
+        progressView.progress = clampedProgress
+        progressLabel.text = "\(currentStreak)/\(nextBadge.requiredStreak) days completed"
     }
     
     private func getNextUnlockedBadge() -> Badge? {

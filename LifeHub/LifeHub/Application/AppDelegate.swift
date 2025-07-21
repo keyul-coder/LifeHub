@@ -8,8 +8,6 @@
 import UIKit
 import CoreData
 import UserNotifications
-import FirebaseCore
-import FirebaseAuth
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -18,10 +16,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication,
                      didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         Thread.sleep(forTimeInterval: 1)
-        
-        // Configure Firebase
-        FirebaseApp.configure()
-        
         // 🔔 Request permission for local notifications
         UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge]) { granted, error in
             if let error = error {
@@ -31,7 +25,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
         }
         UNUserNotificationCenter.current().delegate = self
-        print(Auth.auth().currentUser?.uid ?? "" + "User")
         return true
     }
 
