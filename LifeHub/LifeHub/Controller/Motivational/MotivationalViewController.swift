@@ -142,10 +142,6 @@ class MotivationalViewController: UIViewController {
         currentIndex = newIndex
         currentQuote = currentQuotes[currentIndex]
     }
-    
-    @IBAction func viewFavoritesPressed(_ sender: UIBarButtonItem) {
-        performSegue(withIdentifier: "segueFavorites", sender: nil)
-    }
 }
 
 

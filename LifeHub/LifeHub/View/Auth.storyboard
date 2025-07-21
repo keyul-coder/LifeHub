@@ -1,0 +1,323 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="23504" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="LoginVC">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23506"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Login View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController storyboardIdentifier="LoginVC" id="LoginVC" customClass="LoginViewController" customModule="LifeHub" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="scroll-view">
+                                <rect key="frame" x="0.0" y="59" width="393" height="759"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="content-view">
+                                        <rect key="frame" x="0.0" y="0.0" width="393" height="759"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome Back" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="title-label">
+                                                <rect key="frame" x="32" y="100" width="329" height="36"/>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sign in to continue" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="subtitle-label">
+                                                <rect key="frame" x="32" y="156" width="329" height="21"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <color key="textColor" systemColor="secondaryLabelColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="form-stack">
+                                                <rect key="frame" x="32" y="237" width="329" height="140"/>
+                                                <subviews>
+                                                    <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="email-textfield">
+                                                        <rect key="frame" x="0.0" y="0.0" width="329" height="50"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="50" id="email-height"/>
+                                                        </constraints>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                        <textInputTraits key="textInputTraits" keyboardType="emailAddress" textContentType="email"/>
+                                                    </textField>
+                                                    <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="password-textfield">
+                                                        <rect key="frame" x="0.0" y="70" width="329" height="50"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="50" id="password-height"/>
+                                                        </constraints>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                        <textInputTraits key="textInputTraits" secureTextEntry="YES" textContentType="password"/>
+                                                    </textField>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="forgot-password-btn">
+                                                        <rect key="frame" x="0.0" y="140" width="329" height="0.0"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                        <inset key="titleEdgeInsets" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                                        <state key="normal" title="Forgot Password?"/>
+                                                        <connections>
+                                                            <action selector="forgotPasswordTapped:" destination="LoginVC" eventType="touchUpInside" id="forgot-action"/>
+                                                        </connections>
+                                                    </button>
+                                                </subviews>
+                                            </stackView>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="login-btn">
+                                                <rect key="frame" x="32" y="417" width="329" height="50"/>
+                                                <color key="backgroundColor" systemColor="systemBlueColor"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="50" id="login-btn-height"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                                                <inset key="titleEdgeInsets" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                                <state key="normal" title="Sign In">
+                                                    <color key="titleColor" systemColor="systemBackgroundColor"/>
+                                                </state>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                        <real key="value" value="12"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="loginTapped:" destination="LoginVC" eventType="touchUpInside" id="login-action"/>
+                                                </connections>
+                                            </button>
+                                            <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="signup-stack">
+                                                <rect key="frame" x="32" y="507" width="329" height="21"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Don't have an account?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="signup-label">
+                                                        <rect key="frame" x="0.0" y="0.0" width="185" height="21"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="signup-btn">
+                                                        <rect key="frame" x="190" y="0.0" width="139" height="21"/>
+                                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                                        <inset key="titleEdgeInsets" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                                        <state key="normal" title="Sign Up"/>
+                                                        <connections>
+                                                            <action selector="signUpTapped:" destination="LoginVC" eventType="touchUpInside" id="signup-action"/>
+                                                        </connections>
+                                                    </button>
+                                                </subviews>
+                                            </stackView>
+                                        </subviews>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <constraints>
+                                            <constraint firstItem="title-label" firstAttribute="top" secondItem="content-view" secondAttribute="top" constant="100" id="title-top"/>
+                                            <constraint firstItem="title-label" firstAttribute="leading" secondItem="content-view" secondAttribute="leading" constant="32" id="title-leading"/>
+                                            <constraint firstAttribute="trailing" secondItem="title-label" secondAttribute="trailing" constant="32" id="title-trailing"/>
+                                            <constraint firstItem="subtitle-label" firstAttribute="top" secondItem="title-label" secondAttribute="bottom" constant="20" id="subtitle-top"/>
+                                            <constraint firstItem="subtitle-label" firstAttribute="leading" secondItem="title-label" secondAttribute="leading" id="subtitle-leading"/>
+                                            <constraint firstItem="subtitle-label" firstAttribute="trailing" secondItem="title-label" secondAttribute="trailing" id="subtitle-trailing"/>
+                                            <constraint firstItem="form-stack" firstAttribute="top" secondItem="subtitle-label" secondAttribute="bottom" constant="60" id="form-top"/>
+                                            <constraint firstItem="form-stack" firstAttribute="leading" secondItem="title-label" secondAttribute="leading" id="form-leading"/>
+                                            <constraint firstItem="form-stack" firstAttribute="trailing" secondItem="title-label" secondAttribute="trailing" id="form-trailing"/>
+                                            <constraint firstItem="login-btn" firstAttribute="top" secondItem="form-stack" secondAttribute="bottom" constant="40" id="login-top"/>
+                                            <constraint firstItem="login-btn" firstAttribute="leading" secondItem="form-stack" secondAttribute="leading" id="login-leading"/>
+                                            <constraint firstItem="login-btn" firstAttribute="trailing" secondItem="form-stack" secondAttribute="trailing" id="login-trailing"/>
+                                            <constraint firstItem="signup-stack" firstAttribute="top" secondItem="login-btn" secondAttribute="bottom" constant="40" id="signup-top"/>
+                                            <constraint firstItem="signup-stack" firstAttribute="leading" secondItem="login-btn" secondAttribute="leading" id="signup-leading"/>
+                                            <constraint firstItem="signup-stack" firstAttribute="trailing" secondItem="login-btn" secondAttribute="trailing" id="signup-trailing"/>
+                                            <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="signup-stack" secondAttribute="bottom" constant="40" id="content-bottom"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="content-view" firstAttribute="top" secondItem="scroll-view" secondAttribute="top" id="content-top"/>
+                                    <constraint firstItem="content-view" firstAttribute="leading" secondItem="scroll-view" secondAttribute="leading" id="content-leading"/>
+                                    <constraint firstItem="content-view" firstAttribute="trailing" secondItem="scroll-view" secondAttribute="trailing" id="content-trailing"/>
+                                    <constraint firstItem="content-view" firstAttribute="bottom" secondItem="scroll-view" secondAttribute="bottom" id="content-bottom-scroll"/>
+                                    <constraint firstItem="content-view" firstAttribute="width" secondItem="scroll-view" secondAttribute="width" id="content-width"/>
+                                    <constraint firstItem="content-view" firstAttribute="height" relation="greaterThanOrEqual" secondItem="scroll-view" secondAttribute="height" id="content-min-height"/>
+                                </constraints>
+                            </scrollView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="scroll-view" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="scroll-top"/>
+                            <constraint firstItem="scroll-view" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="scroll-leading"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="scroll-view" secondAttribute="trailing" id="scroll-trailing"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="scroll-view" secondAttribute="bottom" id="scroll-bottom"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="nav-item"/>
+                    <connections>
+                        <outlet property="emailTextField" destination="email-textfield" id="email-outlet"/>
+                        <outlet property="passwordTextField" destination="password-textfield" id="password-outlet"/>
+                        <outlet property="loginButton" destination="login-btn" id="login-outlet"/>
+                        <outlet property="signUpButton" destination="signup-btn" id="signup-outlet"/>
+                        <outlet property="forgotPasswordButton" destination="forgot-password-btn" id="forgot-outlet"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="0.0" y="0.0"/>
+        </scene>
+        <!--Sign Up View Controller-->
+        <scene sceneID="signup-scene">
+            <objects>
+                <viewController storyboardIdentifier="SignUpVC" id="SignUpVC" customClass="SignUpViewController" customModule="LifeHub" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="signup-view">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="signup-scroll">
+                                <rect key="frame" x="0.0" y="59" width="393" height="759"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="signup-content">
+                                        <rect key="frame" x="0.0" y="0.0" width="393" height="759"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Create Account" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="signup-title">
+                                                <rect key="frame" x="32" y="80" width="329" height="36"/>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sign up to get started" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="signup-subtitle">
+                                                <rect key="frame" x="32" y="136" width="329" height="21"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <color key="textColor" systemColor="secondaryLabelColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="signup-form">
+                                                <rect key="frame" x="32" y="217" width="329" height="160"/>
+                                                <subviews>
+                                                    <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="signup-email">
+                                                        <rect key="frame" x="0.0" y="0.0" width="329" height="50"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="50" id="signup-email-height"/>
+                                                        </constraints>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                        <textInputTraits key="textInputTraits" keyboardType="emailAddress" textContentType="email"/>
+                                                    </textField>
+                                                    <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="signup-password">
+                                                        <rect key="frame" x="0.0" y="70" width="329" height="50"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="50" id="signup-password-height"/>
+                                                        </constraints>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                        <textInputTraits key="textInputTraits" secureTextEntry="YES" textContentType="newPassword"/>
+                                                    </textField>
+                                                    <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Confirm Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="confirm-password">
+                                                        <rect key="frame" x="0.0" y="140" width="329" height="50"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="50" id="confirm-password-height"/>
+                                                        </constraints>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                        <textInputTraits key="textInputTraits" secureTextEntry="YES" textContentType="newPassword"/>
+                                                    </textField>
+                                                </subviews>
+                                            </stackView>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="create-account-btn">
+                                                <rect key="frame" x="32" y="417" width="329" height="50"/>
+                                                <color key="backgroundColor" systemColor="systemBlueColor"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="50" id="create-btn-height"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                                                <inset key="titleEdgeInsets" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                                <state key="normal" title="Create Account">
+                                                    <color key="titleColor" systemColor="systemBackgroundColor"/>
+                                                </state>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                        <real key="value" value="12"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="createAccountTapped:" destination="SignUpVC" eventType="touchUpInside" id="create-action"/>
+                                                </connections>
+                                            </button>
+                                            <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="login-stack">
+                                                <rect key="frame" x="32" y="507" width="329" height="21"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Already have an account?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="login-label">
+                                                        <rect key="frame" x="0.0" y="0.0" width="200" height="21"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="back-login-btn">
+                                                        <rect key="frame" x="205" y="0.0" width="124" height="21"/>
+                                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                                        <inset key="titleEdgeInsets" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                                        <state key="normal" title="Sign In"/>
+                                                        <connections>
+                                                            <action selector="backToLoginTapped:" destination="SignUpVC" eventType="touchUpInside" id="back-login-action"/>
+                                                        </connections>
+                                                    </button>
+                                                </subviews>
+                                            </stackView>
+                                        </subviews>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <constraints>
+                                            <constraint firstItem="signup-title" firstAttribute="top" secondItem="signup-content" secondAttribute="top" constant="80" id="signup-title-top"/>
+                                            <constraint firstItem="signup-title" firstAttribute="leading" secondItem="signup-content" secondAttribute="leading" constant="32" id="signup-title-leading"/>
+                                            <constraint firstAttribute="trailing" secondItem="signup-title" secondAttribute="trailing" constant="32" id="signup-title-trailing"/>
+                                            <constraint firstItem="signup-subtitle" firstAttribute="top" secondItem="signup-title" secondAttribute="bottom" constant="20" id="signup-subtitle-top"/>
+                                            <constraint firstItem="signup-subtitle" firstAttribute="leading" secondItem="signup-title" secondAttribute="leading" id="signup-subtitle-leading"/>
+                                            <constraint firstItem="signup-subtitle" firstAttribute="trailing" secondItem="signup-title" secondAttribute="trailing" id="signup-subtitle-trailing"/>
+                                            <constraint firstItem="signup-form" firstAttribute="top" secondItem="signup-subtitle" secondAttribute="bottom" constant="60" id="signup-form-top"/>
+                                            <constraint firstItem="signup-form" firstAttribute="leading" secondItem="signup-title" secondAttribute="leading" id="signup-form-leading"/>
+                                            <constraint firstItem="signup-form" firstAttribute="trailing" secondItem="signup-title" secondAttribute="trailing" id="signup-form-trailing"/>
+                                            <constraint firstItem="create-account-btn" firstAttribute="top" secondItem="signup-form" secondAttribute="bottom" constant="40" id="create-btn-top"/>
+                                            <constraint firstItem="create-account-btn" firstAttribute="leading" secondItem="signup-form" secondAttribute="leading" id="create-btn-leading"/>
+                                            <constraint firstItem="create-account-btn" firstAttribute="trailing" secondItem="signup-form" secondAttribute="trailing" id="create-btn-trailing"/>
+                                            <constraint firstItem="login-stack" firstAttribute="top" secondItem="create-account-btn" secondAttribute="bottom" constant="40" id="login-stack-top"/>
+                                            <constraint firstItem="login-stack" firstAttribute="leading" secondItem="create-account-btn" secondAttribute="leading" id="login-stack-leading"/>
+                                            <constraint firstItem="login-stack" firstAttribute="trailing" secondItem="create-account-btn" secondAttribute="trailing" id="login-stack-trailing"/>
+                                            <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="login-stack" secondAttribute="bottom" constant="40" id="signup-content-bottom"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="signup-content" firstAttribute="top" secondItem="signup-scroll" secondAttribute="top" id="signup-content-top"/>
+                                    <constraint firstItem="signup-content" firstAttribute="leading" secondItem="signup-scroll" secondAttribute="leading" id="signup-content-leading"/>
+                                    <constraint firstItem="signup-content" firstAttribute="trailing" secondItem="signup-scroll" secondAttribute="trailing" id="signup-content-trailing"/>
+                                    <constraint firstItem="signup-content" firstAttribute="bottom" secondItem="signup-scroll" secondAttribute="bottom" id="signup-content-bottom-scroll"/>
+                                    <constraint firstItem="signup-content" firstAttribute="width" secondItem="signup-scroll" secondAttribute="width" id="signup-content-width"/>
+                                    <constraint firstItem="signup-content" firstAttribute="height" relation="greaterThanOrEqual" secondItem="signup-scroll" secondAttribute="height" id="signup-content-min-height"/>
+                                </constraints>
+                            </scrollView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="signup-safe-area"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="signup-scroll" firstAttribute="top" secondItem="signup-safe-area" secondAttribute="top" id="signup-scroll-top"/>
+                            <constraint firstItem="signup-scroll" firstAttribute="leading" secondItem="signup-safe-area" secondAttribute="leading" id="signup-scroll-leading"/>
+                            <constraint firstItem="signup-safe-area" firstAttribute="trailing" secondItem="signup-scroll" secondAttribute="trailing" id="signup-scroll-trailing"/>
+                            <constraint firstItem="signup-safe-area" firstAttribute="bottom" secondItem="signup-scroll" secondAttribute="bottom" id="signup-scroll-bottom"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="signup-nav"/>
+                    <connections>
+                        <outlet property="emailTextField" destination="signup-email" id="signup-email-outlet"/>
+                        <outlet property="passwordTextField" destination="signup-password" id="signup-password-outlet"/>
+                        <outlet property="confirmPasswordTextField" destination="confirm-password" id="confirm-password-outlet"/>
+                        <outlet property="createAccountButton" destination="create-account-btn" id="create-btn-outlet"/>
+                        <outlet property="backToLoginButton" destination="back-login-btn" id="back-login-outlet"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="signup-responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="800" y="0.0"/>
+        </scene>
+    </scenes>
+    <resources>
+        <systemColor name="secondaryLabelColor">
+            <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemBlueColor">
+            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>

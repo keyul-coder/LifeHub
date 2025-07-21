@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import FirebaseAuth
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
@@ -16,7 +17,43 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
         // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
         // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
-        guard let _ = (scene as? UIWindowScene) else { return }
+        guard let windowScene = (scene as? UIWindowScene) else { return }
+        
+        window = UIWindow(windowScene: windowScene)
+        
+        // Always show login screen on app launch (logout any existing session)
+//        logoutUserOnAppLaunch()
+        if let _ = Auth.auth().currentUser?.uid {
+            showMainApp()
+        } else {
+            showLoginScreen()
+        }
+        window?.makeKeyAndVisible()
+    }
+    
+    private func showLoginScreen() {
+        let storyboard = UIStoryboard(name: "Auth", bundle: nil)
+        if let loginVC = storyboard.instantiateViewController(withIdentifier: "LoginVC") as? LoginViewController {
+            let navigationController = UINavigationController(rootViewController: loginVC)
+            window?.rootViewController = navigationController
+        }
+    }
+    
+    func showMainApp() {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        if let tabController = storyboard.instantiateViewController(withIdentifier: "TabController") as? TabController {
+            window?.rootViewController = tabController
+        }
+    }
+    
+    private func logoutUserOnAppLaunch() {
+        // Automatically logout user when app launches
+        do {
+            try Auth.auth().signOut()
+            print("User automatically logged out on app launch")
+        } catch let signOutError as NSError {
+            print("Error signing out on app launch: \(signOutError)")
+        }
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {
@@ -46,7 +83,18 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // Use this method to save data, release shared resources, and store enough scene-specific state information
         // to restore the scene back to its current state.
 
-        // Save changes in the application's managed object context when the application transitions to the background.
+        // Automatically logout user when app goes to background
+        logoutUserOnBackground()
+    }
+    
+    private func logoutUserOnBackground() {
+        // Logout user when app goes to background
+        do {
+            try Auth.auth().signOut()
+            print("User automatically logged out when app went to background")
+        } catch let signOutError as NSError {
+            print("Error signing out on background: \(signOutError)")
+        }
     }
 }
 
