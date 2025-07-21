@@ -11,6 +11,7 @@ enum HomeSections: CaseIterable {
     /// Header Title(s)
     case feature
     case progress
+  
     
     var cellIdentifier: String {
         switch self {
@@ -18,7 +19,7 @@ enum HomeSections: CaseIterable {
             return "cellHeader"
             /// Header Title(s)
         case .feature, .progress:
-            return "cellHeaderTitle"
+                    return "cellHeaderTitle"
         }
     }
     
@@ -30,8 +31,7 @@ enum HomeSections: CaseIterable {
             return "Features"
         case .progress:
             return "Progress"
-        default:
-            return ""
+        
         }
     }
 }
@@ -127,6 +127,7 @@ enum ProgressSection: CaseIterable {
     }
 }
 
+
 /// HomeViewModel
 class HomeViewModel {
     
@@ -135,4 +136,13 @@ class HomeViewModel {
     var arrFeatures: [Features] = Features.allCases
     var arrProgressSections: [ProgressSection] = ProgressSection.allCases
     var intakeRecords: [WaterIntake] = []
+    var todayTasks: [ToDoTask] = []
+    var completedTasksCount: Int {
+        return todayTasks.filter { $0.isCompleted }.count
+    }
 }
+
+
+
+
+
