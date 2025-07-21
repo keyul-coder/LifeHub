@@ -68,13 +68,13 @@ class AddTaskViewController: UIViewController {
         let priority = selectedPriority
 
         let task = ToDoTask(
-            title: title,
-            date: selectedDate,
-            priority: priority,
-            isRecurring: isRecurring,
-     
-            subtasks: subtasks
-        )
+                title: title,
+                date: selectedDate,
+                priority: priority,
+                isRecurring: isRecurring,
+                subtasks: subtasks,
+                isCompleted: false
+            )
 
         print(isEditingTask ? "Updating Task: \(task)" : "Adding Task: \(task)")
 

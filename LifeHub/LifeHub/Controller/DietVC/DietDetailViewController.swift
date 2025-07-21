@@ -21,8 +21,6 @@ class DietDetailViewController: UIViewController {
     @IBOutlet weak var benefit1Label: UILabel!
     @IBOutlet weak var benefit2Label: UILabel!
     @IBOutlet weak var benefit3Label: UILabel!
-    @IBOutlet weak var lblRecipe: UILabel!
-    @IBOutlet weak var lblIngridents: UILabel!
     
     var dietPlan: DietPlan?
     
@@ -75,12 +73,6 @@ class DietDetailViewController: UIViewController {
             benefit1Label.text = dietPlan.benefits[0]
             benefit2Label.text = dietPlan.benefits[1]
             benefit3Label.text = dietPlan.benefits[2]
-        }
-        lblRecipe.text = dietPlan.recipes.name
-        lblIngridents.text = "" // Clear previous content
-
-        for ingredient in dietPlan.recipes.ingredients {
-            lblIngridents.text! += "• \(ingredient)\n"
         }
     }
     

@@ -26,5 +26,6 @@ extension ParentVC {
     
     func parentPrepareUI() {
         print(self.classForCoder)
+        self.hidesBottomBarWhenPushed = true
     }
 }

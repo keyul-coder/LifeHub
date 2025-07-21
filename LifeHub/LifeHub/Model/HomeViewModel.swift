@@ -8,20 +8,18 @@
 enum HomeSections: CaseIterable {
     
     case mainHeader
-    case news
     /// Header Title(s)
     case feature
     case progress
+  
     
     var cellIdentifier: String {
         switch self {
         case .mainHeader:
             return "cellHeader"
-        case .news:
-            return "cellNews"
             /// Header Title(s)
         case .feature, .progress:
-            return "cellHeaderTitle"
+                    return "cellHeaderTitle"
         }
     }
     
@@ -29,14 +27,11 @@ enum HomeSections: CaseIterable {
         switch self {
         case .mainHeader:
             return "Welcome to LifeHub"
-        case .news:
-            return "Latest News"
         case .feature:
             return "Features"
         case .progress:
             return "Progress"
-        default:
-            return ""
+        
         }
     }
 }
@@ -49,11 +44,10 @@ enum Features: CaseIterable {
     case quotes
     case diet
     case badges
-    case Mood
     
     var cellIdentifier: String {
         switch self {
-        case .tasks, .habits, .wellness, .quotes, .diet, .badges, .Mood:
+        case .tasks, .habits, .wellness, .quotes, .diet, .badges:
             return "cellFeatures"
         }
     }
@@ -74,8 +68,6 @@ enum Features: CaseIterable {
             return "Diet"
         case .badges:
             return "Badges"
-        case .Mood:
-            return "Mood"
         }
     }
     
@@ -95,8 +87,6 @@ enum Features: CaseIterable {
             return "Track your diet"
         case .badges:
             return "Unlock special badges"
-        case .Mood:
-            return "Track your mood"
         }
     }
     
@@ -116,8 +106,7 @@ enum Features: CaseIterable {
             return "pencil"
         case .badges:
             return "star.fill"
-        case .Mood:
-            return "moon"
+
         }
     }
 }
@@ -138,6 +127,7 @@ enum ProgressSection: CaseIterable {
     }
 }
 
+
 /// HomeViewModel
 class HomeViewModel {
     
@@ -146,5 +136,13 @@ class HomeViewModel {
     var arrFeatures: [Features] = Features.allCases
     var arrProgressSections: [ProgressSection] = ProgressSection.allCases
     var intakeRecords: [WaterIntake] = []
-    var newsArticles:NewsArticle?
+    var todayTasks: [ToDoTask] = []
+    var completedTasksCount: Int {
+        return todayTasks.filter { $0.isCompleted }.count
+    }
 }
+
+
+
+
+

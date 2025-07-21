@@ -2,7 +2,7 @@
 //  WaterIntake+CoreDataClass.swift
 //  LifeHub
 //
-//  Created by Smit Patel on 05/06/25.
+//  Created by Gaurav Harkhani on 05/06/25.
 //
 
 import Foundation

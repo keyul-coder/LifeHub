@@ -31,9 +31,9 @@ class TaskViewController: UIViewController, UITableViewDataSource,
             UITableViewCell.self,
             forCellReuseIdentifier: "TaskCell"
         )
-        
+
         // Load saved tasks
-        loadTasks()
+        loadTasksFromUserDefaults()
 
         // Ask for notification permissions here
         UNUserNotificationCenter.current().requestAuthorization(options: [
@@ -44,21 +44,6 @@ class TaskViewController: UIViewController, UITableViewDataSource,
             }
         }
 
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        // Reload tasks when returning to this view
-        loadTasks()
-        tableView.reloadData()
-    }
-    
-    private func loadTasks() {
-        tasks = TaskManager.shared.loadTasks()
-    }
-    
-    private func saveTasks() {
-        TaskManager.shared.saveTasks(tasks)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -94,7 +79,7 @@ class TaskViewController: UIViewController, UITableViewDataSource,
         } else {
             tasks.append(task)
         }
-        saveTasks()
+        saveTasksToUserDefaults()
         tableView.reloadData()
         scheduleNotification(for: task)
     }
@@ -119,19 +104,18 @@ class TaskViewController: UIViewController, UITableViewDataSource,
         formatter.timeStyle = .short
         let dateString = formatter.string(from: task.date)
 
+        let completionIcon = task.isCompleted ? "✅" : "⭕"
+        let completionStatus = task.isCompleted ? "Completed" : "Pending"
+        
         cell.textLabel?.numberOfLines = 0
-        
-        // Add completion status to display
-        let completionStatus = task.isCompleted ? "✅ Completed" : "⏳ Pending"
-        
         cell.textLabel?.text = """
-            \(task.title)
+            \(completionIcon) \(task.title)
             🗓️ \(dateString)
             ⏫ \(task.priority)
             🔁 Recurring: \(task.isRecurring ? "Yes" : "No")
-            \(completionStatus)
+            📋 Status: \(completionStatus)
             """
-            
+        
         // Style completed tasks differently
         if task.isCompleted {
             cell.textLabel?.textColor = .systemGray
@@ -163,64 +147,49 @@ class TaskViewController: UIViewController, UITableViewDataSource,
         tableView.deselectRow(at: indexPath, animated: true)
     }
 
-    // MARK: - Enable swipe actions
-    func tableView(
-        _ tableView: UITableView,
-        commit editingStyle: UITableViewCell.EditingStyle,
-        forRowAt indexPath: IndexPath
-    ) {
-        if editingStyle == .delete {
-            tasks.remove(at: indexPath.row)
-            saveTasks()
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        }
-    }
-    
+    // MARK: - Swipe Actions
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         let task = tasks[indexPath.row]
         
-        if task.isCompleted {
-            // Mark as incomplete action
-            let incompleteAction = UIContextualAction(style: .normal, title: "Mark Incomplete") { [weak self] (_, _, completionHandler) in
-                self?.markTaskIncomplete(at: indexPath.row)
-                completionHandler(true)
-            }
-            incompleteAction.backgroundColor = .systemOrange
-            return UISwipeActionsConfiguration(actions: [incompleteAction])
-        } else {
-            // Mark as complete action
-            let completeAction = UIContextualAction(style: .normal, title: "Complete") { [weak self] (_, _, completionHandler) in
-                self?.markTaskComplete(at: indexPath.row)
-                completionHandler(true)
-            }
-            completeAction.backgroundColor = .systemGreen
-            return UISwipeActionsConfiguration(actions: [completeAction])
+        // Complete/Incomplete action
+        let completeAction = UIContextualAction(style: .normal, title: task.isCompleted ? "Mark Incomplete" : "Mark Complete") { [weak self] (action, view, completionHandler) in
+            self?.tasks[indexPath.row].toggleCompletion()
+            self?.saveTasksToUserDefaults()
+            self?.tableView.reloadRows(at: [indexPath], with: .automatic)
+            completionHandler(true)
+        }
+        completeAction.backgroundColor = task.isCompleted ? .systemOrange : .systemGreen
+        completeAction.image = UIImage(systemName: task.isCompleted ? "xmark.circle" : "checkmark.circle")
+        
+        // Delete action
+        let deleteAction = UIContextualAction(style: .destructive, title: "Delete") { [weak self] (action, view, completionHandler) in
+            self?.tasks.remove(at: indexPath.row)
+            self?.saveTasksToUserDefaults()
+            self?.tableView.deleteRows(at: [indexPath], with: .fade)
+            completionHandler(true)
+        }
+        deleteAction.image = UIImage(systemName: "trash")
+        
+        let configuration = UISwipeActionsConfiguration(actions: [deleteAction, completeAction])
+        return configuration
+    }
+    
+    // MARK: - UserDefaults Methods
+    func saveTasksToUserDefaults() {
+        do {
+            let data = try JSONEncoder().encode(tasks)
+            UserDefaults.standard.set(data, forKey: "SavedTasks")
+        } catch {
+            print("Failed to save tasks: \(error)")
         }
     }
     
-    private func markTaskComplete(at index: Int) {
-        guard index < tasks.count else { return }
-        tasks[index].markCompleted()
-        saveTasks()
-        
-        // Update streak and badge system
-        TaskManager.shared.updateStreakIfNeeded()
-        
-        tableView.reloadRows(at: [IndexPath(row: index, section: 0)], with: .automatic)
-        
-        // Show completion feedback
-        let alert = UIAlertController(title: "Task Completed! 🎉", message: "Great job completing '\(tasks[index].title)'", preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "Continue", style: .default))
-        present(alert, animated: true)
-    }
-    
-    private func markTaskIncomplete(at index: Int) {
-        guard index < tasks.count else { return }
-        tasks[index].isCompleted = false
-        tasks[index].completedDate = nil
-        saveTasks()
-        
-        tableView.reloadRows(at: [IndexPath(row: index, section: 0)], with: .automatic)
+    func loadTasksFromUserDefaults() {
+        if let data = UserDefaults.standard.data(forKey: "SavedTasks"),
+           let savedTasks = try? JSONDecoder().decode([ToDoTask].self, from: data) {
+            tasks = savedTasks
+            tableView.reloadData()
+        }
     }
 
     // MARK: - Schedule notification for task date/time

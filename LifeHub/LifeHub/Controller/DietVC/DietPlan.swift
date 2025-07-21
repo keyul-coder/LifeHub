@@ -17,12 +17,6 @@ struct DietPlan {
     let calories: String
     let sampleMeals: [String]
     let benefits: [String]
-    let recipes: Recipe
-}
-
-struct Recipe {
-    let name: String
-    let ingredients: [String]
 }
 
 // Sample data
@@ -47,16 +41,7 @@ class DietPlanData {
                 "✓ Weight management",
                 "✓ Brain health",
                 "✓ Heart health"
-            ],
-            recipes:
-                Recipe(
-                    name: "Mediterranean Grilled Salmon",
-                    ingredients: [
-                        "4 salmon fillets (6oz each)",
-                        "2 tbsp olive oil",
-                        "1 lemon (juiced)"
-                    ]
-                )
+            ]
         ),
         DietPlan(
             id: 2,
@@ -75,16 +60,7 @@ class DietPlanData {
                 "✓ Rapid weight loss",
                 "✓ Mental clarity",
                 "✓ Reduced appetite"
-            ],
-            recipes:
-                Recipe(
-                    name: "Keto Cauliflower Mac and Cheese",
-                    ingredients: [
-                        "1 large cauliflower head, cut into florets",
-                        "1 cup heavy cream",
-                        "2 cups cheddar cheese, shredded"
-                    ]
-                )
+            ]
         ),
         DietPlan(
             id: 3,
@@ -103,16 +79,7 @@ class DietPlanData {
                 "✓ Muscle building",
                 "✓ Fat burning",
                 "✓ Increased metabolism"
-            ],
-            recipes:
-                Recipe(
-                    name: "High-Protein Chicken Quinoa Bowl",
-                    ingredients: [
-                        "6oz chicken breast",
-                        "1 cup cooked quinoa",
-                        "1 cup broccoli florets"
-                    ]
-                )
+            ]
         ),
         DietPlan(
             id: 4,
@@ -131,16 +98,7 @@ class DietPlanData {
                 "✓ Natural nutrition",
                 "✓ Weight control",
                 "✓ Improved digestion"
-            ],
-            recipes:
-                Recipe(
-                    name: "Paleo Beef and Vegetable Stir-Fry",
-                    ingredients: [
-                        "1 lb grass-fed beef strips",
-                        "2 bell peppers, sliced",
-                        "1 zucchini, sliced"
-                    ]
-                )
+            ]
         ),
         DietPlan(
             id: 5,
@@ -159,16 +117,7 @@ class DietPlanData {
                 "✓ Lower blood pressure",
                 "✓ Heart health",
                 "✓ Weight management"
-            ],
-            recipes:
-                Recipe(
-                    name: "DASH Diet Salmon with Quinoa",
-                    ingredients: [
-                        "4 salmon fillets",
-                        "1 cup quinoa",
-                        "2 cups low-sodium vegetable broth"
-                    ]
-                )
+            ]
         ),
         DietPlan(
             id: 6,
@@ -187,16 +136,7 @@ class DietPlanData {
                 "✓ Weight loss",
                 "✓ Improved insulin sensitivity",
                 "✓ Cellular repair"
-            ],
-            recipes:
-                Recipe(
-                    name: "IF Breaking Fast Salad",
-                    ingredients: [
-                        "6oz grilled chicken breast",
-                        "3 cups mixed greens",
-                        "1 avocado, sliced"
-                    ]
-                )
+            ]
         ),
         DietPlan(
             id: 7,
@@ -215,16 +155,7 @@ class DietPlanData {
                 "✓ Lower risk of heart disease",
                 "✓ Better weight management",
                 "✓ Reduced environmental impact"
-            ],
-            recipes:
-                Recipe(
-                    name: "Paleo Beef and Vegetable Stir-Fry",
-                    ingredients: [
-                        "1 lb grass-fed beef strips",
-                        "2 bell peppers, sliced",
-                        "1 zucchini, sliced"
-                    ]
-                )
+            ]
         ),
         DietPlan(
             id: 8,
@@ -243,16 +174,7 @@ class DietPlanData {
                 "✓ Lower cholesterol levels",
                 "✓ Reduced risk of certain cancers",
                 "✓ Ethical food choices"
-            ],
-            recipes:
-                Recipe(
-                    name: "Paleo Beef and Vegetable Stir-Fry",
-                    ingredients: [
-                        "1 lb grass-fed beef strips",
-                        "2 bell peppers, sliced",
-                        "1 zucchini, sliced"
-                    ]
-                )
+            ]
         ),
         DietPlan(
             id: 9,
@@ -271,17 +193,7 @@ class DietPlanData {
                 "✓ Effective weight loss",
                 "✓ Reduced blood sugar levels",
                 "✓ Improved triglyceride levels"
-            ],
-            recipes:
-                Recipe(
-                    name: "Paleo Beef and Vegetable Stir-Fry",
-                    ingredients: [
-                        "1 lb grass-fed beef strips",
-                        "2 bell peppers, sliced",
-                        "1 zucchini, sliced",
-                        "1 onion, sliced"
-                    ]
-                )
+            ]
         ),
         DietPlan(
             id: 10,
@@ -300,16 +212,7 @@ class DietPlanData {
                 "✓ Rapid initial weight loss",
                 "✓ Reduced cravings",
                 "✓ Improved metabolic markers"
-            ],
-            recipes:
-                Recipe(
-                    name: "High-Protein Chicken Quinoa Bowl",
-                    ingredients: [
-                        "6oz chicken breast",
-                        "1 cup cooked quinoa",
-                        "1 cup broccoli florets"
-                    ]
-                )
+            ]
         ),
         DietPlan(
             id: 11,
@@ -328,16 +231,7 @@ class DietPlanData {
                 "✓ Balanced energy levels",
                 "✓ Reduced inflammation",
                 "✓ Sustainable weight management"
-            ],
-            recipes:
-                Recipe(
-                    name: "Keto Cauliflower Mac and Cheese",
-                    ingredients: [
-                        "1 large cauliflower head, cut into florets",
-                        "1 cup heavy cream",
-                        "2 cups cheddar cheese, shredded"
-                    ]
-                )
+            ]
         ),
         DietPlan(
             id: 12,
@@ -356,16 +250,7 @@ class DietPlanData {
                 "✓ Heart-healthy approach",
                 "✓ Teaches healthy eating habits",
                 "✓ Sustainable results"
-            ],
-            recipes:
-                Recipe(
-                    name: "Paleo Beef and Vegetable Stir-Fry",
-                    ingredients: [
-                        "1 lb grass-fed beef strips",
-                        "2 bell peppers, sliced",
-                        "1 zucchini, sliced"
-                    ]
-                )
+            ]
         ),
         DietPlan(
             id: 13,
@@ -384,16 +269,7 @@ class DietPlanData {
                 "✓ Flexible approach",
                 "✓ Health benefits of vegetarianism",
                 "✓ Easier to maintain long-term"
-            ],
-            recipes:
-                Recipe(
-                    name: "Paleo Beef and Vegetable Stir-Fry",
-                    ingredients: [
-                        "1 lb grass-fed beef strips",
-                        "2 bell peppers, sliced",
-                        "1 zucchini, sliced"
-                    ]
-                )
+            ]
         ),
         DietPlan(
             id: 14,
@@ -412,16 +288,7 @@ class DietPlanData {
                 "✓ Identifies food sensitivities",
                 "✓ Resets eating habits",
                 "✓ Reduces inflammation"
-            ],
-            recipes:
-                Recipe(
-                    name: "Paleo Beef and Vegetable Stir-Fry",
-                    ingredients: [
-                        "1 lb grass-fed beef strips",
-                        "2 bell peppers, sliced",
-                        "1 zucchini, sliced"
-                    ]
-                )
+            ]
         ),
         DietPlan(
             id: 15,
@@ -440,16 +307,7 @@ class DietPlanData {
                 "✓ Flexible food choices",
                 "✓ Community support",
                 "✓ Teaches portion control"
-            ],
-            recipes:
-                Recipe(
-                    name: "Keto Cauliflower Mac and Cheese",
-                    ingredients: [
-                        "1 large cauliflower head, cut into florets",
-                        "1 cup heavy cream",
-                        "2 cups cheddar cheese, shredded"
-                    ]
-                )
+            ]
         ),
         DietPlan(
             id: 16,
@@ -468,16 +326,7 @@ class DietPlanData {
                 "✓ Promotes muscle growth",
                 "✓ Increases strength & endurance",
                 "✓ Healthy weight gain"
-            ],
-            recipes:
-                Recipe(
-                    name: "High-Protein Chicken Quinoa Bowl",
-                    ingredients: [
-                        "6oz chicken breast",
-                        "1 cup cooked quinoa",
-                        "1 cup broccoli florets"
-                    ]
-                )
+            ]
         ),
         DietPlan(
             id: 17,
@@ -496,16 +345,7 @@ class DietPlanData {
                 "✓ Maximizes muscle gains",
                 "✓ Supports intense workouts",
                 "✓ Prevents fat accumulation"
-            ],
-            recipes:
-                Recipe(
-                    name: "Paleo Beef and Vegetable Stir-Fry",
-                    ingredients: [
-                        "1 lb grass-fed beef strips",
-                        "2 bell peppers, sliced",
-                        "1 zucchini, sliced"
-                    ]
-                )
+            ]
         ),
         DietPlan(
             id: 18,
@@ -524,16 +364,7 @@ class DietPlanData {
                 "✓ Healthy calorie surplus",
                 "✓ Nutrient-rich foods",
                 "✓ Sustainable weight gain"
-            ],
-            recipes:
-                Recipe(
-                    name: "Paleo Beef and Vegetable Stir-Fry",
-                    ingredients: [
-                        "1 lb grass-fed beef strips",
-                        "2 bell peppers, sliced",
-                        "1 zucchini, sliced"
-                    ]
-                )
+            ]
         ),
         DietPlan(
             id: 19,
@@ -552,16 +383,7 @@ class DietPlanData {
                 "✓ Fuels intense training",
                 "✓ Optimizes recovery",
                 "✓ Lean muscle growth"
-            ],
-            recipes:
-                Recipe(
-                    name: "High-Protein Chicken Quinoa Bowl",
-                    ingredients: [
-                        "6oz chicken breast",
-                        "1 cup cooked quinoa",
-                        "1 cup broccoli florets"
-                    ]
-                )
+            ]
         ),
         DietPlan(
             id: 20,
@@ -580,16 +402,7 @@ class DietPlanData {
                 "✓ Lean muscle development",
                 "✓ Minimal fat gain",
                 "✓ Balanced macronutrients"
-            ],
-            recipes:
-                Recipe(
-                    name: "High-Protein Chicken Quinoa Bowl",
-                    ingredients: [
-                        "6oz chicken breast",
-                        "1 cup cooked quinoa",
-                        "1 cup broccoli florets"
-                    ]
-                )
+            ]
         )
     ]
     
