@@ -1,0 +1,472 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="23727" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23721"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Settings-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController storyboardIdentifier="SettingsViewC" id="BYZ-38-t0r" customClass="SettingsVC" customModule="LifeHub" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Qhd-hZ-8Nh">
+                                <rect key="frame" x="0.0" y="118" width="393" height="666"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vUN-kp-3ea">
+                                        <rect key="frame" x="0.0" y="0.0" width="393" height="800"/>
+                                        <subviews>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="profile-view">
+                                                <rect key="frame" x="20" y="20" width="353" height="80"/>
+                                                <subviews>
+                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="person.circle.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="profile-image">
+                                                        <rect key="frame" x="15" y="15.666666666666668" width="50" height="48.666666666666657"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="50" id="profile-img-height"/>
+                                                            <constraint firstAttribute="width" constant="50" id="profile-img-width"/>
+                                                        </constraints>
+                                                    </imageView>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="User Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="username-label">
+                                                        <rect key="frame" x="80" y="20" width="258" height="21"/>
+                                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="[email]" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="email-label">
+                                                        <rect key="frame" x="80" y="45" width="258" height="17"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                        <color key="textColor" systemColor="secondaryLabelColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                                <color key="backgroundColor" systemColor="secondarySystemBackgroundColor"/>
+                                                <constraints>
+                                                    <constraint firstItem="email-label" firstAttribute="leading" secondItem="username-label" secondAttribute="leading" id="email-leading"/>
+                                                    <constraint firstItem="email-label" firstAttribute="top" secondItem="username-label" secondAttribute="bottom" constant="4" id="email-top"/>
+                                                    <constraint firstItem="email-label" firstAttribute="trailing" secondItem="username-label" secondAttribute="trailing" id="email-trailing"/>
+                                                    <constraint firstItem="profile-image" firstAttribute="centerY" secondItem="profile-view" secondAttribute="centerY" id="profile-image-centerY"/>
+                                                    <constraint firstItem="profile-image" firstAttribute="leading" secondItem="profile-view" secondAttribute="leading" constant="15" id="profile-image-leading"/>
+                                                    <constraint firstAttribute="height" constant="80" id="profile-view-height"/>
+                                                    <constraint firstItem="username-label" firstAttribute="leading" secondItem="profile-image" secondAttribute="trailing" constant="15" id="username-leading"/>
+                                                    <constraint firstItem="username-label" firstAttribute="top" secondItem="profile-view" secondAttribute="top" constant="20" id="username-top"/>
+                                                    <constraint firstAttribute="trailing" secondItem="username-label" secondAttribute="trailing" constant="15" id="username-trailing"/>
+                                                </constraints>
+                                            </view>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="APP SETTINGS" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="app-settings-header">
+                                                <rect key="frame" x="20" y="120" width="353" height="16"/>
+                                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="13"/>
+                                                <color key="textColor" systemColor="secondaryLabelColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dark-mode-view">
+                                                <rect key="frame" x="20" y="146" width="353" height="50"/>
+                                                <subviews>
+                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="moon.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="dark-mode-icon">
+                                                        <rect key="frame" x="15" y="15.999999999999996" width="20" height="18.333333333333332"/>
+                                                        <color key="tintColor" systemColor="systemBlueColor"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="20" id="dark-icon-h"/>
+                                                            <constraint firstAttribute="width" constant="20" id="dark-icon-w"/>
+                                                        </constraints>
+                                                    </imageView>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Dark Mode" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dark-mode-label">
+                                                        <rect key="frame" x="50" y="15" width="224" height="20"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="dark-mode-switch">
+                                                        <rect key="frame" x="289" y="9.6666666666666856" width="51" height="31"/>
+                                                        <connections>
+                                                            <action selector="darkModeToggled:" destination="BYZ-38-t0r" eventType="valueChanged" id="dark-mode-action"/>
+                                                        </connections>
+                                                    </switch>
+                                                </subviews>
+                                                <color key="backgroundColor" systemColor="secondarySystemBackgroundColor"/>
+                                                <constraints>
+                                                    <constraint firstItem="dark-mode-icon" firstAttribute="centerY" secondItem="dark-mode-view" secondAttribute="centerY" id="dark-icon-centerY"/>
+                                                    <constraint firstItem="dark-mode-icon" firstAttribute="leading" secondItem="dark-mode-view" secondAttribute="leading" constant="15" id="dark-icon-lead"/>
+                                                    <constraint firstItem="dark-mode-label" firstAttribute="centerY" secondItem="dark-mode-view" secondAttribute="centerY" id="dark-label-centerY"/>
+                                                    <constraint firstItem="dark-mode-label" firstAttribute="leading" secondItem="dark-mode-icon" secondAttribute="trailing" constant="15" id="dark-label-lead"/>
+                                                    <constraint firstAttribute="height" constant="50" id="dark-mode-view-height"/>
+                                                    <constraint firstItem="dark-mode-switch" firstAttribute="centerY" secondItem="dark-mode-view" secondAttribute="centerY" id="dark-switch-centerY"/>
+                                                    <constraint firstItem="dark-mode-switch" firstAttribute="leading" secondItem="dark-mode-label" secondAttribute="trailing" constant="15" id="dark-switch-lead"/>
+                                                    <constraint firstAttribute="trailing" secondItem="dark-mode-switch" secondAttribute="trailing" constant="15" id="dark-switch-trail"/>
+                                                </constraints>
+                                            </view>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="notifications-view">
+                                                <rect key="frame" x="20" y="206" width="353" height="50"/>
+                                                <subviews>
+                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bell.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="notifications-icon">
+                                                        <rect key="frame" x="15" y="15.333333333333332" width="20" height="19.333333333333339"/>
+                                                        <color key="tintColor" systemColor="systemOrangeColor"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="20" id="notif-icon-h"/>
+                                                            <constraint firstAttribute="width" constant="20" id="notif-icon-w"/>
+                                                        </constraints>
+                                                    </imageView>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Notifications" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="notifications-label">
+                                                        <rect key="frame" x="50" y="15" width="224" height="20"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="notifications-switch">
+                                                        <rect key="frame" x="289" y="9.6666666666666856" width="51" height="31"/>
+                                                        <connections>
+                                                            <action selector="notificationsToggled:" destination="BYZ-38-t0r" eventType="valueChanged" id="notif-action"/>
+                                                        </connections>
+                                                    </switch>
+                                                </subviews>
+                                                <color key="backgroundColor" systemColor="secondarySystemBackgroundColor"/>
+                                                <constraints>
+                                                    <constraint firstItem="notifications-icon" firstAttribute="centerY" secondItem="notifications-view" secondAttribute="centerY" id="notif-icon-centerY"/>
+                                                    <constraint firstItem="notifications-icon" firstAttribute="leading" secondItem="notifications-view" secondAttribute="leading" constant="15" id="notif-icon-lead"/>
+                                                    <constraint firstItem="notifications-label" firstAttribute="centerY" secondItem="notifications-view" secondAttribute="centerY" id="notif-label-centerY"/>
+                                                    <constraint firstItem="notifications-label" firstAttribute="leading" secondItem="notifications-icon" secondAttribute="trailing" constant="15" id="notif-label-lead"/>
+                                                    <constraint firstItem="notifications-switch" firstAttribute="centerY" secondItem="notifications-view" secondAttribute="centerY" id="notif-switch-centerY"/>
+                                                    <constraint firstItem="notifications-switch" firstAttribute="leading" secondItem="notifications-label" secondAttribute="trailing" constant="15" id="notif-switch-lead"/>
+                                                    <constraint firstAttribute="trailing" secondItem="notifications-switch" secondAttribute="trailing" constant="15" id="notif-switch-trail"/>
+                                                    <constraint firstAttribute="height" constant="50" id="notifications-view-height"/>
+                                                </constraints>
+                                            </view>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="DATA MANAGEMENT" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="data-header">
+                                                <rect key="frame" x="20" y="276" width="353" height="16"/>
+                                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="13"/>
+                                                <color key="textColor" systemColor="secondaryLabelColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="export-data-button">
+                                                <rect key="frame" x="20" y="302" width="353" height="50"/>
+                                                <color key="backgroundColor" systemColor="secondarySystemBackgroundColor"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="50" id="export-btn-height"/>
+                                                </constraints>
+                                                <inset key="contentEdgeInsets" minX="15" minY="0.0" maxX="15" maxY="0.0"/>
+                                                <state key="normal">
+                                                    <color key="titleColor" systemColor="labelColor"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="exportDataTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="export-action"/>
+                                                </connections>
+                                            </button>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="square.and.arrow.up" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="export-icon">
+                                                <rect key="frame" x="35" y="315.33333333333331" width="20" height="21.666666666666686"/>
+                                                <color key="tintColor" systemColor="systemGreenColor"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="20" id="export-icon-h"/>
+                                                    <constraint firstAttribute="width" constant="20" id="export-icon-w"/>
+                                                </constraints>
+                                            </imageView>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Export Data" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="export-label">
+                                                <rect key="frame" x="70" y="317" width="288" height="20"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="delete-data-button">
+                                                <rect key="frame" x="20" y="362" width="353" height="50"/>
+                                                <color key="backgroundColor" systemColor="secondarySystemBackgroundColor"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="50" id="delete-btn-height"/>
+                                                </constraints>
+                                                <inset key="contentEdgeInsets" minX="15" minY="0.0" maxX="15" maxY="0.0"/>
+                                                <state key="normal">
+                                                    <color key="titleColor" systemColor="systemRedColor"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="deleteAllDataTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="delete-action"/>
+                                                </connections>
+                                            </button>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="trash.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="delete-icon">
+                                                <rect key="frame" x="35" y="376.33333333333331" width="20" height="20.333333333333314"/>
+                                                <color key="tintColor" systemColor="systemRedColor"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="20" id="delete-icon-h"/>
+                                                    <constraint firstAttribute="width" constant="20" id="delete-icon-w"/>
+                                                </constraints>
+                                            </imageView>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Delete All Data" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="delete-label">
+                                                <rect key="frame" x="70" y="377" width="288" height="20"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                <color key="textColor" systemColor="systemRedColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="GENERAL" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="general-header">
+                                                <rect key="frame" x="20" y="432" width="353" height="16"/>
+                                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="13"/>
+                                                <color key="textColor" systemColor="secondaryLabelColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="privacy-button">
+                                                <rect key="frame" x="20" y="458" width="353" height="50"/>
+                                                <color key="backgroundColor" systemColor="secondarySystemBackgroundColor"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="50" id="privacy-btn-height"/>
+                                                </constraints>
+                                                <inset key="contentEdgeInsets" minX="15" minY="0.0" maxX="15" maxY="0.0"/>
+                                                <state key="normal">
+                                                    <color key="titleColor" systemColor="labelColor"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="privacyPolicyTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="privacy-action"/>
+                                                </connections>
+                                            </button>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="hand.raised.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="privacy-icon">
+                                                <rect key="frame" x="35" y="473" width="20" height="19.666666666666686"/>
+                                                <color key="tintColor" systemColor="systemBlueColor"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="20" id="privacy-icon-h"/>
+                                                    <constraint firstAttribute="width" constant="20" id="privacy-icon-w"/>
+                                                </constraints>
+                                            </imageView>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Privacy Policy" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="privacy-label">
+                                                <rect key="frame" x="70" y="473" width="263" height="20"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="chevron.right" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="privacy-chevron">
+                                                <rect key="frame" x="348" y="480" width="10" height="6.3333333333333144"/>
+                                                <color key="tintColor" systemColor="tertiaryLabelColor"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="10" id="privacy-chevron-h"/>
+                                                    <constraint firstAttribute="width" constant="10" id="privacy-chevron-w"/>
+                                                </constraints>
+                                            </imageView>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="terms-button">
+                                                <rect key="frame" x="20" y="518" width="353" height="50"/>
+                                                <color key="backgroundColor" systemColor="secondarySystemBackgroundColor"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="50" id="terms-btn-height"/>
+                                                </constraints>
+                                                <inset key="contentEdgeInsets" minX="15" minY="0.0" maxX="15" maxY="0.0"/>
+                                                <state key="normal">
+                                                    <color key="titleColor" systemColor="labelColor"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="termsOfServiceTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="terms-action"/>
+                                                </connections>
+                                            </button>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="doc.text.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="terms-icon">
+                                                <rect key="frame" x="35" y="533.33333333333337" width="20" height="19.666666666666629"/>
+                                                <color key="tintColor" systemColor="systemPurpleColor"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="20" id="terms-icon-h"/>
+                                                    <constraint firstAttribute="width" constant="20" id="terms-icon-w"/>
+                                                </constraints>
+                                            </imageView>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Terms of Service" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="terms-label">
+                                                <rect key="frame" x="70" y="533" width="263" height="20"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="chevron.right" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="terms-chevron">
+                                                <rect key="frame" x="348" y="540" width="10" height="6.3333333333332575"/>
+                                                <color key="tintColor" systemColor="tertiaryLabelColor"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="10" id="terms-chevron-h"/>
+                                                    <constraint firstAttribute="width" constant="10" id="terms-chevron-w"/>
+                                                </constraints>
+                                            </imageView>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="about-button">
+                                                <rect key="frame" x="20" y="578" width="353" height="50"/>
+                                                <color key="backgroundColor" systemColor="secondarySystemBackgroundColor"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="50" id="about-btn-height"/>
+                                                </constraints>
+                                                <inset key="contentEdgeInsets" minX="15" minY="0.0" maxX="15" maxY="0.0"/>
+                                                <state key="normal">
+                                                    <color key="titleColor" systemColor="labelColor"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="aboutTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="about-action"/>
+                                                </connections>
+                                            </button>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="info.circle.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="about-icon">
+                                                <rect key="frame" x="35" y="593.66666666666663" width="20" height="18.666666666666629"/>
+                                                <color key="tintColor" systemColor="systemTealColor"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="20" id="about-icon-h"/>
+                                                    <constraint firstAttribute="width" constant="20" id="about-icon-w"/>
+                                                </constraints>
+                                            </imageView>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="About LifeHub" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="about-label">
+                                                <rect key="frame" x="70" y="593" width="263" height="20"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="chevron.right" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="about-chevron">
+                                                <rect key="frame" x="348" y="600" width="10" height="6.3333333333332575"/>
+                                                <color key="tintColor" systemColor="tertiaryLabelColor"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="10" id="about-chevron-h"/>
+                                                    <constraint firstAttribute="width" constant="10" id="about-chevron-w"/>
+                                                </constraints>
+                                            </imageView>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Version 1.0.0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="version-label">
+                                                <rect key="frame" x="20" y="658" width="353" height="17"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <color key="textColor" systemColor="tertiaryLabelColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <constraints>
+                                            <constraint firstItem="about-button" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="20" id="about-button-leading"/>
+                                            <constraint firstItem="about-button" firstAttribute="top" secondItem="terms-button" secondAttribute="bottom" constant="10" id="about-button-top"/>
+                                            <constraint firstAttribute="trailing" secondItem="about-button" secondAttribute="trailing" constant="20" id="about-button-trailing"/>
+                                            <constraint firstItem="about-chevron" firstAttribute="centerY" secondItem="about-button" secondAttribute="centerY" id="about-chevron-centerY"/>
+                                            <constraint firstItem="about-chevron" firstAttribute="leading" secondItem="about-label" secondAttribute="trailing" constant="15" id="about-chevron-leading"/>
+                                            <constraint firstItem="about-button" firstAttribute="trailing" secondItem="about-chevron" secondAttribute="trailing" constant="15" id="about-chevron-trailing"/>
+                                            <constraint firstItem="about-icon" firstAttribute="centerY" secondItem="about-button" secondAttribute="centerY" id="about-icon-centerY"/>
+                                            <constraint firstItem="about-icon" firstAttribute="leading" secondItem="about-button" secondAttribute="leading" constant="15" id="about-icon-leading"/>
+                                            <constraint firstItem="about-label" firstAttribute="centerY" secondItem="about-button" secondAttribute="centerY" id="about-label-centerY"/>
+                                            <constraint firstItem="about-label" firstAttribute="leading" secondItem="about-icon" secondAttribute="trailing" constant="15" id="about-label-leading"/>
+                                            <constraint firstItem="app-settings-header" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="20" id="app-header-leading"/>
+                                            <constraint firstItem="app-settings-header" firstAttribute="top" secondItem="profile-view" secondAttribute="bottom" constant="20" id="app-header-top"/>
+                                            <constraint firstAttribute="trailing" secondItem="app-settings-header" secondAttribute="trailing" constant="20" id="app-header-trailing"/>
+                                            <constraint firstItem="dark-mode-view" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="20" id="dark-mode-leading"/>
+                                            <constraint firstItem="dark-mode-view" firstAttribute="top" secondItem="app-settings-header" secondAttribute="bottom" constant="10" id="dark-mode-top"/>
+                                            <constraint firstAttribute="trailing" secondItem="dark-mode-view" secondAttribute="trailing" constant="20" id="dark-mode-trailing"/>
+                                            <constraint firstItem="data-header" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="20" id="data-header-leading"/>
+                                            <constraint firstItem="data-header" firstAttribute="top" secondItem="notifications-view" secondAttribute="bottom" constant="20" id="data-header-top"/>
+                                            <constraint firstAttribute="trailing" secondItem="data-header" secondAttribute="trailing" constant="20" id="data-header-trailing"/>
+                                            <constraint firstItem="delete-data-button" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="20" id="delete-button-leading"/>
+                                            <constraint firstItem="delete-data-button" firstAttribute="top" secondItem="export-data-button" secondAttribute="bottom" constant="10" id="delete-button-top"/>
+                                            <constraint firstAttribute="trailing" secondItem="delete-data-button" secondAttribute="trailing" constant="20" id="delete-button-trailing"/>
+                                            <constraint firstItem="delete-icon" firstAttribute="centerY" secondItem="delete-data-button" secondAttribute="centerY" id="delete-icon-centerY"/>
+                                            <constraint firstItem="delete-icon" firstAttribute="leading" secondItem="delete-data-button" secondAttribute="leading" constant="15" id="delete-icon-leading"/>
+                                            <constraint firstItem="delete-label" firstAttribute="centerY" secondItem="delete-data-button" secondAttribute="centerY" id="delete-label-centerY"/>
+                                            <constraint firstItem="delete-label" firstAttribute="leading" secondItem="delete-icon" secondAttribute="trailing" constant="15" id="delete-label-leading"/>
+                                            <constraint firstItem="delete-data-button" firstAttribute="trailing" secondItem="delete-label" secondAttribute="trailing" constant="15" id="delete-label-trailing"/>
+                                            <constraint firstItem="export-data-button" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="20" id="export-button-leading"/>
+                                            <constraint firstItem="export-data-button" firstAttribute="top" secondItem="data-header" secondAttribute="bottom" constant="10" id="export-button-top"/>
+                                            <constraint firstAttribute="trailing" secondItem="export-data-button" secondAttribute="trailing" constant="20" id="export-button-trailing"/>
+                                            <constraint firstItem="export-icon" firstAttribute="centerY" secondItem="export-data-button" secondAttribute="centerY" id="export-icon-centerY"/>
+                                            <constraint firstItem="export-icon" firstAttribute="leading" secondItem="export-data-button" secondAttribute="leading" constant="15" id="export-icon-leading"/>
+                                            <constraint firstItem="export-label" firstAttribute="centerY" secondItem="export-data-button" secondAttribute="centerY" id="export-label-centerY"/>
+                                            <constraint firstItem="export-label" firstAttribute="leading" secondItem="export-icon" secondAttribute="trailing" constant="15" id="export-label-leading"/>
+                                            <constraint firstItem="export-data-button" firstAttribute="trailing" secondItem="export-label" secondAttribute="trailing" constant="15" id="export-label-trailing"/>
+                                            <constraint firstItem="general-header" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="20" id="general-header-leading"/>
+                                            <constraint firstItem="general-header" firstAttribute="top" secondItem="delete-data-button" secondAttribute="bottom" constant="20" id="general-header-top"/>
+                                            <constraint firstAttribute="trailing" secondItem="general-header" secondAttribute="trailing" constant="20" id="general-header-trailing"/>
+                                            <constraint firstItem="notifications-view" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="20" id="notifications-leading"/>
+                                            <constraint firstItem="notifications-view" firstAttribute="top" secondItem="dark-mode-view" secondAttribute="bottom" constant="10" id="notifications-top"/>
+                                            <constraint firstAttribute="trailing" secondItem="notifications-view" secondAttribute="trailing" constant="20" id="notifications-trailing"/>
+                                            <constraint firstItem="privacy-button" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="20" id="privacy-button-leading"/>
+                                            <constraint firstItem="privacy-button" firstAttribute="top" secondItem="general-header" secondAttribute="bottom" constant="10" id="privacy-button-top"/>
+                                            <constraint firstAttribute="trailing" secondItem="privacy-button" secondAttribute="trailing" constant="20" id="privacy-button-trailing"/>
+                                            <constraint firstItem="privacy-chevron" firstAttribute="centerY" secondItem="privacy-button" secondAttribute="centerY" id="privacy-chevron-centerY"/>
+                                            <constraint firstItem="privacy-chevron" firstAttribute="leading" secondItem="privacy-label" secondAttribute="trailing" constant="15" id="privacy-chevron-leading"/>
+                                            <constraint firstItem="privacy-button" firstAttribute="trailing" secondItem="privacy-chevron" secondAttribute="trailing" constant="15" id="privacy-chevron-trailing"/>
+                                            <constraint firstItem="privacy-icon" firstAttribute="centerY" secondItem="privacy-button" secondAttribute="centerY" id="privacy-icon-centerY"/>
+                                            <constraint firstItem="privacy-icon" firstAttribute="leading" secondItem="privacy-button" secondAttribute="leading" constant="15" id="privacy-icon-leading"/>
+                                            <constraint firstItem="privacy-label" firstAttribute="centerY" secondItem="privacy-button" secondAttribute="centerY" id="privacy-label-centerY"/>
+                                            <constraint firstItem="privacy-label" firstAttribute="leading" secondItem="privacy-icon" secondAttribute="trailing" constant="15" id="privacy-label-leading"/>
+                                            <constraint firstItem="profile-view" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="20" id="profile-leading"/>
+                                            <constraint firstItem="profile-view" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="20" id="profile-top"/>
+                                            <constraint firstAttribute="trailing" secondItem="profile-view" secondAttribute="trailing" constant="20" id="profile-trailing"/>
+                                            <constraint firstItem="terms-button" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="20" id="terms-button-leading"/>
+                                            <constraint firstItem="terms-button" firstAttribute="top" secondItem="privacy-button" secondAttribute="bottom" constant="10" id="terms-button-top"/>
+                                            <constraint firstAttribute="trailing" secondItem="terms-button" secondAttribute="trailing" constant="20" id="terms-button-trailing"/>
+                                            <constraint firstItem="terms-chevron" firstAttribute="centerY" secondItem="terms-button" secondAttribute="centerY" id="terms-chevron-centerY"/>
+                                            <constraint firstItem="terms-chevron" firstAttribute="leading" secondItem="terms-label" secondAttribute="trailing" constant="15" id="terms-chevron-leading"/>
+                                            <constraint firstItem="terms-button" firstAttribute="trailing" secondItem="terms-chevron" secondAttribute="trailing" constant="15" id="terms-chevron-trailing"/>
+                                            <constraint firstItem="terms-icon" firstAttribute="centerY" secondItem="terms-button" secondAttribute="centerY" id="terms-icon-centerY"/>
+                                            <constraint firstItem="terms-icon" firstAttribute="leading" secondItem="terms-button" secondAttribute="leading" constant="15" id="terms-icon-leading"/>
+                                            <constraint firstItem="terms-label" firstAttribute="centerY" secondItem="terms-button" secondAttribute="centerY" id="terms-label-centerY"/>
+                                            <constraint firstItem="terms-label" firstAttribute="leading" secondItem="terms-icon" secondAttribute="trailing" constant="15" id="terms-label-leading"/>
+                                            <constraint firstAttribute="bottom" secondItem="version-label" secondAttribute="bottom" constant="125" id="version-bottom"/>
+                                            <constraint firstItem="version-label" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="20" id="version-leading"/>
+                                            <constraint firstItem="version-label" firstAttribute="top" secondItem="about-button" secondAttribute="bottom" constant="30" id="version-top"/>
+                                            <constraint firstAttribute="trailing" secondItem="version-label" secondAttribute="trailing" constant="20" id="version-trailing"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="vUN-kp-3ea" secondAttribute="bottom" id="content-bottom"/>
+                                    <constraint firstItem="vUN-kp-3ea" firstAttribute="leading" secondItem="Qhd-hZ-8Nh" secondAttribute="leading" id="content-leading"/>
+                                    <constraint firstItem="vUN-kp-3ea" firstAttribute="top" secondItem="Qhd-hZ-8Nh" secondAttribute="top" id="content-top"/>
+                                    <constraint firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="content-trailing"/>
+                                    <constraint firstItem="vUN-kp-3ea" firstAttribute="width" secondItem="Qhd-hZ-8Nh" secondAttribute="width" id="content-width"/>
+                                </constraints>
+                            </scrollView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="Qhd-hZ-8Nh" secondAttribute="bottom" id="scroll-bottom"/>
+                            <constraint firstItem="Qhd-hZ-8Nh" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="scroll-leading"/>
+                            <constraint firstItem="Qhd-hZ-8Nh" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="scroll-top"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Qhd-hZ-8Nh" secondAttribute="trailing" id="scroll-trailing"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Settings" id="nav-item"/>
+                    <connections>
+                        <outlet property="darkModeSwitch" destination="dark-mode-switch" id="dark-mode-outlet"/>
+                        <outlet property="emailLabel" destination="email-label" id="email-outlet"/>
+                        <outlet property="notificationsSwitch" destination="notifications-switch" id="notifications-outlet"/>
+                        <outlet property="usernameLabel" destination="username-label" id="username-outlet"/>
+                        <outlet property="versionLabel" destination="version-label" id="version-outlet"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzz" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="20" y="84"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="bell.fill" catalog="system" width="123" height="128"/>
+        <image name="chevron.right" catalog="system" width="97" height="128"/>
+        <image name="doc.text.fill" catalog="system" width="115" height="128"/>
+        <image name="hand.raised.fill" catalog="system" width="128" height="128"/>
+        <image name="info.circle.fill" catalog="system" width="128" height="123"/>
+        <image name="moon.fill" catalog="system" width="128" height="125"/>
+        <image name="person.circle.fill" catalog="system" width="128" height="123"/>
+        <image name="square.and.arrow.up" catalog="system" width="110" height="128"/>
+        <image name="trash.fill" catalog="system" width="117" height="128"/>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="secondaryLabelColor">
+            <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="secondarySystemBackgroundColor">
+            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemBlueColor">
+            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemGreenColor">
+            <color red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemOrangeColor">
+            <color red="1" green="0.58431372549019611" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemPurpleColor">
+            <color red="0.68627450980392157" green="0.32156862745098042" blue="0.87058823529411766" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemRedColor">
+            <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemTealColor">
+            <color red="0.18823529411764706" green="0.69019607843137254" blue="0.7803921568627451" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="tertiaryLabelColor">
+            <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.29803921568627451" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>
