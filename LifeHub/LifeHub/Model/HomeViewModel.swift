@@ -8,6 +8,7 @@
 enum HomeSections: CaseIterable {
     
     case mainHeader
+    case news
     /// Header Title(s)
     case feature
     case progress
@@ -16,6 +17,8 @@ enum HomeSections: CaseIterable {
         switch self {
         case .mainHeader:
             return "cellHeader"
+        case .news:
+            return "cellNews"
             /// Header Title(s)
         case .feature, .progress:
             return "cellHeaderTitle"
@@ -26,6 +29,8 @@ enum HomeSections: CaseIterable {
         switch self {
         case .mainHeader:
             return "Welcome to LifeHub"
+        case .news:
+            return "Latest News"
         case .feature:
             return "Features"
         case .progress:
@@ -44,10 +49,11 @@ enum Features: CaseIterable {
     case quotes
     case diet
     case badges
+    case Mood
     
     var cellIdentifier: String {
         switch self {
-        case .tasks, .habits, .wellness, .quotes, .diet, .badges:
+        case .tasks, .habits, .wellness, .quotes, .diet, .badges, .Mood:
             return "cellFeatures"
         }
     }
@@ -68,6 +74,8 @@ enum Features: CaseIterable {
             return "Diet"
         case .badges:
             return "Badges"
+        case .Mood:
+            return "Mood"
         }
     }
     
@@ -87,6 +95,8 @@ enum Features: CaseIterable {
             return "Track your diet"
         case .badges:
             return "Unlock special badges"
+        case .Mood:
+            return "Track your mood"
         }
     }
     
@@ -106,7 +116,8 @@ enum Features: CaseIterable {
             return "pencil"
         case .badges:
             return "star.fill"
-
+        case .Mood:
+            return "moon"
         }
     }
 }
@@ -135,4 +146,5 @@ class HomeViewModel {
     var arrFeatures: [Features] = Features.allCases
     var arrProgressSections: [ProgressSection] = ProgressSection.allCases
     var intakeRecords: [WaterIntake] = []
+    var newsArticles:NewsArticle?
 }

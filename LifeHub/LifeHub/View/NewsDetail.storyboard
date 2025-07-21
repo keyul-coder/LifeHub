@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeArea="YES" colorMatched="YES" initialViewController="NewsDetailVC">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21679"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--News Detail View Controller-->
+        <scene sceneID="NewsDetailScene">
+            <objects>
+                <viewController id="NewsDetailVC" customClass="NewsDetailViewController" customModule="LifeHub" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="NewsDetailView">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MainScrollView">
+                                <rect key="frame" x="0.0" y="59" width="393" height="759"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ContentView">
+                                        <rect key="frame" x="0.0" y="0.0" width="393" height="800"/>
+                                        <subviews>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ArticleImageView">
+                                                <rect key="frame" x="0.0" y="0.0" width="393" height="250"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="250" id="ImageHeight"/>
+                                                </constraints>
+                                            </imageView>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BackButton">
+                                                <rect key="frame" x="16" y="59" width="44" height="44"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="44" id="BackButtonWidth"/>
+                                                    <constraint firstAttribute="height" constant="44" id="BackButtonHeight"/>
+                                                </constraints>
+                                                <state key="normal" title="Button"/>
+                                                <buttonConfiguration key="configuration" style="plain" image="chevron.left" catalog="system" title="">
+                                                    <backgroundConfiguration key="background">
+                                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                    </backgroundConfiguration>
+                                                    <color key="baseForegroundColor" systemColor="labelColor"/>
+                                                </buttonConfiguration>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                        <integer key="value" value="22"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="backButtonTapped:" destination="NewsDetailVC" eventType="touchUpInside" id="BackButtonAction"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ShareButton">
+                                                <rect key="frame" x="333" y="59" width="44" height="44"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="44" id="ShareButtonWidth"/>
+                                                    <constraint firstAttribute="height" constant="44" id="ShareButtonHeight"/>
+                                                </constraints>
+                                                <state key="normal" title="Button"/>
+                                                <buttonConfiguration key="configuration" style="plain" image="square.and.arrow.up" catalog="system" title="">
+                                                    <backgroundConfiguration key="background">
+                                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                    </backgroundConfiguration>
+                                                    <color key="baseForegroundColor" systemColor="labelColor"/>
+                                                </buttonConfiguration>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                        <integer key="value" value="22"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="shareButtonTapped:" destination="NewsDetailVC" eventType="touchUpInside" id="ShareButtonAction"/>
+                                                </connections>
+                                            </button>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TextContentView">
+                                                <rect key="frame" x="16" y="266" width="361" height="518"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="News Title" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TitleLabel">
+                                                        <rect key="frame" x="0.0" y="0.0" width="361" height="29"/>
+                                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
+                                                        <color key="textColor" systemColor="labelColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Published Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DateLabel">
+                                                        <rect key="frame" x="0.0" y="37" width="361" height="17"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                        <color key="textColor" systemColor="secondaryLabelColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SeparatorView">
+                                                        <rect key="frame" x="0.0" y="70" width="361" height="1"/>
+                                                        <color key="backgroundColor" systemColor="separatorColor"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="1" id="SeparatorHeight"/>
+                                                        </constraints>
+                                                    </view>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Article Description" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DescriptionLabel">
+                                                        <rect key="frame" x="0.0" y="87" width="361" height="20.333333333333329"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <color key="textColor" systemColor="labelColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ReadFullButton">
+                                                        <rect key="frame" x="0.0" y="463" width="361" height="55"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="55" id="ReadButtonHeight"/>
+                                                        </constraints>
+                                                        <state key="normal" title="Button"/>
+                                                        <buttonConfiguration key="configuration" style="filled" title="Read Full Article">
+                                                            <fontDescription key="titleFontDescription" type="boldSystem" pointSize="18"/>
+                                                            <color key="baseBackgroundColor" systemColor="systemBlueColor"/>
+                                                        </buttonConfiguration>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                                <integer key="value" value="12"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                        </userDefinedRuntimeAttributes>
+                                                        <connections>
+                                                            <action selector="readFullArticleButtonTapped:" destination="NewsDetailVC" eventType="touchUpInside" id="ReadButtonAction"/>
+                                                        </connections>
+                                                    </button>
+                                                </subviews>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                <constraints>
+                                                    <constraint firstItem="TitleLabel" firstAttribute="leading" secondItem="TextContentView" secondAttribute="leading" id="TitleLeading"/>
+                                                    <constraint firstAttribute="trailing" secondItem="TitleLabel" secondAttribute="trailing" id="TitleTrailing"/>
+                                                    <constraint firstItem="DateLabel" firstAttribute="top" secondItem="TitleLabel" secondAttribute="bottom" constant="8" id="DateTop"/>
+                                                    <constraint firstItem="DateLabel" firstAttribute="leading" secondItem="TextContentView" secondAttribute="leading" id="DateLeading"/>
+                                                    <constraint firstAttribute="trailing" secondItem="DateLabel" secondAttribute="trailing" id="DateTrailing"/>
+                                                    <constraint firstItem="SeparatorView" firstAttribute="top" secondItem="DateLabel" secondAttribute="bottom" constant="16" id="SeparatorTop"/>
+                                                    <constraint firstItem="SeparatorView" firstAttribute="leading" secondItem="TextContentView" secondAttribute="leading" id="SeparatorLeading"/>
+                                                    <constraint firstAttribute="trailing" secondItem="SeparatorView" secondAttribute="trailing" id="SeparatorTrailing"/>
+                                                    <constraint firstItem="DescriptionLabel" firstAttribute="top" secondItem="SeparatorView" secondAttribute="bottom" constant="16" id="DescriptionTop"/>
+                                                    <constraint firstItem="DescriptionLabel" firstAttribute="leading" secondItem="TextContentView" secondAttribute="leading" id="DescriptionLeading"/>
+                                                    <constraint firstAttribute="trailing" secondItem="DescriptionLabel" secondAttribute="trailing" id="DescriptionTrailing"/>
+                                                    <constraint firstItem="TitleLabel" firstAttribute="top" secondItem="TextContentView" secondAttribute="top" id="TitleTop"/>
+                                                    <constraint firstAttribute="bottom" secondItem="ReadFullButton" secondAttribute="bottom" id="ReadButtonBottom"/>
+                                                    <constraint firstItem="ReadFullButton" firstAttribute="leading" secondItem="TextContentView" secondAttribute="leading" id="ReadButtonLeading"/>
+                                                    <constraint firstAttribute="trailing" secondItem="ReadFullButton" secondAttribute="trailing" id="ReadButtonTrailing"/>
+                                                </constraints>
+                                            </view>
+                                        </subviews>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <constraints>
+                                            <constraint firstItem="ArticleImageView" firstAttribute="leading" secondItem="ContentView" secondAttribute="leading" id="ImageLeading"/>
+                                            <constraint firstAttribute="trailing" secondItem="ArticleImageView" secondAttribute="trailing" id="ImageTrailing"/>
+                                            <constraint firstItem="ArticleImageView" firstAttribute="top" secondItem="ContentView" secondAttribute="top" id="ImageTop"/>
+                                            <constraint firstItem="BackButton" firstAttribute="leading" secondItem="ContentView" secondAttribute="leading" constant="16" id="BackButtonLeading"/>
+                                            <constraint firstItem="BackButton" firstAttribute="top" secondItem="ContentView" secondAttribute="top" constant="59" id="BackButtonTop"/>
+                                            <constraint firstAttribute="trailing" secondItem="ShareButton" secondAttribute="trailing" constant="16" id="ShareButtonTrailing"/>
+                                            <constraint firstItem="ShareButton" firstAttribute="top" secondItem="ContentView" secondAttribute="top" constant="59" id="ShareButtonTop"/>
+                                            <constraint firstItem="TextContentView" firstAttribute="leading" secondItem="ContentView" secondAttribute="leading" constant="16" id="TextContentLeading"/>
+                                            <constraint firstAttribute="trailing" secondItem="TextContentView" secondAttribute="trailing" constant="16" id="TextContentTrailing"/>
+                                            <constraint firstItem="TextContentView" firstAttribute="top" secondItem="ArticleImageView" secondAttribute="bottom" constant="16" id="TextContentTop"/>
+                                            <constraint firstAttribute="bottom" secondItem="TextContentView" secondAttribute="bottom" constant="16" id="TextContentBottom"/>
+                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="800" id="ContentMinHeight"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstItem="ContentView" firstAttribute="leading" secondItem="MainScrollView" secondAttribute="leading" id="ContentLeading"/>
+                                    <constraint firstAttribute="trailing" secondItem="ContentView" secondAttribute="trailing" id="ContentTrailing"/>
+                                    <constraint firstItem="ContentView" firstAttribute="top" secondItem="MainScrollView" secondAttribute="top" id="ContentTop"/>
+                                    <constraint firstAttribute="bottom" secondItem="ContentView" secondAttribute="bottom" id="ContentBottom"/>
+                                    <constraint firstItem="ContentView" firstAttribute="width" secondItem="MainScrollView" secondAttribute="width" id="ContentWidth"/>
+                                </constraints>
+                            </scrollView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="MainScrollView" firstAttribute="leading" secondItem="SafeArea" secondAttribute="leading" id="ScrollLeading"/>
+                            <constraint firstAttribute="bottom" secondItem="MainScrollView" secondAttribute="bottom" id="ScrollBottom"/>
+                            <constraint firstItem="MainScrollView" firstAttribute="top" secondItem="SafeArea" secondAttribute="top" id="ScrollTop"/>
+                            <constraint firstItem="SafeArea" firstAttribute="trailing" secondItem="MainScrollView" secondAttribute="trailing" id="ScrollTrailing"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="SafeArea"/>
+                    </view>
+                    <connections>
+                        <outlet property="articleDescriptionLabel" destination="DescriptionLabel" id="DescriptionOutlet"/>
+                        <outlet property="articleImageView" destination="ArticleImageView" id="ImageOutlet"/>
+                        <outlet property="articleTitleLabel" destination="TitleLabel" id="TitleOutlet"/>
+                        <outlet property="publishedDateLabel" destination="DateLabel" id="DateOutlet"/>
+                        <outlet property="readFullArticleButton" destination="ReadFullButton" id="ReadButtonOutlet"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="FirstResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="20" y="4"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="chevron.left" catalog="system" width="97" height="128"/>
+        <image name="square.and.arrow.up" catalog="system" width="115" height="128"/>
+        <systemColor name="labelColor">
+            <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="secondaryLabelColor">
+            <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="separatorColor">
+            <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.28999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemBackgroundColor">
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemBlueColor">
+            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>
