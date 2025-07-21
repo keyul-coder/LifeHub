@@ -33,7 +33,7 @@
             <objects>
                 <viewController storyboardIdentifier="WaterTrackerVC" hidesBottomBarWhenPushed="YES" id="O1W-xk-Ab2" customClass="WaterTrackerVC" customModule="LifeHub" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="BPh-Th-Qb7">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="1200"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="V5x-6r-8UD" customClass="FSCalendar">
@@ -67,19 +67,13 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <color key="tintColor" systemColor="systemBackgroundColor"/>
                             </stackView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="SlG-zt-Yj4">
                                 <rect key="frame" x="0.0" y="682.66666666666663" width="393" height="419.33333333333337"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <color key="sectionIndexColor" systemColor="labelColor"/>
-                                <color key="sectionIndexBackgroundColor" systemColor="systemBackgroundColor"/>
-                                <color key="sectionIndexTrackingBackgroundColor" systemColor="systemBackgroundColor"/>
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pva-Af-2pe">
                                 <rect key="frame" x="20" y="1130" width="353" height="50"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="bbO-dW-Tvy"/>
                                 </constraints>
@@ -92,7 +86,6 @@
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="dN0-aa-NUp"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <color key="tintColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="dN0-aa-NUp" firstAttribute="trailing" secondItem="SlG-zt-Yj4" secondAttribute="trailing" id="4p7-yu-KfE"/>
                             <constraint firstItem="V5x-6r-8UD" firstAttribute="leading" secondItem="dN0-aa-NUp" secondAttribute="leading" id="8Pb-5o-ebz"/>
@@ -129,9 +122,6 @@
     </scenes>
     <resources>
         <image name="house" catalog="system" width="128" height="104"/>
-        <systemColor name="labelColor">
-            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

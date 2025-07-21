@@ -83,6 +83,8 @@ class WaterTrackerVC: UIViewController {
     //MARK: - Action Methods -
     @IBAction func btnDrinkTapped(_ sender: UIButton) {
         saveWaterIntake(amount: 200)
+        scheduleWaterReminderNotification()
+        showAddedAlert()
     }
     
     // MARK: - Core Data
@@ -121,6 +123,41 @@ class WaterTrackerVC: UIViewController {
         DispatchQueue.main.async {
             self.waterProgressView.setProgress(CGFloat(total) / goal)
         }
+    }
+    
+    // MARK: - Schedule notification for Water Intake Reminder
+    private func scheduleWaterReminderNotification() {
+        let content = UNMutableNotificationContent()
+        content.title = "💧 Time to Drink Water"
+        content.body = "Stay hydrated! Don't forget to drink water."
+        content.sound = .default
+
+        // Trigger after 1 hour (3600 seconds)
+        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 3600, repeats: false)
+
+        let request = UNNotificationRequest(
+            identifier: UUID().uuidString,
+            content: content,
+            trigger: trigger
+        )
+
+        UNUserNotificationCenter.current().add(request) { error in
+            if let error = error {
+                print("🔴 Notification error: \(error.localizedDescription)")
+            } else {
+                print("✅ Water reminder scheduled for 1 hour later")
+            }
+        }
+    }
+    
+    private func showAddedAlert() {
+        let alert = UIAlertController(
+            title: "✅ Great Job!",
+            message: "You've added 200 ml of water to your daily goal. Keep it up and stay hydrated!",
+            preferredStyle: .alert
+        )
+        alert.addAction(UIAlertAction(title: "Got it!", style: .default, handler: nil))
+        present(alert, animated: true)
     }
 }
 

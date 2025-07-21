@@ -2,7 +2,7 @@
 //  CoreDataStack.swift
 //  LifeHub
 //
-//  Created by Gaurav Harkhani on 04/06/25.
+//  Created by Smit Patel on 04/06/25.
 //
 
 import Foundation

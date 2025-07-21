@@ -7,6 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		25FA734D2E2C99C300C0A0B6 /* FirebaseAI in Frameworks */ = {isa = PBXBuildFile; productRef = 25FA734C2E2C99C300C0A0B6 /* FirebaseAI */; };
+		25FA734F2E2C99C300C0A0B6 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 25FA734E2E2C99C300C0A0B6 /* FirebaseAnalytics */; };
+		25FA73512E2C99C300C0A0B6 /* FirebaseAnalyticsCore in Frameworks */ = {isa = PBXBuildFile; productRef = 25FA73502E2C99C300C0A0B6 /* FirebaseAnalyticsCore */; };
+		25FA73532E2C99C300C0A0B6 /* FirebaseAnalyticsIdentitySupport in Frameworks */ = {isa = PBXBuildFile; productRef = 25FA73522E2C99C300C0A0B6 /* FirebaseAnalyticsIdentitySupport */; };
+		25FA73552E2C99C300C0A0B6 /* FirebaseAppCheck in Frameworks */ = {isa = PBXBuildFile; productRef = 25FA73542E2C99C300C0A0B6 /* FirebaseAppCheck */; };
+		25FA73592E2CA05D00C0A0B6 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 25FA73582E2CA05D00C0A0B6 /* FirebaseAuth */; };
+		25FA735B2E2CA05D00C0A0B6 /* FirebaseCore in Frameworks */ = {isa = PBXBuildFile; productRef = 25FA735A2E2CA05D00C0A0B6 /* FirebaseCore */; };
 		B957FB282DF4266800789251 /* FSCalendar in Frameworks */ = {isa = PBXBuildFile; productRef = B957FB272DF4266800789251 /* FSCalendar */; };
 /* End PBXBuildFile section */
 
@@ -41,6 +48,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				B957FB282DF4266800789251 /* FSCalendar in Frameworks */,
+				25FA73532E2C99C300C0A0B6 /* FirebaseAnalyticsIdentitySupport in Frameworks */,
+				25FA734D2E2C99C300C0A0B6 /* FirebaseAI in Frameworks */,
+				25FA734F2E2C99C300C0A0B6 /* FirebaseAnalytics in Frameworks */,
+				25FA73552E2C99C300C0A0B6 /* FirebaseAppCheck in Frameworks */,
+				25FA73592E2CA05D00C0A0B6 /* FirebaseAuth in Frameworks */,
+				25FA735B2E2CA05D00C0A0B6 /* FirebaseCore in Frameworks */,
+				25FA73512E2C99C300C0A0B6 /* FirebaseAnalyticsCore in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -84,6 +98,13 @@
 			name = LifeHub;
 			packageProductDependencies = (
 				B957FB272DF4266800789251 /* FSCalendar */,
+				25FA734C2E2C99C300C0A0B6 /* FirebaseAI */,
+				25FA734E2E2C99C300C0A0B6 /* FirebaseAnalytics */,
+				25FA73502E2C99C300C0A0B6 /* FirebaseAnalyticsCore */,
+				25FA73522E2C99C300C0A0B6 /* FirebaseAnalyticsIdentitySupport */,
+				25FA73542E2C99C300C0A0B6 /* FirebaseAppCheck */,
+				25FA73582E2CA05D00C0A0B6 /* FirebaseAuth */,
+				25FA735A2E2CA05D00C0A0B6 /* FirebaseCore */,
 			);
 			productName = LifeHub;
 			productReference = CA88B10F2DDA7B4E00BEF129 /* LifeHub.app */;
@@ -115,6 +136,7 @@
 			minimizedProjectReferenceProxies = 1;
 			packageReferences = (
 				B957FB262DF4266800789251 /* XCRemoteSwiftPackageReference "FSCalendar" */,
+				25FA734B2E2C99C300C0A0B6 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = CA88B1102DDA7B4E00BEF129 /* Products */;
@@ -354,6 +376,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		25FA734B2E2C99C300C0A0B6 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 12.0.0;
+			};
+		};
 		B957FB262DF4266800789251 /* XCRemoteSwiftPackageReference "FSCalendar" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/WenchaoD/FSCalendar.git";
@@ -365,6 +395,41 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		25FA734C2E2C99C300C0A0B6 /* FirebaseAI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 25FA734B2E2C99C300C0A0B6 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAI;
+		};
+		25FA734E2E2C99C300C0A0B6 /* FirebaseAnalytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 25FA734B2E2C99C300C0A0B6 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalytics;
+		};
+		25FA73502E2C99C300C0A0B6 /* FirebaseAnalyticsCore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 25FA734B2E2C99C300C0A0B6 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalyticsCore;
+		};
+		25FA73522E2C99C300C0A0B6 /* FirebaseAnalyticsIdentitySupport */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 25FA734B2E2C99C300C0A0B6 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalyticsIdentitySupport;
+		};
+		25FA73542E2C99C300C0A0B6 /* FirebaseAppCheck */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 25FA734B2E2C99C300C0A0B6 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAppCheck;
+		};
+		25FA73582E2CA05D00C0A0B6 /* FirebaseAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 25FA734B2E2C99C300C0A0B6 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAuth;
+		};
+		25FA735A2E2CA05D00C0A0B6 /* FirebaseCore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 25FA734B2E2C99C300C0A0B6 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseCore;
+		};
 		B957FB272DF4266800789251 /* FSCalendar */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = B957FB262DF4266800789251 /* XCRemoteSwiftPackageReference "FSCalendar" */;
