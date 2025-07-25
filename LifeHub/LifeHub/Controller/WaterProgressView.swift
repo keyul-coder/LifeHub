@@ -8,6 +8,7 @@
 import UIKit
 
 class WaterProgressView: UIView {
+    
     private let shapeLayer = CAShapeLayer()
     private let backgroundLayer = CAShapeLayer()
 
