@@ -147,4 +147,8 @@ class HomeViewModel {
     var arrProgressSections: [ProgressSection] = ProgressSection.allCases
     var intakeRecords: [WaterIntake] = []
     var newsArticles:NewsArticle?
+    var todayTasks: [ToDoTask] = []
+    var completedTasksCount: Int {
+        return todayTasks.filter { $0.isCompleted }.count
+    }
 }
