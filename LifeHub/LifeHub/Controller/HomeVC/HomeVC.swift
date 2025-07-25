@@ -26,7 +26,14 @@ class HomeVC: ParentVC {
         super.viewWillAppear(animated)
         fetchWaterIntakeData()
         updateWaterIntakeDisplay()
+        fetchTodayTasks()
     }
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        // Refresh data when returning from other screens
+        fetchTodayTasks()
+    }
+    
     
     private func updateWaterIntakeDisplay() {
         // Update the main header cell with current water intake, streak, and tasks
@@ -79,6 +86,24 @@ extension HomeVC {
             print("Fetch error: \(error)")
         }
     }
+    func fetchTodayTasks() {
+        // Load tasks from UserDefaults (since ToDoTask is a struct, not Core Data)
+        if let data = UserDefaults.standard.data(forKey: "SavedTasks"),
+           let allTasks = try? JSONDecoder().decode([ToDoTask].self, from: data) {
+            
+            let today = Calendar.current.startOfDay(for: Date())
+            let tomorrow = Calendar.current.date(byAdding: .day, value: 1, to: today)!
+            
+            viewModel.todayTasks = allTasks.filter { task in
+                let taskDate = Calendar.current.startOfDay(for: task.date)
+                return taskDate >= today && taskDate < tomorrow
+            }
+        } else {
+            viewModel.todayTasks = []
+        }
+        collectionView.reloadData()
+    }
+    
     
     private func fetchNews() {
         NewsService().fetchTopHeadlines { [weak self] articles in
@@ -151,16 +176,20 @@ extension HomeVC: UICollectionViewDelegateFlowLayout, UICollectionViewDelegate, 
                 cell.parentVC = self
                 cell.type = self.viewModel.arrFeatures[indexPath.row]
                 return cell
+            
             case .progress:
-                if self.viewModel.arrProgressSections[indexPath.row].cellIdentifier == "cellWaterIntake" {
-                    let cell = collectionView.dequeueReusableCell(withReuseIdentifier: self.viewModel.arrProgressSections[indexPath.row].cellIdentifier, for: indexPath) as! WaterIntakeCell
-                    cell.configure(with: viewModel.intakeRecords)
-                    return cell
-                } else {
-                    let cell = collectionView.dequeueReusableCell(withReuseIdentifier: self.viewModel.arrProgressSections[indexPath.row].cellIdentifier, for: indexPath)
-                    return cell
-                }
-               
+            if self.viewModel.arrProgressSections[indexPath.row].cellIdentifier == "cellWaterIntake" {
+                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: self.viewModel.arrProgressSections[indexPath.row].cellIdentifier, for: indexPath) as! WaterIntakeCell
+                cell.configure(with: viewModel.intakeRecords)
+                return cell
+            } else if self.viewModel.arrProgressSections[indexPath.row].cellIdentifier == "cellTaskProgress" {
+                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: self.viewModel.arrProgressSections[indexPath.row].cellIdentifier, for: indexPath) as! TaskProgressCell
+                cell.configure(with: viewModel.todayTasks)
+                return cell
+            } else {
+                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: self.viewModel.arrProgressSections[indexPath.row].cellIdentifier, for: indexPath)
+                return cell
+            }
         }
     }
     
@@ -258,6 +287,7 @@ extension HomeVC: UICollectionViewDelegateFlowLayout, UICollectionViewDelegate, 
             case .waterIntakeCell:
                 self.performSegue(withIdentifier: "segueWaterTrackerVC", sender: nil)
             case .taskProgressCell:
+                self.performSegue(withIdentifier: "segueTaskViewController", sender: nil)
                 break
             }
         }
