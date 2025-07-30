@@ -49,7 +49,10 @@ class HomeVC: ParentVC {
             let _ = segue.destination as! Goal
         } else if segue.identifier == "segueQuotesTabBar" {
             let _ = segue.destination as! UITabBarController
+        }else if segue.identifier == "segueMoodTracker" {
+            let _ = segue.destination as! MoodViewController
         }
+
     }
 }
 
@@ -251,7 +254,12 @@ extension HomeVC: UICollectionViewDelegateFlowLayout, UICollectionViewDelegate, 
                 }
             case .Mood:
                 /// Perfom Segue or whatever that is required.
-                break
+          
+                let storyboard = UIStoryboard(name: "Mood", bundle: nil)
+                if let moodVC = storyboard.instantiateViewController(withIdentifier: "MoodVC") as? MoodViewController {
+                    navigationController?.pushViewController(moodVC, animated: true)
+                }
+
             }
         case .progress:
             switch self.viewModel.arrProgressSections[indexPath.row] {

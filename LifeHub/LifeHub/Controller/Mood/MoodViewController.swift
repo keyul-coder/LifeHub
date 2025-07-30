@@ -103,7 +103,7 @@ class MoodViewController: UIViewController, UITableViewDataSource, UITableViewDe
     }
     
     @objc private func moodSelected(_ sender: UIButton) {
-        let moods = ["Terrible", "Bad", "Neutral", "Good", "Excellent"]
+        let moods = ["Terrible 😭", "Bad 😞", "Neutral 😐", "Good 🙂", "Excellent 😁"]
         selectedMood = moods[sender.tag]
         updateMoodSelectionUI(selectedButton: sender)
         save.isEnabled = true
