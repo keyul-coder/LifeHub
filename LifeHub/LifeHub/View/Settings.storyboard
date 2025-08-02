@@ -21,7 +21,7 @@
                                 <rect key="frame" x="0.0" y="118" width="393" height="666"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vUN-kp-3ea">
-                                        <rect key="frame" x="0.0" y="0.0" width="393" height="800"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="393" height="896"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="profile-view">
                                                 <rect key="frame" x="20" y="20" width="353" height="80"/>
@@ -59,14 +59,48 @@
                                                     <constraint firstAttribute="trailing" secondItem="username-label" secondAttribute="trailing" constant="15" id="username-trailing"/>
                                                 </constraints>
                                             </view>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="APP SETTINGS" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="app-settings-header">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ACCOUNT" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="account-header">
                                                 <rect key="frame" x="20" y="120" width="353" height="16"/>
                                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="13"/>
                                                 <color key="textColor" systemColor="secondaryLabelColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dark-mode-view">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sign-out-button">
                                                 <rect key="frame" x="20" y="146" width="353" height="50"/>
+                                                <color key="backgroundColor" systemColor="secondarySystemBackgroundColor"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="50" id="sign-out-btn-height"/>
+                                                </constraints>
+                                                <inset key="contentEdgeInsets" minX="15" minY="0.0" maxX="15" maxY="0.0"/>
+                                                <state key="normal">
+                                                    <color key="titleColor" systemColor="systemRedColor"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="signOutTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="sign-out-action"/>
+                                                </connections>
+                                            </button>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="rectangle.portrait.and.arrow.right" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="sign-out-icon">
+                                                <rect key="frame" x="35" y="159.33333333333331" width="20" height="21.666666666666686"/>
+                                                <color key="tintColor" systemColor="systemRedColor"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="20" id="sign-out-icon-h"/>
+                                                    <constraint firstAttribute="width" constant="20" id="sign-out-icon-w"/>
+                                                </constraints>
+                                            </imageView>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sign Out" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sign-out-label">
+                                                <rect key="frame" x="70" y="161" width="288" height="20"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                <color key="textColor" systemColor="systemRedColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="APP SETTINGS" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="app-settings-header">
+                                                <rect key="frame" x="20" y="216" width="353" height="16"/>
+                                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="13"/>
+                                                <color key="textColor" systemColor="secondaryLabelColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dark-mode-view">
+                                                <rect key="frame" x="20" y="242" width="353" height="50"/>
                                                 <subviews>
                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="moon.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="dark-mode-icon">
                                                         <rect key="frame" x="15" y="15.999999999999996" width="20" height="18.333333333333332"/>
@@ -102,7 +136,7 @@
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="notifications-view">
-                                                <rect key="frame" x="20" y="206" width="353" height="50"/>
+                                                <rect key="frame" x="20" y="302" width="353" height="50"/>
                                                 <subviews>
                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bell.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="notifications-icon">
                                                         <rect key="frame" x="15" y="15.333333333333332" width="20" height="19.333333333333339"/>
@@ -138,13 +172,13 @@
                                                 </constraints>
                                             </view>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="DATA MANAGEMENT" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="data-header">
-                                                <rect key="frame" x="20" y="276" width="353" height="16"/>
+                                                <rect key="frame" x="20" y="372" width="353" height="16"/>
                                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="13"/>
                                                 <color key="textColor" systemColor="secondaryLabelColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="export-data-button">
-                                                <rect key="frame" x="20" y="302" width="353" height="50"/>
+                                                <rect key="frame" x="20" y="398" width="353" height="50"/>
                                                 <color key="backgroundColor" systemColor="secondarySystemBackgroundColor"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="50" id="export-btn-height"/>
@@ -158,7 +192,7 @@
                                                 </connections>
                                             </button>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="square.and.arrow.up" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="export-icon">
-                                                <rect key="frame" x="35" y="315.33333333333331" width="20" height="21.666666666666686"/>
+                                                <rect key="frame" x="35" y="411.33333333333331" width="20" height="21.666666666666686"/>
                                                 <color key="tintColor" systemColor="systemGreenColor"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="20" id="export-icon-h"/>
@@ -166,13 +200,13 @@
                                                 </constraints>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Export Data" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="export-label">
-                                                <rect key="frame" x="70" y="317" width="288" height="20"/>
+                                                <rect key="frame" x="70" y="413" width="288" height="20"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="delete-data-button">
-                                                <rect key="frame" x="20" y="362" width="353" height="50"/>
+                                                <rect key="frame" x="20" y="458" width="353" height="50"/>
                                                 <color key="backgroundColor" systemColor="secondarySystemBackgroundColor"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="50" id="delete-btn-height"/>
@@ -186,7 +220,7 @@
                                                 </connections>
                                             </button>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="trash.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="delete-icon">
-                                                <rect key="frame" x="35" y="376.33333333333331" width="20" height="20.333333333333314"/>
+                                                <rect key="frame" x="35" y="472.33333333333331" width="20" height="20.333333333333314"/>
                                                 <color key="tintColor" systemColor="systemRedColor"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="20" id="delete-icon-h"/>
@@ -194,19 +228,19 @@
                                                 </constraints>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Delete All Data" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="delete-label">
-                                                <rect key="frame" x="70" y="377" width="288" height="20"/>
+                                                <rect key="frame" x="70" y="473" width="288" height="20"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                 <color key="textColor" systemColor="systemRedColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="GENERAL" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="general-header">
-                                                <rect key="frame" x="20" y="432" width="353" height="16"/>
+                                                <rect key="frame" x="20" y="528" width="353" height="16"/>
                                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="13"/>
                                                 <color key="textColor" systemColor="secondaryLabelColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="privacy-button">
-                                                <rect key="frame" x="20" y="458" width="353" height="50"/>
+                                                <rect key="frame" x="20" y="554" width="353" height="50"/>
                                                 <color key="backgroundColor" systemColor="secondarySystemBackgroundColor"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="50" id="privacy-btn-height"/>
@@ -220,7 +254,7 @@
                                                 </connections>
                                             </button>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="hand.raised.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="privacy-icon">
-                                                <rect key="frame" x="35" y="473" width="20" height="19.666666666666686"/>
+                                                <rect key="frame" x="35" y="569" width="20" height="19.666666666666686"/>
                                                 <color key="tintColor" systemColor="systemBlueColor"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="20" id="privacy-icon-h"/>
@@ -228,13 +262,13 @@
                                                 </constraints>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Privacy Policy" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="privacy-label">
-                                                <rect key="frame" x="70" y="473" width="263" height="20"/>
+                                                <rect key="frame" x="70" y="569" width="263" height="20"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="chevron.right" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="privacy-chevron">
-                                                <rect key="frame" x="348" y="480" width="10" height="6.3333333333333144"/>
+                                                <rect key="frame" x="348" y="576" width="10" height="6.3333333333333144"/>
                                                 <color key="tintColor" systemColor="tertiaryLabelColor"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="10" id="privacy-chevron-h"/>
@@ -332,8 +366,19 @@
                                             <constraint firstItem="about-icon" firstAttribute="leading" secondItem="about-button" secondAttribute="leading" constant="15" id="about-icon-leading"/>
                                             <constraint firstItem="about-label" firstAttribute="centerY" secondItem="about-button" secondAttribute="centerY" id="about-label-centerY"/>
                                             <constraint firstItem="about-label" firstAttribute="leading" secondItem="about-icon" secondAttribute="trailing" constant="15" id="about-label-leading"/>
+                                            <constraint firstItem="account-header" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="20" id="account-header-leading"/>
+                                            <constraint firstItem="account-header" firstAttribute="top" secondItem="profile-view" secondAttribute="bottom" constant="20" id="account-header-top"/>
+                                            <constraint firstAttribute="trailing" secondItem="account-header" secondAttribute="trailing" constant="20" id="account-header-trailing"/>
+                                            <constraint firstItem="sign-out-button" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="20" id="sign-out-button-leading"/>
+                                            <constraint firstItem="sign-out-button" firstAttribute="top" secondItem="account-header" secondAttribute="bottom" constant="10" id="sign-out-button-top"/>
+                                            <constraint firstAttribute="trailing" secondItem="sign-out-button" secondAttribute="trailing" constant="20" id="sign-out-button-trailing"/>
+                                            <constraint firstItem="sign-out-icon" firstAttribute="centerY" secondItem="sign-out-button" secondAttribute="centerY" id="sign-out-icon-centerY"/>
+                                            <constraint firstItem="sign-out-icon" firstAttribute="leading" secondItem="sign-out-button" secondAttribute="leading" constant="15" id="sign-out-icon-leading"/>
+                                            <constraint firstItem="sign-out-label" firstAttribute="centerY" secondItem="sign-out-button" secondAttribute="centerY" id="sign-out-label-centerY"/>
+                                            <constraint firstItem="sign-out-label" firstAttribute="leading" secondItem="sign-out-icon" secondAttribute="trailing" constant="15" id="sign-out-label-leading"/>
+                                            <constraint firstItem="sign-out-button" firstAttribute="trailing" secondItem="sign-out-label" secondAttribute="trailing" constant="15" id="sign-out-label-trailing"/>
                                             <constraint firstItem="app-settings-header" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="20" id="app-header-leading"/>
-                                            <constraint firstItem="app-settings-header" firstAttribute="top" secondItem="profile-view" secondAttribute="bottom" constant="20" id="app-header-top"/>
+                                            <constraint firstItem="app-settings-header" firstAttribute="top" secondItem="sign-out-button" secondAttribute="bottom" constant="20" id="app-header-top"/>
                                             <constraint firstAttribute="trailing" secondItem="app-settings-header" secondAttribute="trailing" constant="20" id="app-header-trailing"/>
                                             <constraint firstItem="dark-mode-view" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="20" id="dark-mode-leading"/>
                                             <constraint firstItem="dark-mode-view" firstAttribute="top" secondItem="app-settings-header" secondAttribute="bottom" constant="10" id="dark-mode-top"/>
@@ -433,6 +478,7 @@
         <image name="info.circle.fill" catalog="system" width="128" height="123"/>
         <image name="moon.fill" catalog="system" width="128" height="125"/>
         <image name="person.circle.fill" catalog="system" width="128" height="123"/>
+        <image name="rectangle.portrait.and.arrow.right" catalog="system" width="110" height="128"/>
         <image name="square.and.arrow.up" catalog="system" width="110" height="128"/>
         <image name="trash.fill" catalog="system" width="117" height="128"/>
         <systemColor name="labelColor">

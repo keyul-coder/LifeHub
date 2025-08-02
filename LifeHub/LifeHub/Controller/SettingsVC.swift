@@ -143,6 +143,20 @@ class SettingsVC: UIViewController {
         }
     }
     
+    @IBAction func signOutTapped(_ sender: UIButton) {
+        let alert = UIAlertController(title: "Sign Out",
+                                    message: "Are you sure you want to sign out?",
+                                    preferredStyle: .alert)
+        
+        alert.addAction(UIAlertAction(title: "Sign Out", style: .destructive) { _ in
+            self.performSignOut()
+        })
+        
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel))
+        
+        present(alert, animated: true)
+    }
+    
     @IBAction func aboutTapped(_ sender: UIButton) {
         let aboutMessage = """
         LifeHub - Your Personal Life Management App
@@ -240,6 +254,38 @@ class SettingsVC: UIViewController {
         
         showAlert(title: "Data Deleted", message: "All your data has been successfully deleted.") { _ in
             // Optionally navigate back to main screen or restart app
+        }
+    }
+    
+    private func performSignOut() {
+        // Clear user session data
+        UserDefaults.standard.removeObject(forKey: "userName")
+        UserDefaults.standard.removeObject(forKey: "userEmail")
+        UserDefaults.standard.removeObject(forKey: "isUserLoggedIn")
+        
+        // Clear any authentication tokens if using Firebase Auth or similar
+        // Auth.auth().signOut() // Uncomment if using Firebase Auth
+        
+        // Reset UI to default state
+        usernameLabel.text = "User Name"
+        emailLabel.text = "[email]"
+        
+        // Navigate to authentication screen
+        navigateToAuthScreen()
+        
+        showAlert(title: "Signed Out", message: "You have been successfully signed out.")
+    }
+    
+    private func navigateToAuthScreen() {
+        // Navigate to the authentication screen
+        let storyboard = UIStoryboard(name: "Auth", bundle: nil)
+        if let authVC = storyboard.instantiateInitialViewController() {
+            // Set as root view controller
+            if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
+               let window = windowScene.windows.first {
+                window.rootViewController = authVC
+                window.makeKeyAndVisible()
+            }
         }
     }
     
