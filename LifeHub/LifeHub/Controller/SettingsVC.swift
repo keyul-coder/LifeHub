@@ -66,7 +66,7 @@ class SettingsVC: UIViewController, UIDocumentPickerDelegate {
     }
     
     @IBAction func exportDataTapped(_ sender: UIButton) {
-        exportData()
+        showExportOptions()
     }
     
     @IBAction func importDataTapped(_ sender: UIButton) {
@@ -81,10 +81,61 @@ class SettingsVC: UIViewController, UIDocumentPickerDelegate {
         let alert = UIAlertController(title: "Sign Out", message: "Are you sure you want to sign out?", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "Cancel", style: .cancel))
         alert.addAction(UIAlertAction(title: "Sign Out", style: .destructive) { _ in
-            // Perform sign out logic here if needed
-            self.showAlert(title: "Signed Out", message: "You have been signed out successfully.")
+            self.performSignOut()
         })
         present(alert, animated: true)
+    }
+    
+    private func performSignOut() {
+        do {
+            // Sign out from Firebase
+            try FirebaseManager.shared.signOut()
+            
+            // Clear any local user data
+            UserDefaults.standard.removeObject(forKey: "userName")
+            UserDefaults.standard.removeObject(forKey: "userEmail")
+            UserDefaults.standard.removeObject(forKey: "isUserLoggedIn")
+            
+            // Navigate to login screen
+            navigateToLoginScreen()
+            
+        } catch {
+            showAlert(title: "Sign Out Error", message: "Failed to sign out: \(error.localizedDescription)")
+        }
+    }
+    
+    private func navigateToLoginScreen() {
+        DispatchQueue.main.async {
+            // Get the current window
+            guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
+                  let window = windowScene.windows.first else {
+                self.showAlert(title: "Signed Out", message: "You have been signed out successfully. Please restart the app to log in again.")
+                return
+            }
+            
+            // Use the same pattern as SceneDelegate
+            let storyboard = UIStoryboard(name: "Auth", bundle: nil)
+            if let loginVC = storyboard.instantiateViewController(withIdentifier: "LoginVC") as? UIViewController {
+                let navigationController = UINavigationController(rootViewController: loginVC)
+                window.rootViewController = navigationController
+                window.makeKeyAndVisible()
+                
+                // Add smooth transition animation
+                UIView.transition(with: window, duration: 0.5, options: .transitionCrossDissolve, animations: nil)
+            } else {
+                // Fallback: try initial view controller
+                if let authViewController = storyboard.instantiateInitialViewController() {
+                    window.rootViewController = authViewController
+                    window.makeKeyAndVisible()
+                    
+                    // Add transition animation
+                    UIView.transition(with: window, duration: 0.5, options: .transitionCrossDissolve, animations: nil)
+                } else {
+                    // Last resort: show alert
+                    self.showAlert(title: "Signed Out", message: "You have been signed out successfully. Please restart the app to log in again.")
+                }
+            }
+        }
     }
     
     @IBAction func privacyPolicyTapped(_ sender: UIButton) {
@@ -116,7 +167,42 @@ class SettingsVC: UIViewController, UIDocumentPickerDelegate {
     }
     
     // MARK: - Data Management
-    private func exportData() {
+    private func showExportOptions() {
+        let alert = UIAlertController(title: "Export Data", message: "Choose export method:", preferredStyle: .alert)
+        
+        alert.addAction(UIAlertAction(title: "Export to Firebase", style: .default) { _ in
+            self.exportToFirebase()
+        })
+        
+        alert.addAction(UIAlertAction(title: "Export to File", style: .default) { _ in
+            self.exportToFile()
+        })
+        
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel))
+        
+        present(alert, animated: true)
+    }
+    
+    private func exportToFirebase() {
+        // Show loading
+        let loadingAlert = UIAlertController(title: "Exporting to Firebase", message: "Please wait...", preferredStyle: .alert)
+        present(loadingAlert, animated: true)
+        
+        // Sync all data to Firebase
+        SyncManager.shared.forceSyncToFirebase { [weak self] success in
+            DispatchQueue.main.async {
+                loadingAlert.dismiss(animated: true) {
+                    if success {
+                        self?.showAlert(title: "Export Successful", message: "All your data has been successfully exported to Firebase!")
+                    } else {
+                        self?.showAlert(title: "Export Failed", message: "Failed to export data to Firebase. Please check your internet connection and try again.")
+                    }
+                }
+            }
+        }
+    }
+    
+    private func exportToFile() {
         let tasks = TaskManager.shared.loadTasks()
         let waterRecords = WaterIntakeManager.shared.getAllRecords()
         let wellnessEntries = WellnessDiaryModel.loadDiaryEntries()
@@ -270,13 +356,13 @@ class SettingsVC: UIViewController, UIDocumentPickerDelegate {
     
     private func confirmDeleteAllData() {
         let alert = UIAlertController(
-            title: "Delete All Data",
-            message: "This will permanently delete all your app data including tasks, water records, wellness entries, and badges. This action cannot be undone.",
+            title: "Delete Local Data",
+            message: "This will delete all data from your device, but your Firebase backup will remain safe. You can restore your data anytime using 'Import from Firebase'. Continue?",
             preferredStyle: .alert
         )
         
         alert.addAction(UIAlertAction(title: "Cancel", style: .cancel))
-        alert.addAction(UIAlertAction(title: "Delete All", style: .destructive) { _ in
+        alert.addAction(UIAlertAction(title: "Delete Local Data", style: .destructive) { _ in
             self.performDataDeletion()
         })
         
@@ -284,15 +370,15 @@ class SettingsVC: UIViewController, UIDocumentPickerDelegate {
     }
     
     private func performDataDeletion() {
-        DataClearingManager.shared.clearAllAppData(includeFirebase: true) { [weak self] (success: Bool) in
+        DataClearingManager.shared.clearAllAppData(includeFirebase: false) { [weak self] (success: Bool) in
             DispatchQueue.main.async {
                 if success {
-                    self?.showAlert(title: "Data Deleted", message: "All app data has been successfully deleted.")
+                    self?.showAlert(title: "Local Data Deleted", message: "All local app data has been successfully deleted. Your Firebase backup remains safe and can be restored using 'Import from Firebase'.")
                     
                     // Reset UI to default state
                     self?.loadSettings()
                 } else {
-                    self?.showAlert(title: "Deletion Failed", message: "Some data could not be deleted. Please try again.")
+                    self?.showAlert(title: "Deletion Failed", message: "Some local data could not be deleted. Please try again.")
                 }
             }
         }
