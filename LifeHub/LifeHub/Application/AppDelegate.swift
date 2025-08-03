@@ -22,17 +22,24 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Configure Firebase
         FirebaseApp.configure()
         
+        // Initialize Firebase sync
+        initializeFirebaseSync()
+        
         // 🔔 Request permission for local notifications
-        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge]) { granted, error in
-            if let error = error {
-                print("Notification permission error: \(error)")
-            } else {
-                print("Notification permission granted: \(granted)")
+        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge]) { _, _ in }
+        UNUserNotificationCenter.current().delegate = self
+
+        return true
+    }
+    
+    private func initializeFirebaseSync() {
+        // Ensure user is authenticated and start sync
+        SyncManager.shared.ensureUserAuthenticated { authenticated in
+            if authenticated {
+                // Enable real-time sync
+                SyncManager.shared.enableRealtimeSync()
             }
         }
-        UNUserNotificationCenter.current().delegate = self
-        print(Auth.auth().currentUser?.uid ?? "" + "User")
-        return true
     }
 
     // MARK: UISceneSession Lifecycle

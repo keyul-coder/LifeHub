@@ -34,8 +34,51 @@ class CoreDataStack {
             do {
                 try context.save()
             } catch {
-                print("Error saving context: \(error)")
+                // Handle error silently
             }
+        }
+    }
+    
+    // MARK: - Data Deletion
+    
+    func deleteAllData() {
+        let context = persistentContainer.viewContext
+        
+        // Get all entity names from the managed object model
+        guard let entityNames = persistentContainer.managedObjectModel.entities.compactMap({ $0.name }) as [String]? else {
+            return
+        }
+        
+        // Delete all data for each entity
+        for entityName in entityNames {
+            let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: entityName)
+            let deleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
+            
+            do {
+                try context.execute(deleteRequest)
+            } catch {
+                // Handle error silently
+            }
+        }
+        
+        // Save the context to persist the deletions
+        do {
+            try context.save()
+        } catch {
+            // Handle error silently
+        }
+    }
+    
+    func deleteAllWaterIntakeData() {
+        let context = persistentContainer.viewContext
+        let deleteRequest: NSFetchRequest<NSFetchRequestResult> = WaterIntake.fetchRequest()
+        let deleteRequestBatch = NSBatchDeleteRequest(fetchRequest: deleteRequest)
+        
+        do {
+            try context.execute(deleteRequestBatch)
+            try context.save()
+        } catch {
+            // Handle error silently
         }
     }
 }

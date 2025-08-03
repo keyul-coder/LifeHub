@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import CoreData
 
 // MARK: - Badge Model
 struct Badge {
@@ -55,9 +56,21 @@ class BadgeViewController: ParentVC {
         print("🏆 BadgeViewController viewDidLoad called")
         setupUI()
         setupCollectionView()
+        setupNotifications()
         loadUserData()
         updateUI()
         print("🏆 BadgeViewController setup completed")
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        // Refresh data when view appears
+        refreshStreakData()
+        checkDailyAchievements()
+    }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self)
     }
     
     // MARK: - Setup Methods
@@ -102,9 +115,75 @@ class BadgeViewController: ParentVC {
         }
     }
     
+    private func setupNotifications() {
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(streakUpdated(_:)),
+            name: .streakUpdated,
+            object: nil
+        )
+        
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(taskCompleted(_:)),
+            name: .taskCompleted,
+            object: nil
+        )
+        
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(badgeEarned(_:)),
+            name: .badgeEarned,
+            object: nil
+        )
+    }
+    
+    @objc private func streakUpdated(_ notification: Notification) {
+        if let newStreak = notification.userInfo?["newStreak"] as? Int {
+            currentStreak = newStreak
+            DispatchQueue.main.async {
+                self.updateUI()
+                self.checkDailyAchievements()
+            }
+        }
+    }
+    
+    @objc private func taskCompleted(_ notification: Notification) {
+        DispatchQueue.main.async {
+            self.refreshStreakData()
+            self.checkDailyAchievements()
+        }
+    }
+    
+    @objc private func badgeEarned(_ notification: Notification) {
+        if let badgeName = notification.userInfo?["badgeName"] as? String {
+            DispatchQueue.main.async {
+                self.updateBadgesFromManager()
+                self.updateUI()
+                
+                // Show badge earned animation
+                if let badgeIndex = self.badges.firstIndex(where: { $0.name == badgeName }) {
+                    let indexPath = IndexPath(item: badgeIndex, section: 0)
+                    if let cell = self.collectionView.cellForItem(at: indexPath) as? BadgeCollectionViewCell {
+                        cell.animateEarned()
+                    }
+                }
+                
+                // Show alert
+                let badge = self.badges.first { $0.name == badgeName }
+                if let badge = badge {
+                    self.showBadgeEarnedAlert(badges: [badge])
+                }
+            }
+        }
+    }
+    
     private func loadUserData() {
-        // Load saved data from UserDefaults
+        // Load saved data from UserDefaults and sync with TaskManager
         currentStreak = UserDefaults.standard.integer(forKey: "currentStreak")
+        
+        // Update streak based on actual task completion
+        updateStreakFromTaskCompletion()
         
         // Load earned badges
         if let earnedBadgesData = UserDefaults.standard.data(forKey: "earnedBadges"),
@@ -199,6 +278,161 @@ class BadgeViewController: ParentVC {
         present(alert, animated: true)
     }
     
+    // MARK: - Streak Management
+    
+    private func updateStreakFromTaskCompletion() {
+        // Get current streak from TaskManager
+        let taskManagerStreak = UserDefaults.standard.integer(forKey: "currentStreak")
+        
+        // Check if we need to update streak based on task completion
+        let lastStreakUpdate = UserDefaults.standard.object(forKey: "lastStreakUpdate") as? Date
+        let today = Date()
+        
+        if let lastUpdate = lastStreakUpdate {
+            let calendar = Calendar.current
+            
+            // Check if it's a new day
+            if !calendar.isDate(lastUpdate, inSameDayAs: today) {
+                // Check if user completed tasks today
+                let todayTasksCompleted = TaskManager.shared.getTodaysCompletedTasksCount()
+                
+                if todayTasksCompleted > 0 {
+                    // User completed tasks today
+                    if calendar.isDate(lastUpdate, inSameDayAs: calendar.date(byAdding: .day, value: -1, to: today)!) {
+                        // Consecutive day - maintain/increment streak
+                        currentStreak = taskManagerStreak
+                    } else {
+                        // Gap in days - reset streak
+                        currentStreak = 1
+                        UserDefaults.standard.set(1, forKey: "currentStreak")
+                    }
+                    UserDefaults.standard.set(today, forKey: "lastStreakUpdate")
+                } else {
+                    // No tasks completed today - check if streak should be broken
+                    let daysSinceLastUpdate = calendar.dateComponents([.day], from: lastUpdate, to: today).day ?? 0
+                    if daysSinceLastUpdate > 1 {
+                        // Streak broken
+                        currentStreak = 0
+                        UserDefaults.standard.set(0, forKey: "currentStreak")
+                    }
+                }
+            } else {
+                // Same day - use current streak
+                currentStreak = taskManagerStreak
+            }
+        } else {
+            // First time - check if user has completed tasks today
+            let todayTasksCompleted = TaskManager.shared.getTodaysCompletedTasksCount()
+            if todayTasksCompleted > 0 {
+                currentStreak = 1
+                UserDefaults.standard.set(1, forKey: "currentStreak")
+                UserDefaults.standard.set(today, forKey: "lastStreakUpdate")
+            }
+        }
+    }
+    
+    func refreshStreakData() {
+        // Public method to refresh streak data when called from other view controllers
+        updateStreakFromTaskCompletion()
+        updateUI()
+        saveUserData()
+    }
+    
+    // MARK: - Achievement System
+    
+    private func checkDailyAchievements() {
+        // Use BadgeManager to check all achievements
+        BadgeManager.shared.checkAllBadges()
+        
+        // Update badges array with earned badges
+        updateBadgesFromManager()
+    }
+    
+    private func updateBadgesFromManager() {
+        let earnedBadgeNames = BadgeManager.shared.getEarnedBadges()
+        
+        // Update existing badges
+        for i in 0..<badges.count {
+            badges[i].isEarned = earnedBadgeNames.contains(badges[i].name)
+        }
+        
+        // Add any new special badges that aren't in the default list
+        let defaultBadgeNames = badges.map { $0.name }
+        let newBadgeNames = earnedBadgeNames.filter { !defaultBadgeNames.contains($0) }
+        
+        for badgeName in newBadgeNames {
+            let newBadge = createSpecialBadge(name: badgeName)
+            badges.append(newBadge)
+        }
+    }
+    
+    private func createSpecialBadge(name: String) -> Badge {
+        let iconName: String
+        let requirement: String
+        
+        switch name {
+        case "Task Starter":
+            iconName = "checkmark.circle.fill"
+            requirement = "Complete 1 task in a day"
+        case "Daily Champion":
+            iconName = "star.circle.fill"
+            requirement = "Complete 3+ tasks in a day"
+        case "Productivity Master":
+            iconName = "bolt.circle.fill"
+            requirement = "Complete 5+ tasks in a day"
+        case "Task Warrior":
+            iconName = "shield.fill"
+            requirement = "Complete 10+ tasks in a day"
+        case "Hydration Start":
+            iconName = "drop.circle.fill"
+            requirement = "Drink 1L+ water in a day"
+        case "Well Hydrated":
+            iconName = "drop.fill"
+            requirement = "Drink 2L+ water in a day"
+        case "Hydration Hero":
+            iconName = "drop.triangle.fill"
+            requirement = "Drink 2.5L+ water in a day"
+        case "Water Champion":
+            iconName = "drop.keypad.rectangle.fill"
+            requirement = "Drink 3L+ water in a day"
+        case "Mindful Moment":
+            iconName = "heart.fill"
+            requirement = "Write a wellness diary entry"
+        case "Wellness Week":
+            iconName = "heart.circle.fill"
+            requirement = "Write 7 wellness entries"
+        case "Mindful Month":
+            iconName = "heart.rectangle.fill"
+            requirement = "Write 30 wellness entries"
+        case "Wellness Guru":
+            iconName = "heart.text.square.fill"
+            requirement = "Write 100 wellness entries"
+        case "Consistent Starter":
+            iconName = "calendar.circle.fill"
+            requirement = "Complete tasks 3 days this week"
+        case "Weekly Warrior":
+            iconName = "calendar.badge.plus"
+            requirement = "Complete tasks 5 days this week"
+        case "Perfect Week":
+            iconName = "calendar.badge.checkmark"
+            requirement = "Complete tasks every day this week"
+        case "Perfect Day":
+            iconName = "sun.max.fill"
+            requirement = "Complete tasks, drink water, and write wellness entry"
+        case "Comeback Kid":
+            iconName = "arrow.up.circle.fill"
+            requirement = "Rebuild your streak after a break"
+        case "Early Bird":
+            iconName = "sunrise.fill"
+            requirement = "Complete a task before 9 AM"
+        default:
+            iconName = "star.fill"
+            requirement = "Special achievement"
+        }
+        
+        return Badge(name: name, requirement: requirement, iconName: iconName, requiredStreak: 0, isEarned: true)
+    }
+    
     // MARK: - IBActions
     @IBAction func completeStreakTapped(_ sender: UIButton) {
         // Animate button press
@@ -210,12 +444,39 @@ class BadgeViewController: ParentVC {
             }
         }
         
-        // Increment streak
-        currentStreak += 1
-        saveUserData()
+        // Check if user has actually completed tasks today
+        let todayTasksCompleted = TaskManager.shared.getTodaysCompletedTasksCount()
         
-        // Show completion feedback
-        let alert = UIAlertController(title: "Great Job!", message: "You've completed today's task and extended your streak to \(currentStreak) days!", preferredStyle: .alert)
+        if todayTasksCompleted == 0 {
+            let alert = UIAlertController(
+                title: "No Tasks Completed",
+                message: "Complete at least one task today to maintain your streak!",
+                preferredStyle: .alert
+            )
+            alert.addAction(UIAlertAction(title: "OK", style: .default))
+            present(alert, animated: true)
+            return
+        }
+        
+        // Update streak based on actual task completion
+        TaskManager.shared.updateStreakIfNeeded()
+        refreshStreakData()
+        checkDailyAchievements()
+        
+        // Get statistics for feedback
+        let stats = BadgeManager.shared.getBadgeStatistics()
+        let earnedBadges = stats["earnedBadges"] as? Int ?? 0
+        
+        // Show completion feedback with achievements
+        let message = """
+        🎉 Streak: \(currentStreak) days
+        ✅ Tasks completed today: \(todayTasksCompleted)
+        🏆 Total badges earned: \(earnedBadges)
+        
+        Keep up the great work!
+        """
+        
+        let alert = UIAlertController(title: "Great Job!", message: message, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "Continue", style: .default))
         present(alert, animated: true)
     }

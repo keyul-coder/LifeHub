@@ -21,44 +21,9 @@
                                 <rect key="frame" x="0.0" y="118" width="393" height="666"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vUN-kp-3ea">
-                                        <rect key="frame" x="0.0" y="0.0" width="393" height="896"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="393" height="956"/>
                                         <subviews>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="profile-view">
-                                                <rect key="frame" x="20" y="20" width="353" height="80"/>
-                                                <subviews>
-                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="person.circle.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="profile-image">
-                                                        <rect key="frame" x="15" y="15.666666666666668" width="50" height="48.666666666666657"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="height" constant="50" id="profile-img-height"/>
-                                                            <constraint firstAttribute="width" constant="50" id="profile-img-width"/>
-                                                        </constraints>
-                                                    </imageView>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="User Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="username-label">
-                                                        <rect key="frame" x="80" y="20" width="258" height="21"/>
-                                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
-                                                        <nil key="textColor"/>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="[email]" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="email-label">
-                                                        <rect key="frame" x="80" y="45" width="258" height="17"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                        <color key="textColor" systemColor="secondaryLabelColor"/>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
-                                                </subviews>
-                                                <color key="backgroundColor" systemColor="secondarySystemBackgroundColor"/>
-                                                <constraints>
-                                                    <constraint firstItem="email-label" firstAttribute="leading" secondItem="username-label" secondAttribute="leading" id="email-leading"/>
-                                                    <constraint firstItem="email-label" firstAttribute="top" secondItem="username-label" secondAttribute="bottom" constant="4" id="email-top"/>
-                                                    <constraint firstItem="email-label" firstAttribute="trailing" secondItem="username-label" secondAttribute="trailing" id="email-trailing"/>
-                                                    <constraint firstItem="profile-image" firstAttribute="centerY" secondItem="profile-view" secondAttribute="centerY" id="profile-image-centerY"/>
-                                                    <constraint firstItem="profile-image" firstAttribute="leading" secondItem="profile-view" secondAttribute="leading" constant="15" id="profile-image-leading"/>
-                                                    <constraint firstAttribute="height" constant="80" id="profile-view-height"/>
-                                                    <constraint firstItem="username-label" firstAttribute="leading" secondItem="profile-image" secondAttribute="trailing" constant="15" id="username-leading"/>
-                                                    <constraint firstItem="username-label" firstAttribute="top" secondItem="profile-view" secondAttribute="top" constant="20" id="username-top"/>
-                                                    <constraint firstAttribute="trailing" secondItem="username-label" secondAttribute="trailing" constant="15" id="username-trailing"/>
-                                                </constraints>
-                                            </view>
+
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ACCOUNT" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="account-header">
                                                 <rect key="frame" x="20" y="120" width="353" height="16"/>
                                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="13"/>
@@ -205,8 +170,36 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="delete-data-button">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="import-data-button">
                                                 <rect key="frame" x="20" y="458" width="353" height="50"/>
+                                                <color key="backgroundColor" systemColor="secondarySystemBackgroundColor"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="50" id="import-btn-height"/>
+                                                </constraints>
+                                                <inset key="contentEdgeInsets" minX="15" minY="0.0" maxX="15" maxY="0.0"/>
+                                                <state key="normal">
+                                                    <color key="titleColor" systemColor="labelColor"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="importDataTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="import-action"/>
+                                                </connections>
+                                            </button>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="square.and.arrow.down.on.square" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="import-icon">
+                                                <rect key="frame" x="35" y="471.33333333333331" width="20" height="21.666666666666686"/>
+                                                <color key="tintColor" systemColor="systemBlueColor"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="20" id="import-icon-h"/>
+                                                    <constraint firstAttribute="width" constant="20" id="import-icon-w"/>
+                                                </constraints>
+                                            </imageView>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Import Data" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="import-label">
+                                                <rect key="frame" x="70" y="473" width="288" height="20"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="delete-data-button">
+                                                <rect key="frame" x="20" y="518" width="353" height="50"/>
                                                 <color key="backgroundColor" systemColor="secondarySystemBackgroundColor"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="50" id="delete-btn-height"/>
@@ -220,7 +213,7 @@
                                                 </connections>
                                             </button>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="trash.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="delete-icon">
-                                                <rect key="frame" x="35" y="472.33333333333331" width="20" height="20.333333333333314"/>
+                                                <rect key="frame" x="35" y="532.33333333333331" width="20" height="20.333333333333314"/>
                                                 <color key="tintColor" systemColor="systemRedColor"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="20" id="delete-icon-h"/>
@@ -228,19 +221,19 @@
                                                 </constraints>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Delete All Data" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="delete-label">
-                                                <rect key="frame" x="70" y="473" width="288" height="20"/>
+                                                <rect key="frame" x="70" y="533" width="288" height="20"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                 <color key="textColor" systemColor="systemRedColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="GENERAL" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="general-header">
-                                                <rect key="frame" x="20" y="528" width="353" height="16"/>
+                                                <rect key="frame" x="20" y="588" width="353" height="16"/>
                                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="13"/>
                                                 <color key="textColor" systemColor="secondaryLabelColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="privacy-button">
-                                                <rect key="frame" x="20" y="554" width="353" height="50"/>
+                                                <rect key="frame" x="20" y="614" width="353" height="50"/>
                                                 <color key="backgroundColor" systemColor="secondarySystemBackgroundColor"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="50" id="privacy-btn-height"/>
@@ -367,7 +360,7 @@
                                             <constraint firstItem="about-label" firstAttribute="centerY" secondItem="about-button" secondAttribute="centerY" id="about-label-centerY"/>
                                             <constraint firstItem="about-label" firstAttribute="leading" secondItem="about-icon" secondAttribute="trailing" constant="15" id="about-label-leading"/>
                                             <constraint firstItem="account-header" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="20" id="account-header-leading"/>
-                                            <constraint firstItem="account-header" firstAttribute="top" secondItem="profile-view" secondAttribute="bottom" constant="20" id="account-header-top"/>
+                                            <constraint firstItem="account-header" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="20" id="account-header-top"/>
                                             <constraint firstAttribute="trailing" secondItem="account-header" secondAttribute="trailing" constant="20" id="account-header-trailing"/>
                                             <constraint firstItem="sign-out-button" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="20" id="sign-out-button-leading"/>
                                             <constraint firstItem="sign-out-button" firstAttribute="top" secondItem="account-header" secondAttribute="bottom" constant="10" id="sign-out-button-top"/>
@@ -387,7 +380,7 @@
                                             <constraint firstItem="data-header" firstAttribute="top" secondItem="notifications-view" secondAttribute="bottom" constant="20" id="data-header-top"/>
                                             <constraint firstAttribute="trailing" secondItem="data-header" secondAttribute="trailing" constant="20" id="data-header-trailing"/>
                                             <constraint firstItem="delete-data-button" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="20" id="delete-button-leading"/>
-                                            <constraint firstItem="delete-data-button" firstAttribute="top" secondItem="export-data-button" secondAttribute="bottom" constant="10" id="delete-button-top"/>
+                                            <constraint firstItem="delete-data-button" firstAttribute="top" secondItem="import-data-button" secondAttribute="bottom" constant="10" id="delete-button-top"/>
                                             <constraint firstAttribute="trailing" secondItem="delete-data-button" secondAttribute="trailing" constant="20" id="delete-button-trailing"/>
                                             <constraint firstItem="delete-icon" firstAttribute="centerY" secondItem="delete-data-button" secondAttribute="centerY" id="delete-icon-centerY"/>
                                             <constraint firstItem="delete-icon" firstAttribute="leading" secondItem="delete-data-button" secondAttribute="leading" constant="15" id="delete-icon-leading"/>
@@ -402,6 +395,14 @@
                                             <constraint firstItem="export-label" firstAttribute="centerY" secondItem="export-data-button" secondAttribute="centerY" id="export-label-centerY"/>
                                             <constraint firstItem="export-label" firstAttribute="leading" secondItem="export-icon" secondAttribute="trailing" constant="15" id="export-label-leading"/>
                                             <constraint firstItem="export-data-button" firstAttribute="trailing" secondItem="export-label" secondAttribute="trailing" constant="15" id="export-label-trailing"/>
+                                            <constraint firstItem="import-data-button" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="20" id="import-button-leading"/>
+                                            <constraint firstItem="import-data-button" firstAttribute="top" secondItem="export-data-button" secondAttribute="bottom" constant="10" id="import-button-top"/>
+                                            <constraint firstAttribute="trailing" secondItem="import-data-button" secondAttribute="trailing" constant="20" id="import-button-trailing"/>
+                                            <constraint firstItem="import-icon" firstAttribute="centerY" secondItem="import-data-button" secondAttribute="centerY" id="import-icon-centerY"/>
+                                            <constraint firstItem="import-icon" firstAttribute="leading" secondItem="import-data-button" secondAttribute="leading" constant="15" id="import-icon-leading"/>
+                                            <constraint firstItem="import-label" firstAttribute="centerY" secondItem="import-data-button" secondAttribute="centerY" id="import-label-centerY"/>
+                                            <constraint firstItem="import-label" firstAttribute="leading" secondItem="import-icon" secondAttribute="trailing" constant="15" id="import-label-leading"/>
+                                            <constraint firstItem="import-data-button" firstAttribute="trailing" secondItem="import-label" secondAttribute="trailing" constant="15" id="import-label-trailing"/>
                                             <constraint firstItem="general-header" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="20" id="general-header-leading"/>
                                             <constraint firstItem="general-header" firstAttribute="top" secondItem="delete-data-button" secondAttribute="bottom" constant="20" id="general-header-top"/>
                                             <constraint firstAttribute="trailing" secondItem="general-header" secondAttribute="trailing" constant="20" id="general-header-trailing"/>
@@ -418,9 +419,7 @@
                                             <constraint firstItem="privacy-icon" firstAttribute="leading" secondItem="privacy-button" secondAttribute="leading" constant="15" id="privacy-icon-leading"/>
                                             <constraint firstItem="privacy-label" firstAttribute="centerY" secondItem="privacy-button" secondAttribute="centerY" id="privacy-label-centerY"/>
                                             <constraint firstItem="privacy-label" firstAttribute="leading" secondItem="privacy-icon" secondAttribute="trailing" constant="15" id="privacy-label-leading"/>
-                                            <constraint firstItem="profile-view" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="20" id="profile-leading"/>
-                                            <constraint firstItem="profile-view" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="20" id="profile-top"/>
-                                            <constraint firstAttribute="trailing" secondItem="profile-view" secondAttribute="trailing" constant="20" id="profile-trailing"/>
+
                                             <constraint firstItem="terms-button" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="20" id="terms-button-leading"/>
                                             <constraint firstItem="terms-button" firstAttribute="top" secondItem="privacy-button" secondAttribute="bottom" constant="10" id="terms-button-top"/>
                                             <constraint firstAttribute="trailing" secondItem="terms-button" secondAttribute="trailing" constant="20" id="terms-button-trailing"/>
@@ -479,6 +478,7 @@
         <image name="moon.fill" catalog="system" width="128" height="125"/>
         <image name="person.circle.fill" catalog="system" width="128" height="123"/>
         <image name="rectangle.portrait.and.arrow.right" catalog="system" width="110" height="128"/>
+        <image name="square.and.arrow.down.on.square" catalog="system" width="110" height="128"/>
         <image name="square.and.arrow.up" catalog="system" width="110" height="128"/>
         <image name="trash.fill" catalog="system" width="117" height="128"/>
         <systemColor name="labelColor">

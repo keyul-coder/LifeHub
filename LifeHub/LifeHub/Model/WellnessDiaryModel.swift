@@ -33,12 +33,15 @@ class WellnessDiaryModel: Codable {
         }
     }
     
-    /// For Temporry Purpose Saving data inside the Userdefault.
+    /// Save diary entries locally and sync to Firebase
     class func saveDiaryEntries(_ entries: [WellnessDiaryModel]) {
         let encoder = JSONEncoder()
         if let encoded = try? encoder.encode(entries) {
             UserDefaults.standard.set(encoded, forKey: "wellnessDiaryEntries")
         }
+        
+        // Sync to Firebase
+        FirebaseManager.shared.saveWellnessDiary(entries) { _ in }
     }
     
     class func loadDiaryEntries() -> [WellnessDiaryModel] {
@@ -49,5 +52,23 @@ class WellnessDiaryModel: Codable {
             }
         }
         return []
+    }
+    
+    // MARK: - Firebase Integration
+    
+    class func syncFromFirebase(completion: @escaping (Bool) -> Void) {
+        FirebaseManager.shared.loadWellnessDiary { result in
+            switch result {
+            case .success(let entries):
+                // Save to local storage
+                let encoder = JSONEncoder()
+                if let encoded = try? encoder.encode(entries) {
+                    UserDefaults.standard.set(encoded, forKey: "wellnessDiaryEntries")
+                }
+                completion(true)
+            case .failure(_):
+                completion(false)
+            }
+        }
     }
 }

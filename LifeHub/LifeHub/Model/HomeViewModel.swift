@@ -44,7 +44,6 @@ enum HomeSections: CaseIterable {
 enum Features: CaseIterable {
     case tasks
     case habits
-//    case finances
     case wellness
     case quotes
     case diet
@@ -62,8 +61,6 @@ enum Features: CaseIterable {
         switch self {
         case .habits:
             return "Habits"
-//        case .finances:
-//            return "Finances"
         case .tasks:
             return "Tasks"
         case .wellness:
@@ -81,8 +78,6 @@ enum Features: CaseIterable {
     
     var subTitle: String {
         switch self {
-//        case .finances:
-//            return "Manage your finances here"
         case .habits:
             return "Track your daily habits"
         case .wellness:
@@ -104,8 +99,6 @@ enum Features: CaseIterable {
         switch self {
         case .habits:
             return "house"
-//        case .finances:
-//            return "dollarsign.circle"
         case .tasks:
             return "list.bullet"
         case .wellness:

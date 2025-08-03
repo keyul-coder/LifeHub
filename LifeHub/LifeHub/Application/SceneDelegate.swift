@@ -50,9 +50,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // Automatically logout user when app launches
         do {
             try Auth.auth().signOut()
-            print("User automatically logged out on app launch")
-        } catch let signOutError as NSError {
-            print("Error signing out on app launch: \(signOutError)")
+        } catch {
+            // Handle error silently
         }
     }
 
@@ -91,9 +90,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // Logout user when app goes to background
         do {
             try Auth.auth().signOut()
-            print("User automatically logged out when app went to background")
-        } catch let signOutError as NSError {
-            print("Error signing out on background: \(signOutError)")
+        } catch {
+            // Handle error silently
         }
     }
 }

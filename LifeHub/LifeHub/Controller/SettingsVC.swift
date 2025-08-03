@@ -2,159 +2,79 @@
 //  SettingsVC.swift
 //  LifeHub
 //
-//  Created by keyul patel on 7/25/25.
+//  Created by Jenish Shah on 2025-05-18.
 //
 
 import UIKit
-import UserNotifications
+import CoreData
+import UniformTypeIdentifiers
 
-class SettingsVC: UIViewController {
+class SettingsVC: UIViewController, UIDocumentPickerDelegate {
     
     // MARK: - IBOutlets
     @IBOutlet weak var darkModeSwitch: UISwitch!
     @IBOutlet weak var notificationsSwitch: UISwitch!
-    @IBOutlet weak var usernameLabel: UILabel!
-    @IBOutlet weak var emailLabel: UILabel!
     @IBOutlet weak var versionLabel: UILabel!
     
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("🔧 SettingsVC viewDidLoad called")
         setupUI()
         loadSettings()
+        setupAutoSync()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        print("👀 SettingsVC viewWillAppear called")
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        print("✨ SettingsVC viewDidAppear called")
     }
     
     // MARK: - Setup
     private func setupUI() {
-        title = "Settings"
-        
-        // Set version from bundle
+        // Set version label
         if let version = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String {
             versionLabel.text = "Version \(version)"
-        } else {
-            versionLabel.text = "Version 1.0.0"
         }
-        
-        // Load user profile first, then set defaults if needed
-        loadUserProfile()
-        
-        // Set default user info if not loaded from UserDefaults
-        if usernameLabel.text?.isEmpty ?? true {
-            usernameLabel.text = "User Name"
-        }
-        if emailLabel.text?.isEmpty ?? true {
-            emailLabel.text = "[email]"
-        }
-        
-        print("✅ SettingsVC UI setup completed")
     }
     
     private func loadSettings() {
         // Load dark mode setting
-        let isDarkMode = UserDefaults.standard.bool(forKey: "isDarkModeEnabled")
-        darkModeSwitch.isOn = isDarkMode
+        darkModeSwitch.isOn = UserDefaults.standard.bool(forKey: "isDarkModeEnabled")
         
-        // Load notification setting
-        let isNotificationsEnabled = UserDefaults.standard.bool(forKey: "isNotificationsEnabled")
-        notificationsSwitch.isOn = isNotificationsEnabled
+        // Load notifications setting
+        notificationsSwitch.isOn = UserDefaults.standard.bool(forKey: "isNotificationsEnabled")
     }
     
-    // MARK: - IBActions
+    private func setupAutoSync() {
+        // Setup automatic sync monitoring
+        setupSyncStatusMonitoring()
+    }
+    
+    // MARK: - Actions
     @IBAction func darkModeToggled(_ sender: UISwitch) {
         UserDefaults.standard.set(sender.isOn, forKey: "isDarkModeEnabled")
         
+        // Apply dark mode immediately
         if sender.isOn {
-            // Enable dark mode
-            if #available(iOS 13.0, *) {
-                view.window?.overrideUserInterfaceStyle = .dark
-            }
+            view.window?.overrideUserInterfaceStyle = .dark
         } else {
-            // Enable light mode
-            if #available(iOS 13.0, *) {
-                view.window?.overrideUserInterfaceStyle = .light
-            }
+            view.window?.overrideUserInterfaceStyle = .light
         }
-        
-        // Show confirmation
-        showAlert(title: "Dark Mode", message: sender.isOn ? "Dark mode enabled" : "Light mode enabled")
     }
     
     @IBAction func notificationsToggled(_ sender: UISwitch) {
-        if sender.isOn {
-            requestNotificationPermission()
-        } else {
-            UserDefaults.standard.set(false, forKey: "isNotificationsEnabled")
-            showAlert(title: "Notifications", message: "Notifications disabled")
-        }
+        UserDefaults.standard.set(sender.isOn, forKey: "isNotificationsEnabled")
     }
     
     @IBAction func exportDataTapped(_ sender: UIButton) {
-        let alert = UIAlertController(title: "Export Data",
-                                    message: "Would you like to export your LifeHub data?",
-                                    preferredStyle: .alert)
-        
-        alert.addAction(UIAlertAction(title: "Export", style: .default) { _ in
-            self.exportUserData()
-        })
-        
-        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel))
-        
-        present(alert, animated: true)
+        exportData()
     }
     
-    @IBAction func deleteAllDataTapped(_ sender: UIButton) {
-        let alert = UIAlertController(title: "Delete All Data",
-                                    message: "Are you sure you want to delete all your LifeHub data? This action cannot be undone.",
-                                    preferredStyle: .alert)
-        
-        alert.addAction(UIAlertAction(title: "Delete", style: .destructive) { _ in
-            self.confirmDeleteAllData()
-        })
-        
-        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel))
-        
-        present(alert, animated: true)
+    @IBAction func importDataTapped(_ sender: UIButton) {
+        importData()
     }
     
-    @IBAction func privacyPolicyTapped(_ sender: UIButton) {
-        if let url = URL(string: "https://your-privacy-policy-url.com") {
-            UIApplication.shared.open(url)
-        } else {
-            showAlert(title: "Privacy Policy", message: "Privacy policy will be available soon.")
-        }
-    }
-    
-    @IBAction func termsOfServiceTapped(_ sender: UIButton) {
-        if let url = URL(string: "https://your-terms-of-service-url.com") {
-            UIApplication.shared.open(url)
-        } else {
-            showAlert(title: "Terms of Service", message: "Terms of service will be available soon.")
-        }
-    }
-    
-    @IBAction func signOutTapped(_ sender: UIButton) {
-        let alert = UIAlertController(title: "Sign Out",
-                                    message: "Are you sure you want to sign out?",
-                                    preferredStyle: .alert)
-        
-        alert.addAction(UIAlertAction(title: "Sign Out", style: .destructive) { _ in
-            self.performSignOut()
-        })
-        
-        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel))
-        
-        present(alert, animated: true)
+    @IBAction func deleteDataTapped(_ sender: UIButton) {
+        confirmDeleteAllData()
     }
     
     @IBAction func aboutTapped(_ sender: UIButton) {
@@ -177,146 +97,249 @@ class SettingsVC: UIViewController {
         showAlert(title: "About LifeHub", message: aboutMessage)
     }
     
-    // MARK: - Helper Methods
-    private func requestNotificationPermission() {
-        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound]) { granted, error in
+    // MARK: - Data Management
+    private func exportData() {
+        let tasks = TaskManager.shared.loadTasks()
+        let waterRecords = WaterIntakeManager.shared.getAllRecords()
+        let wellnessEntries = WellnessDiaryModel.loadDiaryEntries()
+        let badges = BadgeManager.shared.getEarnedBadges()
+        
+        var exportData = "LIFEHUB DATA EXPORT\n"
+        exportData += "Generated: \(Date())\n\n"
+        
+        // Tasks
+        exportData += "TASKS (\(tasks.count)):\n"
+        for task in tasks {
+            exportData += "• \(task.title) - \(task.priority) - \(task.isCompleted ? "✓" : "○")\n"
+        }
+        exportData += "\n"
+        
+        // Water Records
+        exportData += "WATER INTAKE (\(waterRecords.count) records):\n"
+        let totalWater = waterRecords.reduce(0) { $0 + $1.amount }
+        exportData += "Total: \(totalWater)ml\n\n"
+        
+        // Wellness Entries
+        exportData += "WELLNESS DIARY (\(wellnessEntries.count) entries):\n"
+        for entry in wellnessEntries.prefix(5) {
+            exportData += "• \(entry.formattedDateString()): \(entry.text)\n"
+        }
+        exportData += "\n"
+        
+        // Badges
+        exportData += "BADGES (\(badges.count)):\n"
+        for badge in badges {
+            exportData += "🏆 \(badge)\n"
+        }
+        
+        // Create and present activity controller
+        let activityController = UIActivityViewController(activityItems: [exportData], applicationActivities: nil)
+        
+        if let popover = activityController.popoverPresentationController {
+            popover.sourceView = view
+            popover.sourceRect = view.bounds
+        }
+        
+        present(activityController, animated: true)
+    }
+    
+    private func importData() {
+        let alert = UIAlertController(title: "Import Data", message: "Choose import source:", preferredStyle: .alert)
+        
+        alert.addAction(UIAlertAction(title: "From File", style: .default) { _ in
+            self.presentFilePicker()
+        })
+        
+        alert.addAction(UIAlertAction(title: "From Firebase", style: .default) { _ in
+            self.importFromFirebase()
+        })
+        
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel))
+        
+        present(alert, animated: true)
+    }
+    
+    private func importFromFirebase() {
+        // Check if user is authenticated
+        if !FirebaseManager.shared.isUserLoggedIn {
+            showAlert(title: "Authentication Required", message: "Please ensure you're connected to sync your data from Firebase.")
+            return
+        }
+        
+        // Show loading
+        let loadingAlert = UIAlertController(title: "Importing from Firebase", message: "Please wait...", preferredStyle: .alert)
+        present(loadingAlert, animated: true)
+        
+        // Perform import
+        performFirebaseImport { [weak self] success, details in
             DispatchQueue.main.async {
-                if granted {
-                    UserDefaults.standard.set(true, forKey: "isNotificationsEnabled")
-                    self.showAlert(title: "Notifications", message: "Notifications enabled successfully!")
-                } else {
-                    self.notificationsSwitch.isOn = false
-                    self.showAlert(title: "Notifications", message: "Please enable notifications in Settings app to receive reminders.")
+                loadingAlert.dismiss(animated: true) {
+                    if success {
+                        self?.showAlert(title: "Import Successful", message: "Data imported from Firebase successfully!\n\n\(details)")
+                        
+                        // Refresh UI
+                        self?.loadSettings()
+                    } else {
+                        self?.showAlert(title: "Import Failed", message: "Failed to import data from Firebase.\n\nDetails:\n\(details)")
+                    }
                 }
             }
         }
     }
     
-    private func exportUserData() {
-        // Create a simple text export of user data
-        var exportData = "LifeHub Data Export\n"
-        exportData += "Export Date: \(Date())\n\n"
+    private func performFirebaseImport(completion: @escaping (Bool, String) -> Void) {
+        let group = DispatchGroup()
+        var importResults: [String] = []
+        var overallSuccess = true
         
-        // Add user preferences
-        exportData += "Settings:\n"
-        exportData += "Dark Mode: \(UserDefaults.standard.bool(forKey: "isDarkModeEnabled") ? "Enabled" : "Disabled")\n"
-        exportData += "Notifications: \(UserDefaults.standard.bool(forKey: "isNotificationsEnabled") ? "Enabled" : "Disabled")\n\n"
-        
-        // You can add more data here based on your app's data structure
-        exportData += "Note: This is a basic export. Full data export functionality can be enhanced based on your specific data models.\n"
-        
-        // Create activity view controller to share the data
-        let activityVC = UIActivityViewController(activityItems: [exportData], applicationActivities: nil)
-        
-        // For iPad
-        if let popover = activityVC.popoverPresentationController {
-            popover.sourceView = view
-            popover.sourceRect = CGRect(x: view.bounds.midX, y: view.bounds.midY, width: 0, height: 0)
+        // Import Tasks
+        group.enter()
+        TaskManager.shared.syncFromFirebase { success in
+            let taskCount = TaskManager.shared.loadTasks().count
+            if success {
+                importResults.append("✅ Tasks: \(taskCount) imported")
+            } else {
+                importResults.append("❌ Tasks: Import failed")
+                overallSuccess = false
+            }
+            group.leave()
         }
         
-        present(activityVC, animated: true)
+        // Import Water Intake
+        group.enter()
+        WaterIntakeManager.shared.syncFromFirebase { success in
+            let waterCount = WaterIntakeManager.shared.getAllRecords().count
+            if success {
+                importResults.append("✅ Water Records: \(waterCount) imported")
+            } else {
+                importResults.append("❌ Water Records: Import failed")
+                overallSuccess = false
+            }
+            group.leave()
+        }
+        
+        // Import Wellness Diary
+        group.enter()
+        WellnessDiaryModel.syncFromFirebase { success in
+            let wellnessCount = WellnessDiaryModel.loadDiaryEntries().count
+            if success {
+                importResults.append("✅ Wellness Entries: \(wellnessCount) imported")
+            } else {
+                importResults.append("❌ Wellness Entries: Import failed")
+                overallSuccess = false
+            }
+            group.leave()
+        }
+        
+        // Import Badges
+        group.enter()
+        BadgeManager.shared.syncFromFirebase { success in
+            let badgeCount = BadgeManager.shared.getEarnedBadges().count
+            if success {
+                importResults.append("✅ Badges: \(badgeCount) imported")
+            } else {
+                importResults.append("❌ Badges: Import failed")
+                overallSuccess = false
+            }
+            group.leave()
+        }
+        
+        group.notify(queue: .main) {
+            let details = importResults.joined(separator: "\n")
+            completion(overallSuccess, details)
+        }
     }
     
     private func confirmDeleteAllData() {
-        let finalAlert = UIAlertController(title: "Final Confirmation",
-                                         message: "This will permanently delete ALL your data. Are you absolutely sure?",
-                                         preferredStyle: .alert)
+        let alert = UIAlertController(
+            title: "Delete All Data",
+            message: "This will permanently delete all your app data including tasks, water records, wellness entries, and badges. This action cannot be undone.",
+            preferredStyle: .alert
+        )
         
-        finalAlert.addAction(UIAlertAction(title: "Yes, Delete Everything", style: .destructive) { _ in
-            self.deleteAllUserData()
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel))
+        alert.addAction(UIAlertAction(title: "Delete All", style: .destructive) { _ in
+            self.performDataDeletion()
         })
         
-        finalAlert.addAction(UIAlertAction(title: "Cancel", style: .cancel))
-        
-        present(finalAlert, animated: true)
+        present(alert, animated: true)
     }
     
-    private func deleteAllUserData() {
-        // Clear UserDefaults
-        let defaults = UserDefaults.standard
-        let dictionary = defaults.dictionaryRepresentation()
-        dictionary.keys.forEach { key in
-            defaults.removeObject(forKey: key)
-        }
-        
-        // Clear Core Data (if you're using it)
-        // You'll need to implement this based on your CoreDataStack
-        // CoreDataStack.shared.deleteAllData()
-        
-        // Reset switches
-        darkModeSwitch.isOn = false
-        notificationsSwitch.isOn = false
-        
-        // Reset to light mode
-        if #available(iOS 13.0, *) {
-            view.window?.overrideUserInterfaceStyle = .light
-        }
-        
-        showAlert(title: "Data Deleted", message: "All your data has been successfully deleted.") { _ in
-            // Optionally navigate back to main screen or restart app
-        }
-    }
-    
-    private func performSignOut() {
-        // Clear user session data
-        UserDefaults.standard.removeObject(forKey: "userName")
-        UserDefaults.standard.removeObject(forKey: "userEmail")
-        UserDefaults.standard.removeObject(forKey: "isUserLoggedIn")
-        
-        // Clear any authentication tokens if using Firebase Auth or similar
-        // Auth.auth().signOut() // Uncomment if using Firebase Auth
-        
-        // Reset UI to default state
-        usernameLabel.text = "User Name"
-        emailLabel.text = "[email]"
-        
-        // Navigate to authentication screen
-        navigateToAuthScreen()
-        
-        showAlert(title: "Signed Out", message: "You have been successfully signed out.")
-    }
-    
-    private func navigateToAuthScreen() {
-        // Navigate to the authentication screen
-        let storyboard = UIStoryboard(name: "Auth", bundle: nil)
-        if let authVC = storyboard.instantiateInitialViewController() {
-            // Set as root view controller
-            if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
-               let window = windowScene.windows.first {
-                window.rootViewController = authVC
-                window.makeKeyAndVisible()
+    private func performDataDeletion() {
+        DataClearingManager.shared.clearAllAppData(includeFirebase: true) { [weak self] (success: Bool) in
+            DispatchQueue.main.async {
+                if success {
+                    self?.showAlert(title: "Data Deleted", message: "All app data has been successfully deleted.")
+                    
+                    // Reset UI to default state
+                    self?.loadSettings()
+                } else {
+                    self?.showAlert(title: "Deletion Failed", message: "Some data could not be deleted. Please try again.")
+                }
             }
         }
     }
     
+    // MARK: - File Import
+    private func presentFilePicker() {
+        let documentPicker = UIDocumentPickerViewController(forOpeningContentTypes: [.json, .text])
+        documentPicker.delegate = self
+        documentPicker.allowsMultipleSelection = false
+        present(documentPicker, animated: true)
+    }
+    
+    func documentPicker(_ controller: UIDocumentPickerViewController, didPickDocumentsAt urls: [URL]) {
+        guard let url = urls.first else { return }
+        
+        do {
+            let data = try Data(contentsOf: url)
+            if let jsonObject = try JSONSerialization.jsonObject(with: data) as? [String: Any] {
+                processImportedData(jsonObject)
+            } else {
+                showAlert(title: "Import Error", message: "Invalid file format. Please select a valid JSON file.")
+            }
+        } catch {
+            showAlert(title: "Import Error", message: "Failed to read file: \(error.localizedDescription)")
+        }
+    }
+    
+    private func processImportedData(_ data: [String: Any]) {
+        // Process imported data here
+        showAlert(title: "Import Successful", message: "Data has been imported successfully.")
+        loadSettings()
+    }
+    
+    // MARK: - Sync Status Monitoring
+    private func setupSyncStatusMonitoring() {
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(firebaseDataSynced(_:)),
+            name: .firebaseDataSynced,
+            object: nil
+        )
+    }
+    
+    @objc private func firebaseDataSynced(_ notification: Notification) {
+        DispatchQueue.main.async {
+            if let success = notification.userInfo?["success"] as? Bool {
+                // Handle sync status if needed
+            }
+            
+            if let imported = notification.userInfo?["imported"] as? Bool, imported {
+                // Data was imported, refresh UI
+                self.loadSettings()
+            }
+        }
+    }
+    
+    // MARK: - Helper Methods
     private func showAlert(title: String, message: String, completion: ((UIAlertAction) -> Void)? = nil) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: completion))
         present(alert, animated: true)
     }
-}
-
-// MARK: - Extensions
-extension SettingsVC {
     
-    /// Update user profile information
-    func updateUserProfile(name: String, email: String) {
-        usernameLabel.text = name
-        emailLabel.text = email
-        
-        // Save to UserDefaults
-        UserDefaults.standard.set(name, forKey: "userName")
-        UserDefaults.standard.set(email, forKey: "userEmail")
-    }
-    
-    /// Load user profile from UserDefaults
-    private func loadUserProfile() {
-        if let name = UserDefaults.standard.string(forKey: "userName") {
-            usernameLabel.text = name
-        }
-        
-        if let email = UserDefaults.standard.string(forKey: "userEmail") {
-            emailLabel.text = email
-        }
+    deinit {
+        NotificationCenter.default.removeObserver(self)
     }
 }

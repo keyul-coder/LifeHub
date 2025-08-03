@@ -22,6 +22,7 @@ class MainHeaderCollectionViewCell: UICollectionViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         setupUI()
+        updateUserName()
     }
     
     private func setupUI() {
@@ -32,6 +33,14 @@ class MainHeaderCollectionViewCell: UICollectionViewCell {
         self.layer.shadowOffset = CGSize(width: 0, height: 2)
         self.layer.shadowRadius = 8
         self.backgroundColor = .systemBackground
+    }
+    
+    private func setupNotifications() {
+        // Setup any needed notifications here
+    }
+    
+    private func updateUserName() {
+        lblUSerName.text = "Welcome to LifeHub!"
     }
     
     func updateWaterIntakePercentage(currentIntake: Int, dailyGoal: Int = WaterIntakeConstants.defaultDailyGoal) {
@@ -57,5 +66,7 @@ class MainHeaderCollectionViewCell: UICollectionViewCell {
         self.lblTaksDoneValue.text = "\(completedCount)"
     }
     
-    
+    deinit {
+        NotificationCenter.default.removeObserver(self)
+    }
 }
