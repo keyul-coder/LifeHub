@@ -73,8 +73,26 @@ class SettingsVC: UIViewController, UIDocumentPickerDelegate {
         importData()
     }
     
-    @IBAction func deleteDataTapped(_ sender: UIButton) {
+    @IBAction func deleteAllDataTapped(_ sender: UIButton) {
         confirmDeleteAllData()
+    }
+    
+    @IBAction func signOutTapped(_ sender: UIButton) {
+        let alert = UIAlertController(title: "Sign Out", message: "Are you sure you want to sign out?", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel))
+        alert.addAction(UIAlertAction(title: "Sign Out", style: .destructive) { _ in
+            // Perform sign out logic here if needed
+            self.showAlert(title: "Signed Out", message: "You have been signed out successfully.")
+        })
+        present(alert, animated: true)
+    }
+    
+    @IBAction func privacyPolicyTapped(_ sender: UIButton) {
+        showAlert(title: "Privacy Policy", message: "LifeHub respects your privacy. We do not collect or store personal information without your consent.")
+    }
+    
+    @IBAction func termsOfServiceTapped(_ sender: UIButton) {
+        showAlert(title: "Terms of Service", message: "By using LifeHub, you agree to use the app responsibly and in accordance with applicable laws.")
     }
     
     @IBAction func aboutTapped(_ sender: UIButton) {
